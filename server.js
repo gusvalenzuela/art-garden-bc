@@ -1,7 +1,7 @@
 const express = require("express")
 const passport = require("passport")
 const session = require("express-session")
-const db = require("./app/models")
+const db = require("./node_modules")
 const authRoute = require("./app/routes/auth.js")
 
 const app = express()
@@ -32,6 +32,10 @@ app.set("views", __dirname + "/app/views")
 app.get("/", (req, res) => {
 	res.render("index")
 })
+
+require(`./app/routes/artwork-api-routes`)(app)
+require(`./app/routes/request-api-routes`)(app)
+// require(`./app/routes/user-api-routes`)(app)
 
 authRoute(app, passport)
 

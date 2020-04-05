@@ -5,9 +5,9 @@ const { Artwork } = require(`../../node_modules`)
 // =============================================================
 module.exports = function (app) {
 	// GET route for getting all
-	app.get(`/api/artworks`, function (req, res) {
+	app.get(`/api/requests`, function (req, res) {
 		// findAll returns all entries for a table when used with no options `{}`
-		res.send(`SUP`)
+		res.send(`SUP WELCOME TO REQUESTS API`)
 		// Artwork.findAll({}).then(response => {
 		//   // We have access to the todos as an argument inside of the callback function
 		//   res.json(response);
@@ -15,7 +15,7 @@ module.exports = function (app) {
 	})
 
 	// POST route for saving a new todo
-	app.post(`/api/artworks`, function (req, res) {
+	app.post(`/api/requests`, function (req, res) {
 		// create takes an argument of an object describing the item we want to
 		// insert into our table. In this case we just we pass in an object with a text
 		// and complete property (req.body)
@@ -36,7 +36,7 @@ module.exports = function (app) {
 
 	// DELETE route for deleting todos. We can get the id of the todo to be deleted from
 	// req.params.id
-	app.delete(`/api/artworks/:id`, function (req, res) {
+	app.delete(`/api/requests/:id`, function (req, res) {
 		// We just have to specify which todo we want to destroy with `where`
 		Artwork.destroy({
 			where: {
@@ -48,7 +48,7 @@ module.exports = function (app) {
 	})
 
 	// PUT route for updating todos. We can get the updated todo data from req.body
-	app.put(`/api/artworks`, function (req, res) {
+	app.put(`/api/requests`, function (req, res) {
 		// Update takes in an object describing the properties we want to update, and
 		// we use where to describe which objects we want to update
 		Artwork.update(
