@@ -2,7 +2,7 @@
 	"development": {
 		"username": "root",
 		"password": "root",
-		"database": "sweet_app",
+		"database": "artgarden",
 		"host": "127.0.0.1",
 		"dialect": "mysql",
 		"operatorsAliases": false
