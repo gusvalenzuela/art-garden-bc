@@ -1,3 +1,7 @@
-/node_modules/
+node_modules
+.env
+public
+solutions
+
 daily-standup.md
 STUF-AND-TODOS.md
