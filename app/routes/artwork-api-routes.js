@@ -1,5 +1,5 @@
 // Requiring our models
-const { Artwork } = require(`../../node_modules`)
+const { Artwork } = require(`../../app/models`)
 
 // Routes
 // =============================================================
