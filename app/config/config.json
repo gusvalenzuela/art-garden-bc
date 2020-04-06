@@ -1,11 +1,7 @@
 {
 	"development": {
 		"username": "root",
-<<<<<<< HEAD
-		"password": "r00t",
-=======
 		"password": "root",
->>>>>>> 7df23fc7d48225b34e9e025c5e5f7650dbf3b62e
 		"database": "artgarden",
 		"host": "127.0.0.1",
 		"dialect": "mysql",
