@@ -6,12 +6,19 @@ module.exports = (sequelize, DataTypes) => {
 	const User = sequelize.define("User", {
 		firstName: DataTypes.STRING,
 		lastName: DataTypes.STRING,
-		if_artist: DataTypes.BOOLEAN,
 		email: DataTypes.STRING,
 		password: {
 			type: DataTypes.STRING,
 			allowNull: 0,
 		},
+		// is_artist: {
+		// 	type: DataTypes.BOOLEAN,
+		// 	defaultValue: 0,
+		// },
+		// is_verified: {
+		// 	type: DataTypes.BOOLEAN,
+		// 	defaultValue: 0,
+		// },
 		last_login: {
 			type: DataTypes.DATE,
 		},
