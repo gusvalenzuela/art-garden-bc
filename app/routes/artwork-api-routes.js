@@ -7,11 +7,10 @@ module.exports = function (app) {
 	// GET route for getting all
 	app.get(`/api/artworks`, function (req, res) {
 		// findAll returns all entries for a table when used with no options `{}`
-		res.send(`SUP`)
-		// Artwork.findAll({}).then(response => {
-		//   // We have access to the todos as an argument inside of the callback function
-		//   res.json(response);
-		// });
+		Artwork.findAll({}).then(response => {
+			// We have access to the artworks as an argument inside of the callback function
+			res.json(response)
+		})
 	})
 
 	// POST route for saving a new todo
@@ -20,8 +19,8 @@ module.exports = function (app) {
 		// insert into our table. In this case we just we pass in an object with a text
 		// and complete property (req.body)
 		Artwork.create({
-			//   text: req.body.text,
-			//   complete: req.body.complete
+			title: req.body.text,
+			complete: req.body.complete,
 		})
 			.then(response => {
 				// We have access to the new todo as an argument inside of the callback function

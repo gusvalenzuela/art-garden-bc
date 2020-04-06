@@ -1,0 +1,59 @@
+********************************************************
+********************************************************
+
+# TODOS
+- Make TODO List
+- Api Routes
+- Front-end buttons for:
+    --
+    --
+- Search bar (users, requests, tags)
+
+********************************************************
+********************************************************
+
+# WISHLIST
+- Admin page / 
+- Groups
+- Forums
+- Inbox
+- Filters
+- 
+
+********************************************************
+********************************************************
+
+## ROUTES
+    [C, R, U, D]
+
+## Home page
+- curated selection of artists based on user tags
+- Bulletin/Art request - dropdown from homepage nav
+- bulletin for customers to request art, artists/customers can live respond to bids
+- pricing can be negotiated
+- expands
+
+## Profile Page (modified sidebar)
+- custom avatar, banner, bio, tags for art subgenres, followers/following
+- Pending art requests
+
+## Inbox
+- correspond with potential customers
+
+## APIs
+- User profile banner + photo randomized
+- quotes api
+
+## Design Framework
+- bulma
+
+## Tasks
+- front end
+- sql
+- backend
+   *Requests
+   *server setup
+   
+## Models
+- User/Artist model
+- request model (edited) 
