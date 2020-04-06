@@ -35,7 +35,7 @@ app.get("/", (req, res) => {
 
 require(`./app/routes/artwork-api-routes`)(app)
 require(`./app/routes/request-api-routes`)(app)
-// require(`./app/routes/user-api-routes`)(app)
+require(`./app/routes/user-api-routes`)(app)
 
 authRoute(app, passport)
 
