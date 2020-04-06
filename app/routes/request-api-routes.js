@@ -1,5 +1,5 @@
 // Requiring our models
-const { Artwork } = require(`../../node_modules`)
+const { Request } = require(`../../app/models`)
 
 // Routes
 // =============================================================
@@ -8,7 +8,7 @@ module.exports = function (app) {
 	app.get(`/api/requests`, function (req, res) {
 		// findAll returns all entries for a table when used with no options `{}`
 		res.send(`SUP WELCOME TO REQUESTS API`)
-		// Artwork.findAll({}).then(response => {
+		// Request.findAll({}).then(response => {
 		//   // We have access to the todos as an argument inside of the callback function
 		//   res.json(response);
 		// });
@@ -19,7 +19,7 @@ module.exports = function (app) {
 		// create takes an argument of an object describing the item we want to
 		// insert into our table. In this case we just we pass in an object with a text
 		// and complete property (req.body)
-		Artwork.create({
+		Request.create({
 			//   text: req.body.text,
 			//   complete: req.body.complete
 		})
@@ -38,7 +38,7 @@ module.exports = function (app) {
 	// req.params.id
 	app.delete(`/api/requests/:id`, function (req, res) {
 		// We just have to specify which todo we want to destroy with `where`
-		Artwork.destroy({
+		Request.destroy({
 			where: {
 				id: req.params.id,
 			},
@@ -51,7 +51,7 @@ module.exports = function (app) {
 	app.put(`/api/requests`, function (req, res) {
 		// Update takes in an object describing the properties we want to update, and
 		// we use where to describe which objects we want to update
-		Artwork.update(
+		Request.update(
 			{
 				text: req.body.text,
 				complete: req.body.complete,

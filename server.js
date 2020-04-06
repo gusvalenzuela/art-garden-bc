@@ -1,7 +1,7 @@
 const express = require("express")
 const passport = require("passport")
 const session = require("express-session")
-const db = require("./node_modules")
+const db = require("./app/models")
 const authRoute = require("./app/routes/auth.js")
 
 const app = express()
