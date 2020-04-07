@@ -19,8 +19,13 @@ module.exports = function (app) {
 		// insert into our table. In this case we just we pass in an object with a text
 		// and complete property (req.body)
 		Artwork.create({
-			title: req.body.text,
-			complete: req.body.complete,
+			title: req.body.title,
+			description: req.body.description,
+			artist_id: req.body.artistID,
+			category: req.body.category,
+			tags: req.body.tags,
+			// for_request: req.body.,
+			price: req.body.price,
 		})
 			.then(response => {
 				// We have access to the new todo as an argument inside of the callback function
@@ -52,8 +57,13 @@ module.exports = function (app) {
 		// we use where to describe which objects we want to update
 		Artwork.update(
 			{
-				text: req.body.text,
-				complete: req.body.complete,
+				title: req.body.title,
+				description: req.body.description,
+				artist_id: req.body.artistID,
+				category: req.body.category,
+				tags: req.body.tags,
+				// for_request: req.body.,
+				price: req.body.price,
 			},
 			{
 				where: {
