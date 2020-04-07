@@ -58,8 +58,13 @@ module.exports = function (app) {
 		// we use where to describe which objects we want to update
 		Request.update(
 			{
-				text: req.body.text,
-				complete: req.body.complete,
+				title: req.body.title,
+				description: req.body.description,
+				// requestor_id: req.body.requestorID,
+				// style: req.body.style,
+				category: req.body.category,
+				turnaround_time: req.body.turnaround_time,
+				tags: req.body.tags,
 			},
 			{
 				where: {
