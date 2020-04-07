@@ -11,6 +11,11 @@ exports.dashboard = function (req, res) {
 	res.render("dashboard", req.user)
 }
 
+exports.antTest = function (req, res) {
+	console.log(req.user)
+	res.render("ant-test", req.user)
+}
+
 exports.logout = function (req, res) {
 	req.session.destroy(function (err) {
 		if (err) {
