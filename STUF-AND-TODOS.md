@@ -2,12 +2,21 @@
 ********************************************************
 
 # TODOS
-- Make TODO List
-- Api Routes
+<!-- - Make TODO List -->
+<!-- - Api Routes -->
+- Routes For: 
+    -- Request page
+        -- info and shit
+        
 - Front-end buttons for:
     --
     --
 - Search bar (users, requests, tags)
+- Validators for:
+    -- Requests
+        --
+    -- Artwork
+        --
 
 ********************************************************
 ********************************************************
@@ -18,7 +27,10 @@
 - Forums
 - Inbox
 - Filters
-- 
+- Routes For: 
+    -- Request page
+        -- info and shit
+        
 
 ********************************************************
 ********************************************************
