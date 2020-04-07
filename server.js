@@ -33,9 +33,13 @@ app.get("/", (req, res) => {
 	res.render("index")
 })
 
+app.get("/grvtest", (req, res) => {
+	res.render("grv-test")
+})
+
 require(`./app/routes/artwork-api-routes`)(app)
 require(`./app/routes/request-api-routes`)(app)
-// require(`./app/routes/user-api-routes`)(app)
+require(`./app/routes/user-api-routes`)(app)
 
 authRoute(app, passport)
 
