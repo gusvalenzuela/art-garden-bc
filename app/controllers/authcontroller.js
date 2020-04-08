@@ -17,6 +17,11 @@ exports.grvTest = function (req, res) {
 	res.render("grv-test", req.user)
 }
 
+exports.antTest = function (req, res) {
+	console.log(req.user)
+	res.render("ant-test", req.user)
+}
+
 exports.logout = function (req, res) {
 	req.session.destroy(function (err) {
 		if (err) {
