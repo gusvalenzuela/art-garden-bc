@@ -1,6 +1,6 @@
 /* eslint-disable no-undef */
 $(document).ready(function () {
-	var newCommissionRequestForm = $("new-commission-request-form")
+	var newCommissionRequestForm = $("#new-commission-request-form")
 
 	var titleInput = $("#title")
 	var descriptionInput = $("#description")

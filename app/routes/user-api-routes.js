@@ -1,5 +1,6 @@
 // Requiring our models
 const { User } = require(`../models`)
+var utils = require("../utils/utils")
 
 // Routes
 // =============================================================
@@ -13,6 +14,18 @@ module.exports = function (app) {
 		})
 	})
 
+	app.get(`/api/user/current`, utils.isLoggedIn, function (req, res) {
+		console.log(req.user.id)
+		// findAll returns all entries for a table when used with no options `{}`
+		User.findAll({
+			where: {
+				id: req.user.id,
+			},
+		}).then(response => {
+			// We have access to the Users as an argument inside of the callback function
+			res.json(response)
+		})
+	})
 	// GET route for getting one
 	app.get(`/api/users/:id`, function (req, res) {
 		// findAll returns all entries for a table when used with no options `{}`
@@ -24,7 +37,7 @@ module.exports = function (app) {
 
 	// DELETE route for deleting todos. We can get the id of the todo to be deleted from
 	// req.params.id
-	app.delete(`/api/Users/:id`, function (req, res) {
+	app.delete(`/api/users/:id`, function (req, res) {
 		// We just have to specify which todo we want to destroy with `where`
 		User.destroy({
 			where: {

@@ -1,12 +1,12 @@
 var authController = require("../controllers/authcontroller.js")
-
+var utils = require("../utils/utils")
 module.exports = function (app, passport) {
 	app.get("/signup", authController.signup)
 
-	app.get("/ant-test", isLoggedIn, authController.antTest)
+	app.get("/ant-test", utils.isLoggedIn, authController.antTest)
 
-	app.get("/grvtest", isLoggedIn, authController.grvTest)
-	app.get("/profile", isLoggedIn, authController.profile)
+	app.get("/grvtest", utils.isLoggedIn, authController.grvTest)
+	app.get("/profile", utils.isLoggedIn, authController.profile)
 
 	app.post(
 		"/signup",
@@ -25,10 +25,4 @@ module.exports = function (app, passport) {
 	)
 
 	app.get("/logout", authController.logout)
-
-	function isLoggedIn(req, res, next) {
-		if (req.isAuthenticated()) return next()
-
-		res.redirect("/")
-	}
 }
