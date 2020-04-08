@@ -12,11 +12,19 @@ var PORT = process.env.PORT || 8080
 app.use(express.static("public"))
 
 // Parse application body
-app.use(express.urlencoded({ extended: true }))
+app.use(
+	express.urlencoded({
+		extended: true,
+	}),
+)
 app.use(express.json())
 
 app.use(
-	session({ secret: "keyboard cat", resave: true, saveUninitialized: true }),
+	session({
+		secret: "keyboard cat",
+		resave: true,
+		saveUninitialized: true,
+	}),
 ) // session secret
 
 app.use(passport.initialize())
@@ -25,16 +33,17 @@ app.use(passport.session())
 
 var exphbs = require("express-handlebars")
 
-app.engine("handlebars", exphbs({ defaultLayout: "main" }))
+app.engine(
+	"handlebars",
+	exphbs({
+		defaultLayout: "main",
+	}),
+)
 app.set("view engine", "handlebars")
 app.set("views", __dirname + "/app/views")
 
 app.get("/", (req, res) => {
 	res.render("index")
-})
-
-app.get("/grvtest", (req, res) => {
-	res.render("grv-test")
 })
 
 require(`./app/routes/artwork-api-routes`)(app)
