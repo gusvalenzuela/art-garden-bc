@@ -1,6 +1,6 @@
 // Requiring our models
 const { User, Request, Artwork } = require(`../models`)
-const adhoc = require(`../../src/_js/adhoc`)
+const { filterUserResponse } = require(`../../src/_js/adhoc`)
 
 // Routes
 // =============================================================
@@ -21,7 +21,7 @@ module.exports = function (app) {
 			// We have access to the Users as an argument inside of the callback function
 			// console.log(response)
 			// res.json(response)
-			res.render(`grv-test`, adhoc.filterUserResponse(response))
+			res.render(`grv-test`, filterUserResponse(response).response)
 		})
 	})
 

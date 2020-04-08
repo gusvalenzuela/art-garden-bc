@@ -4,8 +4,14 @@ module.exports = {
 			response.dataValues.password = `*`.repeat(
 				response.dataValues.password.length,
 			)
+			response.dataValues.fullName =
+				response.firstName + ` ` + response.lastName
 		}
 
-		return response.dataValues
+		return {
+			response: response.dataValues,
+
+			fullName: response.firstName + ` ` + response.lastName,
+		}
 	},
 }
