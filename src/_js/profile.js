@@ -2,23 +2,12 @@
 $(document).ready(function () {
 	//Function that collects user info
 
-	var passport = require("passport-local")
-
 	var newCommissionRequestForm = $("new-commission-request-form")
-
-	var user = function () {
-		passport.authenticate("local"),
-			function (req) {
-				console.log(req.user)
-			}
-	}
-
-	console.log(user)
 
 	var titleInput = $("#title")
 	var descriptionInput = $("#description")
 	var categoryInput = $("#category")
-	var requestorId = $("#")
+	var requestorId = $("#requestor-id")
 
 	newCommissionRequestForm.on("submit", createNewCommisionRequest)
 
