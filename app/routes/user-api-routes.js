@@ -1,5 +1,5 @@
 // Requiring our models
-const { User, Request, Artwork } = require(`../models`)
+const { User, Request, Artwork, Userdetail } = require(`../models`)
 const { filterUserResponse } = require(`../../src/_js/adhoc`)
 
 // Routes
@@ -8,7 +8,23 @@ module.exports = function (app) {
 	// GET route for getting all
 	app.get(`/api/users/`, function (req, res) {
 		// findAll returns all entries for a table when used with no options `{}`
-		User.findAll({ include: [Request, Artwork] }).then(response => {
+		User.findAll({ include: [Artwork, Request] }).then(response => {
+			// We have access to the Users as an argument inside of the callback function
+			res.json(response)
+		})
+	})
+
+	app.get(`/api/userdetails/`, function (req, res) {
+		// findAll returns all entries for a table when used with no options `{}`
+		Userdetail.findAll({}).then(response => {
+			// We have access to the Users as an argument inside of the callback function
+			res.json(response)
+		})
+	})
+
+	app.get(`/api/user/details`, function (req, res) {
+		// findAll returns all entries for a table when used with no options `{}`
+		Userdetail.findAll({ include: User }).then(response => {
 			// We have access to the Users as an argument inside of the callback function
 			res.json(response)
 		})
