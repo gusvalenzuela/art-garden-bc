@@ -47,6 +47,11 @@ app.get("/", (req, res) => {
 	res.render("index")
 })
 
+app.get("/testprofile", (req, res) => {
+	// console.log(`test`)
+	res.render("profile")
+})
+
 require(`./app/routes/artwork-api-routes`)(app)
 require(`./app/routes/request-api-routes`)(app)
 require(`./app/routes/user-api-routes`)(app)
