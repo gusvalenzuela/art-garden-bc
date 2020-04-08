@@ -7,7 +7,7 @@ artGarden™ is for new artists who have trouble breaking into the art sphere. a
 ## Team
 
 - Mark Ohanesian: @markohanesian
-- Anthony Pillow @squid
+- Anthony Pillow @SquidDOTjpeg
 - Gus Valenzuela @gusvalenzuela
 
 ## Links
