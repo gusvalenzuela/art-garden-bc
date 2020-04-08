@@ -1,17 +1,21 @@
 <form id="req-form" name="request" method="post" action="/api/requests">
   <label for="title">Title</label>
-  <input class="text" name="title" type="text" />
+    <input class="text" name="title" type="text" />
   <label for="description">Description</label>
-  <input name="description" type="text" />
+    <input name="description" type="text" />
   <label for="category">category</label>
-  <input name="category" type="text" />
+    <input name="category" type="text" />
   <label for="tags">{{email}}</label>
-  <input name="tags" type="text" />
+    <input name="tags" type="text" />
   <label for="turnaround_time">Time</label>
-  <input name="turnaround_time" type="number" min="1"/>
-  <input name="id" type="text" min="1" value="{{this.id}}"/>
+    <input name="turnaround_time" type="number" min="1" value="24"/>
+  <label for="id">ID</label>
+    <input name="id" type="number" min="1" value="{{this.id}}"/>
 
   {{!-- <label for="password">Password</label>
     <input name="password" type="password" /> --}}
-  <input class="btn" type="submit" value="Submit" />
+    <input class="btn" type="submit" value="Submit" />
 </form>
+<script>
+  $.post(`/api/requests/`).then()
+</script>

@@ -5,8 +5,8 @@ module.exports = function (app, passport) {
 
 	app.get("/ant-test", isLoggedIn, authController.antTest)
 
-	app.get("/dashboard", isLoggedIn, authController.dashboard)
 	app.get("/grvtest", isLoggedIn, authController.grvTest)
+	app.get("/dashboard", isLoggedIn, authController.dashboard)
 
 	app.post(
 		"/signup",

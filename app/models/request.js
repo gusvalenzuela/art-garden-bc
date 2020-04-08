@@ -71,15 +71,8 @@ module.exports = (sequelize, DataTypes) => {
 		},
 	})
 
-	// FOREIGN KEY (requestor_id) REFERENCES users(id)
-
-	// Request.belongsTo("beforeCreate", hhhhhhhhh => {
-
-	// })
-
 	Request.associate = models => {
 		// a Request should belong to a User (as requestor_id)
-		// A Post can't be created without an Author due to the foreign key constraint
 		Request.belongsTo(models.User, {
 			foreignKey: {
 				allowNull: false,
