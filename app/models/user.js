@@ -11,14 +11,14 @@ module.exports = (sequelize, DataTypes) => {
 			type: DataTypes.STRING,
 			allowNull: 0,
 		},
-		// is_artist: {
-		// 	type: DataTypes.BOOLEAN,
-		// 	defaultValue: 0,
-		// },
-		// is_verified: {
-		// 	type: DataTypes.BOOLEAN,
-		// 	defaultValue: 0,
-		// },
+		is_artist: {
+			type: DataTypes.BOOLEAN,
+			defaultValue: 0,
+		},
+		is_verified: {
+			type: DataTypes.BOOLEAN,
+			defaultValue: 0,
+		},
 		last_login: {
 			type: DataTypes.DATE,
 		},

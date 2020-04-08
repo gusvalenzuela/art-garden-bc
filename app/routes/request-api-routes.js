@@ -1,5 +1,5 @@
 // Requiring our models
-const { Request } = require(`../../app/models`)
+const { Request, User } = require(`../../app/models`)
 
 // Routes
 // =============================================================
@@ -8,7 +8,7 @@ module.exports = function (app) {
 	app.get(`/api/requests`, function (req, res) {
 		// findAll returns all entries for a table when used with no options `{}`
 		// res.send(`SUP WELCOME TO REQUESTS API`)
-		Request.findAll({}).then(response => {
+		Request.findAll({ include: [User] }).then(response => {
 			// We have access to the todos as an argument inside of the callback function
 			res.json(response)
 		})

@@ -6,6 +6,7 @@ module.exports = function (app, passport) {
 	app.get("/ant-test", isLoggedIn, authController.antTest)
 
 	app.get("/grvtest", isLoggedIn, authController.grvTest)
+
 	app.get("/dashboard", isLoggedIn, authController.dashboard)
 
 	app.post(
@@ -20,6 +21,15 @@ module.exports = function (app, passport) {
 		"/signin",
 		passport.authenticate("local-signin", {
 			successRedirect: "/dashboard",
+			failureRedirect: "/",
+		}),
+	)
+
+	app.post(
+		"/signin/:id",
+		passport.authenticate("local-signin", {
+			// if()
+			successRedirect: "/grv-test",
 			failureRedirect: "/",
 		}),
 	)
