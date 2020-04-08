@@ -8,7 +8,10 @@
 		"dev": "concurrently \"webpack --mode development --watch\" \"nodemon server.js\"",
 		"format": "prettier --ignore-path .gitignore --write \"**/*.+(js|json|css)\"",
 		"lint": "eslint --ignore-path .gitignore .",
-		"validate": "npm run format && npm run lint &&npm run build"
+		"validate": "npm run format && npm run lint &&npm run build",
+		"css-build": "node-sass --omit-source-map-url sass/mystyles.scss css/mystyles.css",
+		"css-watch": "npm run css-build -- --watch",
+		"start": "npm run css-watch"
 	},
 	"author": "",
 	"license": "ISC",
