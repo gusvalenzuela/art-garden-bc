@@ -5,13 +5,13 @@ module.exports = function (app, passport) {
 
 	app.get("/ant-test", isLoggedIn, authController.antTest)
 
-	app.get("/dashboard", isLoggedIn, authController.dashboard)
+	app.get("/profile", isLoggedIn, authController.profile)
 	app.get("/grvtest", isLoggedIn, authController.grvTest)
 
 	app.post(
 		"/signup",
 		passport.authenticate("local-signup", {
-			successRedirect: "/dashboard",
+			successRedirect: "/profile",
 			failureRedirect: "/signup",
 		}),
 	)
@@ -19,7 +19,7 @@ module.exports = function (app, passport) {
 	app.post(
 		"/signin",
 		passport.authenticate("local-signin", {
-			successRedirect: "/dashboard",
+			successRedirect: "/profile",
 			failureRedirect: "/",
 		}),
 	)
