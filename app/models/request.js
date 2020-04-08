@@ -59,7 +59,7 @@ module.exports = (sequelize, DataTypes) => {
 		starting_price: {
 			type: DataTypes.INTEGER,
 			allowNull: 0,
-			defaultValue: 1000000,
+			defaultValue: 7,
 		},
 		artwork_id: DataTypes.INTEGER,
 		last_updated: {

@@ -1,3 +1,5 @@
+const { filterUserResponse } = require(`../../src/_js/adhoc`)
+
 exports.signup = function (req, res) {
 	res.render("signup")
 }
@@ -13,7 +15,7 @@ exports.profile = function (req, res) {
 
 exports.grvTest = function (req, res) {
 	console.log(req.user)
-	res.render("grv-test", req.user)
+	res.render("grv-test", filterUserResponse(req.user).user)
 }
 
 exports.antTest = function (req, res) {

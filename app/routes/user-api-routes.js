@@ -8,7 +8,7 @@ module.exports = function (app) {
 	// GET route for getting all
 	app.get(`/api/users/`, function (req, res) {
 		// findAll returns all entries for a table when used with no options `{}`
-		User.findAll({ include: [Artwork, Request] }).then(response => {
+		User.findAll({ include: [Userdetail, Artwork, Request] }).then(response => {
 			// We have access to the Users as an argument inside of the callback function
 			res.json(response)
 		})
