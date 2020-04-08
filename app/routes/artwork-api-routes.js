@@ -16,8 +16,7 @@ module.exports = function (app) {
 	// POST route for saving a new todo
 	app.post(`/api/artworks`, function (req, res) {
 		// create takes an argument of an object describing the item we want to
-		// insert into our table. In this case we just we pass in an object with a text
-		// and complete property (req.body)
+		// insert into our table.
 		Artwork.create({
 			title: req.body.title,
 			description: req.body.description,

@@ -1,3 +1,8 @@
+<h2>Your password is: {{password}}</h2>
+<h2>Your firstName is: {{firstName}}</h2>
+<h2>Your lastName is: {{lastName}}</h2>
+<h2>Your email is: {{email}}</h2>
+
 <form id="req-form" name="request" method="post" action="/api/requests">
   <label for="title">Title</label>
   <input class="text" name="title" type="text" />
@@ -10,7 +15,7 @@
   <label for="turnaround_time">Time</label>
   <input name="turnaround_time" type="number" min="1" value="24" />
   <label for="id">ID</label>
-  <input name="id" type="number" min="1" value="{{this.id}}" />
+  <input name="id" type="number" min="1" value=""1" />
 
   {{!-- <label for="password">Password</label>
     <input name="password" type="password" /> --}}
