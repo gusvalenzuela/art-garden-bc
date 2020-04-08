@@ -15,6 +15,9 @@ module.exports = (sequelize, DataTypes) => {
 			type: DataTypes.BOOLEAN,
 			defaultValue: 0,
 		},
+		profileImg_url: {
+			type: DataTypes.STRING,
+		},
 		is_verified: {
 			type: DataTypes.BOOLEAN,
 			defaultValue: 0,
