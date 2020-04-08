@@ -12,6 +12,7 @@ exports.profile = function (req, res) {
 }
 
 exports.grvTest = function (req, res) {
+	console.log(req.user)
 	res.render("grv-test", req.user)
 }
 

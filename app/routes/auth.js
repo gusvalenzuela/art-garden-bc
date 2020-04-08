@@ -7,6 +7,7 @@ module.exports = function (app, passport) {
 
 	app.get("/profile", isLoggedIn, authController.profile)
 	app.get("/grvtest", isLoggedIn, authController.grvTest)
+	app.get("/dashboard", isLoggedIn, authController.dashboard)
 
 	app.post(
 		"/signup",
