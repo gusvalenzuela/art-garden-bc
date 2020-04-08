@@ -4,8 +4,7 @@ module.exports = function (app, passport) {
 	app.get("/signup", authController.signup)
 
 	app.get("/dashboard", isLoggedIn, authController.dashboard)
-
-	// app.get("/islogged", isLoggedIn, authController.dashboard)
+	app.get("/grvtest", isLoggedIn, authController.grvTest)
 
 	app.post(
 		"/signup",

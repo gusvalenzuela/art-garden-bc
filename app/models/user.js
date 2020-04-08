@@ -33,5 +33,13 @@ module.exports = (sequelize, DataTypes) => {
 		user.password = bcrypt.hashSync(user.password, bcrypt.genSaltSync(10), null)
 	})
 
+	User.associate = models => {
+		// Associating User with Requests
+		// When a User is deleted, also deletes any associated Request(s)
+		User.hasMany(models.Request, {
+			onDelete: "cascade",
+		})
+	}
+
 	return User
 }

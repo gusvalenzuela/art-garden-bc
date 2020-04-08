@@ -16,13 +16,13 @@ module.exports = (sequelize, DataTypes) => {
 				len: [3, 255],
 			},
 		},
-		requestor_id: {
-			type: DataTypes.INTEGER,
-			allowNull: 0,
-			validate: {
-				isNumeric: true,
-			},
-		},
+		// requestor_id: {
+		// 	type: DataTypes.INTEGER,
+		// 	allowNull: 0,
+		// 	validate: {
+		// 		isNumeric: true,
+		// 	},
+		// },
 		artist_id: {
 			type: DataTypes.INTEGER,
 			allowNull: 0,
@@ -76,6 +76,16 @@ module.exports = (sequelize, DataTypes) => {
 	// Request.belongsTo("beforeCreate", hhhhhhhhh => {
 
 	// })
+
+	Request.associate = models => {
+		// a Request should belong to a User (as requestor_id)
+		// A Post can't be created without an Author due to the foreign key constraint
+		Request.belongsTo(models.User, {
+			foreignKey: {
+				allowNull: false,
+			},
+		})
+	}
 
 	return Request
 }

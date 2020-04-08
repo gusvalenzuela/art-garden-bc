@@ -7,8 +7,14 @@ exports.signin = function (req, res) {
 }
 
 exports.dashboard = function (req, res) {
-	console.log(req.user)
+	// console.log(req.user)
 	res.render("dashboard", req.user)
+
+	res.render("grv-test", req.user)
+}
+
+exports.grvTest = function (req, res) {
+	res.render("grv-test", req.user)
 }
 
 exports.logout = function (req, res) {

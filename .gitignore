@@ -2,7 +2,7 @@ node_modules/
 .env
 public
 solutions
-docs/
+# docs
 
-daily-standup.md
+daily-standup*.md
 # STUF-AND-TODOS.md
