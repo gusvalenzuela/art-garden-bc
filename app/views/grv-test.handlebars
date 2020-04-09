@@ -1,21 +1,70 @@
+<h2>Your password is: {{password}}</h2>
+<h2>Your firstName is: {{firstName}}</h2>
+<h2>Your lastName is: {{lastName}}</h2>
+<h2>Your full name is: {{fullName}}</h2>
+<h2>Your email is: {{email}}</h2>
+
 <form id="req-form" name="request" method="post" action="/api/requests">
   <label for="title">Title</label>
-    <input class="text" name="title" type="text" />
+  <input class="text" name="title" type="text" />
   <label for="description">Description</label>
-    <input name="description" type="text" />
+  <input name="description" type="text" />
   <label for="category">category</label>
-    <input name="category" type="text" />
+  <input name="category" type="text" />
   <label for="tags">{{email}}</label>
-    <input name="tags" type="text" />
+  <input name="tags" type="text" />
   <label for="turnaround_time">Time</label>
-    <input name="turnaround_time" type="number" min="1" value="24"/>
+  <input name="turnaround_time" type="number" min="1" value="24" />
   <label for="id">ID</label>
-    <input name="id" type="number" min="1" value="{{this.id}}"/>
+  <input name="id" type="number" min="1" value="1" />
 
   {{!-- <label for="password">Password</label>
     <input name="password" type="password" /> --}}
-    <input class="btn" type="submit" value="Submit" />
+  <input class="btn" type="submit" value="Submit" />
 </form>
+
+<hr>
+{{!-- <h3>Second Test Form</h3> --}}
+<form id="req-form-1a" name="update-artistId" method="post" action="/api/requests/3">
+  {{!-- <p>I would love a comic looking piece of me and my turtle.</p>
+  <p>Category: Classic Comics</p>
+  <label for="id">ID</label>
+  <input name="artist_id" type="number" min="1" value="{{id}}" />
+  <input class="btn" type="submit" value="Take Request" /> --}}
+</form>
+<div id="req-div">
+
+</div>
 <script>
-  $.post(`/api/requests/`).then()
+  // get all request info and create list-items for each
+  $.get(`/api/requests`, data => {
+    console.log(data)
+  }).then((data) => {
+
+    $(`#req-div`).append(`<ul id="requests-list">`)
+
+    data.forEach(request => {
+      let item = $(`<li>`).append($(`<p>`).text(`Title: ` + request.title)).append($(`<p>`).text(`Description: ` + request.description))
+        .append($(`<p>`).text(`Turnaround Time: ` + request.turnaround_time + ` hr(s)`))
+        .append($(`<p>`).text(`Starting Price: ` + request.starting_price + ` zeed(s)`))
+        .append($(`<button class="btn request-btn" data-request-id="${request.id}">`).text(`Take Request`))
+        .append($(`<hr>`))
+
+      item.appendTo(`#requests-list`)
+
+      console.log(request)
+    })
+
+    $(`.request-btn`).on(`click`, event => {
+      event.preventDefault()
+      let requestID = $(event.target).data(`request-id`)
+      // console.log()
+
+      // find id of request and user id of taker
+    //  $.ajax({url: `/api/requests/` + requestID, method: `PUT`, data: {artist_id: }, data => {
+    //    console.log(data)
+    //  })
+    })
+  })
+
 </script>

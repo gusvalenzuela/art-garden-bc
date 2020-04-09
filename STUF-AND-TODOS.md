@@ -4,6 +4,7 @@
 # TODOS
 <!-- - Make TODO List -->
 <!-- - Api Routes -->
+- Expose the isloggedin function
 - Routes For: 
     -- Request page
         -- info and shit

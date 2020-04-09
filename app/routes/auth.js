@@ -24,5 +24,14 @@ module.exports = function (app, passport) {
 		}),
 	)
 
+	app.post(
+		"/signin/:id",
+		passport.authenticate("local-signin", {
+			// if()
+			successRedirect: "/grv-test",
+			failureRedirect: "/",
+		}),
+	)
+
 	app.get("/logout", authController.logout)
 }

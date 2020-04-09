@@ -49,21 +49,17 @@ module.exports = (sequelize, DataTypes) => {
 		complete: {
 			type: DataTypes.BOOLEAN,
 			allowNull: 0,
-			defaultValue: 1,
-			validate: {
-				isInt: true,
-				min: 1,
-			},
+			defaultValue: 0,
 		},
 		inprogress: DataTypes.BOOLEAN,
-		// purchase_price: DataTypes.DECIMAL,
+		purchase_price: DataTypes.DECIMAL,
 		bid_count: DataTypes.INTEGER,
 		lowest_bid: DataTypes.INTEGER,
 		current_bid: DataTypes.INTEGER,
 		starting_price: {
 			type: DataTypes.INTEGER,
-			// allowNull: 0,
-			// defaultValue: 1000000,
+			allowNull: 0,
+			defaultValue: 7,
 		},
 		artwork_id: DataTypes.INTEGER,
 		last_updated: {

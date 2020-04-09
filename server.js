@@ -43,7 +43,13 @@ app.set("view engine", "handlebars")
 app.set("views", __dirname + "/app/views")
 
 app.get("/", (req, res) => {
+	// console.log(`test`)
 	res.render("index")
+})
+
+app.get("/testprofile", (req, res) => {
+	// console.log(`test`)
+	res.render("profile")
 })
 
 require(`./app/routes/artwork-api-routes`)(app)
