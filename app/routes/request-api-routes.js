@@ -14,6 +14,16 @@ module.exports = function (app) {
 		})
 	})
 
+	// TEST ROUTE || TEST ROUTE
+	app.get(`/api/reqs`, function (req, res) {
+		// findAll returns all entries for a table when used with no options `{}`
+		// res.send(`SUP WELCOME TO REQUESTS API`)
+		Request.findAll({ where: { userId: 1 } }).then(response => {
+			// We have access to the todos as an argument inside of the callback function
+			res.json(response)
+		})
+	})
+
 	// POST route for saving a new request
 	app.post(`/api/requests`, function (req, res) {
 		// create takes an argument of an object describing the item we want to

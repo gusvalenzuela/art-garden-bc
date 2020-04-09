@@ -11,6 +11,11 @@ module.exports = (sequelize, DataTypes) => {
 			type: DataTypes.STRING,
 			allowNull: 0,
 		},
+		createdAt: {
+			type: DataTypes.DATETIME,
+			allowNull: 0,
+			defaultValue: DataTypes.CURRENT_TIMESTAMP,
+		},
 		// is_artist: {
 		// 	type: DataTypes.BOOLEAN,
 		// 	defaultValue: 0,
