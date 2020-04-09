@@ -7,7 +7,6 @@ module.exports = function (app) {
 	// GET route for getting all
 	app.get(`/api/requests`, function (req, res) {
 		// findAll returns all entries for a table when used with no options `{}`
-		// res.send(`SUP WELCOME TO REQUESTS API`)
 		Request.findAll({ include: [User] }).then(response => {
 			// We have access to the todos as an argument inside of the callback function
 			res.json(response)
@@ -29,15 +28,7 @@ module.exports = function (app) {
 		// create takes an argument of an object describing the item we want to
 		// insert into our table. In this case we just we pass in an object with a text
 		// and complete property (req.body)
-		Request.create({
-			title: req.body.title,
-			description: req.body.description,
-			requestor_id: req.body.requestorID,
-			// style: req.body.style,
-			category: req.body.category,
-			turnaround_time: req.body.turnaround_time,
-			tags: req.body.tags,
-		})
+		Request.create(req.body)
 			.then(response => {
 				// We have access to the new request as an argument inside of the callback function
 				res.json(response)

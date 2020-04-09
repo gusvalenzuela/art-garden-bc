@@ -4,8 +4,33 @@
       Welcome to artGarden
     </h1>
     <p class="subtitle">
-      <strong>search gigs</strong>!
+      <strong>search gigs YOUR PASSWORD IS {{password}}</strong>!
+
     </p>
+
+    <h2>Requests not completed!</h2>
+
+    <ul>
+      {{#each Requests}}
+      {{#unless complete}}
+      <li>{{dataValues.description}}</li>
+      {{!-- {{> request/request-block}} --}}
+      {{/unless}}
+      {{/each}}
+    </ul>
+
+    <h2>Requests completed!</h2>
+
+    <ul>
+      {{#each Requests}}
+      {{#if complete}}
+       <li>{{dataValues}}</li>
+      {{!-- {{> request/request-block}} --}}
+      {{/if}}
+      {{/each}}
+    </ul>
+
+
     <!-- insert box and media object here -->
     <div class="box">
       <article class="media">
@@ -19,7 +44,7 @@
           <div class="content">
             <p>
               {{!-- insert username --}}
-              <strong>firstName</strong> <small>@{{email}}</small> <small>31m</small>
+              <strong>firstName is {{firstName}}</strong> <small>@{{email}}</small> <small>31m</small>
               <br>
               Is verified? {{is_verified}}
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur sit amet massa fringilla

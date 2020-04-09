@@ -4,19 +4,21 @@
 <h2>Your full name is: {{fullName}}</h2>
 <h2>Your email is: {{email}}</h2>
 
-<form id="req-form" name="request" method="post" action="/api/requests">
+{{!-- method="post" action="/api/requests/" --}}
+
+<form id="req-form" name="request" method="post" action="/api/requests/">
   <label for="title">Title</label>
-  <input class="text" name="title" type="text" />
+  <input class="text" name="title" type="text" id="title" />
   <label for="description">Description</label>
-  <input name="description" type="text" />
+  <input name="description" type="text" id="description" />
   <label for="category">category</label>
-  <input name="category" type="text" />
+  <input name="category" type="text" id="category" />
   <label for="tags">{{email}}</label>
-  <input name="tags" type="text" />
+  <input name="tags" type="text" id="tags" />
   <label for="turnaround_time">Time</label>
-  <input name="turnaround_time" type="number" min="1" value="24" />
+  <input name="turnaround_time" type="number" min="1" value="24" id="turnaround_time" />
   <label for="id">ID</label>
-  <input name="id" type="number" min="1" value="1" />
+  <input name="id" type="number" min="1" value="{{id}}" id="user" />
 
   {{!-- <label for="password">Password</label>
     <input name="password" type="password" /> --}}
@@ -36,6 +38,27 @@
 
 </div>
 <script>
+
+  $(`#req-form`).on(`submit`, e => {
+    e.preventDefault()
+
+    console.log($(`#description`).val())
+
+    let newRequest = {
+      title: $(`#title`).val(),
+      description:  $(`#description`).val(),
+      category: $(`#category`).val(),
+      tags: $(`#tags`).val(),
+      turnaround_time: 2 ,
+      UserId: "2"
+    }
+
+    $.post(`/api/requests`, newRequest, data => {
+      console.log(`data is: `,data)
+    })
+
+  })
+
   // get all request info and create list-items for each
   $.get(`/api/requests`, data => {
     console.log(data)
@@ -59,11 +82,12 @@
       event.preventDefault()
       let requestID = $(event.target).data(`request-id`)
       // console.log()
+      let thisdata = { artist_id: 2 }
 
       // find id of request and user id of taker
-    //  $.ajax({url: `/api/requests/` + requestID, method: `PUT`, data: {artist_id: }, data => {
-    //    console.log(data)
-    //  })
+      $.ajax({ url: `/api/requests/`, method: `POST`, data: thisdata }), data => {
+        console.log(data)
+      }
     })
   })
 
