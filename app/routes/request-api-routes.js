@@ -54,13 +54,11 @@ module.exports = function (app) {
 	})
 
 	// PUT route for updating requests. We can get the updated request data from req.body
-	app.post(`/api/requests/:id`, function (req, res) {
+	app.put(`/api/requests/:id`, function (req, res) {
 		// expects Obj in req.body (ex. {artist_id: `5`})
-		let stuffToUpdate = req.body
-
 		// Update takes in an object describing the properties we want to update, and
 		// we use where to describe which objects we want to update (in this case the request id via url param)
-		Request.update({ values: stuffToUpdate }, { where: { id: req.params.id } })
+		Request.update(req.body, { where: { id: req.params.id } })
 			.then(response => {
 				res.json(response)
 			})
