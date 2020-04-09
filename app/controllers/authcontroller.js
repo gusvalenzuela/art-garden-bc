@@ -9,7 +9,7 @@ exports.signin = function (req, res) {
 }
 
 exports.profile = function (req, res) {
-	// console.log(req.user)
+	console.log(req.user)
 	res.render("profile", req.user)
 }
 
