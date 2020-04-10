@@ -1,17 +1,22 @@
 /* eslint-disable no-undef */
 $(document).ready(function () {
+	// var profileImage
+
 	var userRequestContainer = $(".user-request-container")
 	var userRequests
+	var userName
 
 	getAllUserRequests()
 
 	function getAllUserRequests() {
 		userRequestContainer.empty()
-		$.get("/api/NewRouteHere", data => {
+		$.get("/api/user/current", data => {
 			console.log(data)
-			userRequests = data
+			userRequests = data.Requests
+			userName = data.firstName + " " + data.lastName
 			initializeCardCreation()
 		})
+		console.log(userRequests)
 	}
 
 	function initializeCardCreation() {
@@ -31,7 +36,7 @@ $(document).ready(function () {
 		var newRequestCardName = $("<div>")
 		newRequestCardName.addClass("request-card-name")
 
-		var newRequestName = $("<p>").addClass("request-name").text(request.name)
+		var newRequestName = $("<p>").addClass("request-name").text(userName)
 		newRequestName.appendTo(newRequestCardName)
 
 		var newRequestCardTitle = $("<div>")
@@ -41,7 +46,7 @@ $(document).ready(function () {
 		newRequestTitle.appendTo(newRequestCardTitle)
 
 		var newRequestCardBody = $("<div>")
-		newRequestBody.addClass("request-card-body")
+		newRequestCardBody.addClass("request-card-body")
 
 		var newRequestBody = $("<p>")
 			.addClass("request-body")
@@ -49,7 +54,7 @@ $(document).ready(function () {
 		newRequestBody.appendTo(newRequestCardBody)
 
 		var newRequestCardPostDate = $("<div>")
-		newRequestPostDate.addClass("request-card-postdate")
+		newRequestCardPostDate.addClass("request-card-postdate")
 
 		var newRequestPostDate = $("<p>")
 			.addClass("request-postdate")

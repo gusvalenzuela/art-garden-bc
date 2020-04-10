@@ -5,6 +5,15 @@ exports.signup = function (req, res) {
 	res.render("signup")
 }
 
+exports.homepage = function (req, res) {
+	db.User.findAll({
+		include: [db.Userdetail, db.Artwork, db.Request],
+		raw: false,
+	}).then(response => {
+		// console.log(utils.filterUserResponse(response).response)
+		res.render(`homepage`, utils.filterUserResponse(response).response)
+	})
+}
 exports.signin = function (req, res) {
 	res.render("signin")
 }
@@ -17,7 +26,8 @@ exports.profile = function (req, res) {
 		include: [db.Userdetail, db.Artwork, db.Request],
 		raw: false,
 	}).then(response => {
-		// console.log(utils.filterUserResponse(response).response)
+		console.log(utils.filterUserResponse(response).response)
+		// console.log(response.dataValues.Requests[0].dataValues)
 		res.render(`profile`, utils.filterUserResponse(response).response)
 	})
 }

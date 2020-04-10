@@ -45,7 +45,7 @@ $(document).ready(function () {
 		newRequestTitle.appendTo(newRequestCardTitle)
 
 		var newRequestCardBody = $("<div>")
-		newRequestBody.addClass("request-card-body")
+		newRequestCardBody.addClass("request-card-body")
 
 		var newRequestBody = $("<p>")
 			.addClass("request-body")
@@ -53,7 +53,7 @@ $(document).ready(function () {
 		newRequestBody.appendTo(newRequestCardBody)
 
 		var newRequestCardPostDate = $("<div>")
-		newRequestPostDate.addClass("request-card-postdate")
+		newRequestCardPostDate.addClass("request-card-postdate")
 
 		var newRequestPostDate = $("<p>")
 			.addClass("request-postdate")

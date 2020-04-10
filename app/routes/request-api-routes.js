@@ -29,17 +29,8 @@ module.exports = function (app) {
 	})
 	// POST route for saving a new request
 	app.post(`/api/requests`, function (req, res) {
-		Request.create({
-			title: req.body.title,
-			description: req.body.description,
-			// id: req.body.id,
-			// style: req.body.style,
-			category: req.body.category,
-			turnaround_time: req.body.turnaround_time,
-			tags: req.body.tags,
-		})
+		Request.create(req.body)
 			.then(response => {
-				// We have access to the new request as an argument inside of the callback function
 				res.json(response)
 			})
 			.catch(err => {
@@ -67,7 +58,11 @@ module.exports = function (app) {
 		// expects Obj in req.body (ex. {artist_id: `5`})
 		// Update takes in an object describing the properties we want to update, and
 		// we use where to describe which objects we want to update (in this case the request id via url param)
-		Request.update(req.body, { where: { id: req.params.id } })
+		Request.update(req.body, {
+			where: {
+				id: req.params.id,
+			},
+		})
 			.then(response => {
 				res.json(response)
 			})

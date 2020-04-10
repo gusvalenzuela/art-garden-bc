@@ -10,12 +10,13 @@ module.exports = function (app, passport) {
 
 	app.get("/profile", utils.isLoggedIn, authController.profile)
 
+	app.get("/homepage", authController.homepage)
 	// app.get("/requestform", utils.isLoggedIn, authController.profile)
 
 	app.post(
 		"/signup",
 		passport.authenticate("local-signup", {
-			successRedirect: "/profile",
+			successRedirect: "/homepage",
 			failureRedirect: "/signup",
 		}),
 	)
@@ -23,7 +24,7 @@ module.exports = function (app, passport) {
 	app.post(
 		"/signin",
 		passport.authenticate("local-signin", {
-			successRedirect: "/profile",
+			successRedirect: "/homepage",
 			failureRedirect: "/",
 		}),
 	)
