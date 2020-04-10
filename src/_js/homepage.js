@@ -32,16 +32,22 @@ $(document).ready(function () {
 		var newRequestCard = $("<div>")
 		newRequestCard.addClass("request-card")
 
-		var newRequestCardTitle = "<div>"
+		var newRequestCardName = $("<div>")
+		newRequestCardName.addClass("request-card-name")
+
+		var newRequestName = $("<p>").addClass("request-name").text(request.name)
+		newRequestName.appendTo(newRequestCardName)
+
+		var newRequestCardTitle = $("<div>")
 		newRequestCardTitle.addClass("request-card-title")
 
-		var newRequestTitle = "<p>".addClass("request-title").text(request.title)
+		var newRequestTitle = $("<p>").addClass("request-title").text(request.title)
 		newRequestTitle.appendTo(newRequestCardTitle)
 
-		var newRequestCardBody = "<div>"
+		var newRequestCardBody = $("<div>")
 		newRequestBody.addClass("request-card-body")
 
-		var newRequestBody = "<p>"
+		var newRequestBody = $("<p>")
 			.addClass("request-body")
 			.text(request.description)
 		newRequestBody.appendTo(newRequestCardBody)
@@ -56,6 +62,7 @@ $(document).ready(function () {
 
 		newRequestCard.append(
 			newRequestCardTitle,
+			newRequestCardName,
 			newRequestCardBody,
 			newRequestCardPostDate,
 		)
