@@ -11,20 +11,6 @@ module.exports = (sequelize, DataTypes) => {
 			type: DataTypes.STRING,
 			allowNull: 0,
 		},
-		// is_artist: {
-		// 	type: DataTypes.BOOLEAN,
-		// 	defaultValue: 0,
-		// },
-		// profileImg: {
-		// 	type: DataTypes.STRING,
-		// },
-		// is_verified: {
-		// 	type: DataTypes.BOOLEAN,
-		// 	defaultValue: 0,
-		// },
-		// last_login: {
-		// 	type: DataTypes.DATE,
-		// },
 	})
 
 	User.prototype.isValidPassword = function (password) {

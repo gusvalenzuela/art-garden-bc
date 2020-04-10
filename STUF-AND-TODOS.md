@@ -37,25 +37,26 @@
 ********************************************************
 
 ## ROUTES
-    [C, R, U, D]
+- [X] Basics
+- [🤔] More Complex
 
 ## Home page
-- curated selection of artists based on user tags
-- Bulletin/Art request - dropdown from homepage nav
-- bulletin for customers to request art, artists/customers can live respond to bids
-- pricing can be negotiated
-- expands
+- [] curated selection of artists based on user tags
+- [] Bulletin/Art request - dropdown from homepage nav
+- [] bulletin for customers to request art, artists/customers can live respond to bids
+- [] pricing can be negotiated
+- [] expands
 
 ## Profile Page (modified sidebar)
-- custom avatar, banner, bio, tags for art subgenres, followers/following
-- Pending art requests
+- [] custom avatar, banner, bio, tags for art subgenres, followers/following
+- [] Pending art requests
 
 ## Inbox
-- correspond with potential customers
+- [] correspond with potential customers
 
 ## APIs
-- User profile banner + photo randomized
-- quotes api
+- [] User profile banner + photo randomized
+- [] quotes api
 
 ## Design Framework
 - bulma

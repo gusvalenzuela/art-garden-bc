@@ -1,70 +1,86 @@
+<div style="padding: 1.2em;">
 <h2>Your password is: {{password}}</h2>
 <h2>Your firstName is: {{firstName}}</h2>
 <h2>Your lastName is: {{lastName}}</h2>
 <h2>Your full name is: {{fullName}}</h2>
-<h2>Your email is: {{email}}</h2>
+<h2>Your email is: {{email}}</h2><br><br>
+</div>
 
-<form id="req-form" name="request" method="post" action="/api/requests">
-  <label for="title">Title</label>
-  <input class="text" name="title" type="text" />
-  <label for="description">Description</label>
-  <input name="description" type="text" />
-  <label for="category">category</label>
-  <input name="category" type="text" />
-  <label for="tags">{{email}}</label>
-  <input name="tags" type="text" />
-  <label for="turnaround_time">Time</label>
-  <input name="turnaround_time" type="number" min="1" value="24" />
-  <label for="id">ID</label>
-  <input name="id" type="number" min="1" value="1" />
-
-  {{!-- <label for="password">Password</label>
-    <input name="password" type="password" /> --}}
-  <input class="btn" type="submit" value="Submit" />
-</form>
+<div style="background: rgb(191, 255, 179); padding: 1.2em;">
+  <form id="req-form" name="request">
+    <label for="title">Title</label>
+    <input class="text" name="title" type="text" id="title" />
+    <label for="description">Description</label>
+    <input name="description" type="text" id="description" />
+    <label for="category">category</label>
+    <input name="category" type="text" id="category" />
+    <label for="tags">{{email}}</label>
+    <input name="tags" type="text" id="tags" />
+    <label for="turnaround_time">Turnaround Time (in whole hours)</label>
+    <input name="turnaround_time" type="number" min="1" value="24" id="turnaround_time" />
+    <input class="btn" type="submit" value="Submit" />
+  </form>
+</div>
 
 <hr>
-{{!-- <h3>Second Test Form</h3> --}}
-<form id="req-form-1a" name="update-artistId" method="post" action="/api/requests/3">
-  {{!-- <p>I would love a comic looking piece of me and my turtle.</p>
-  <p>Category: Classic Comics</p>
-  <label for="id">ID</label>
-  <input name="artist_id" type="number" min="1" value="{{id}}" />
-  <input class="btn" type="submit" value="Take Request" /> --}}
-</form>
-<div id="req-div">
 
-</div>
+<div id="req-div" style="background: rgb(10, 204, 178); padding: 1.2em;"></div>
+
 <script>
+
+  $(`#req-form`).on(`submit`, e => {
+    e.preventDefault()
+
+    console.log($(`#description`).val())
+
+    let newRequest = {
+      title: $(`#title`).val(),
+      description: $(`#description`).val(),
+      category: $(`#category`).val(),
+      tags: $(`#tags`).val(),
+      turnaround_time: 2,
+      UserId: "2"
+    }
+
+    $.post(`/api/requests`, newRequest, () => {
+      window.location.href = "/grvtest"
+    })
+
+
+  })
+
   // get all request info and create list-items for each
   $.get(`/api/requests`, data => {
-    console.log(data)
-  }).then((data) => {
-
+    // console.log(data)
     $(`#req-div`).append(`<ul id="requests-list">`)
 
     data.forEach(request => {
       let item = $(`<li>`).append($(`<p>`).text(`Title: ` + request.title)).append($(`<p>`).text(`Description: ` + request.description))
         .append($(`<p>`).text(`Turnaround Time: ` + request.turnaround_time + ` hr(s)`))
         .append($(`<p>`).text(`Starting Price: ` + request.starting_price + ` zeed(s)`))
+        .append($(`<p>`).text(`Taken by Artist: User ID #` + request.artist_id))
         .append($(`<button class="btn request-btn" data-request-id="${request.id}">`).text(`Take Request`))
         .append($(`<hr>`))
 
       item.appendTo(`#requests-list`)
 
-      console.log(request)
     })
 
+    // change artist id when clicking take request
     $(`.request-btn`).on(`click`, event => {
       event.preventDefault()
       let requestID = $(event.target).data(`request-id`)
-      // console.log()
 
       // find id of request and user id of taker
-    //  $.ajax({url: `/api/requests/` + requestID, method: `PUT`, data: {artist_id: }, data => {
-    //    console.log(data)
-    //  })
+      $.ajax({
+        url: `/api/requests/` + requestID,
+        method: `PUT`,
+        data: { artist_id: 5 }
+      }).then(() => {
+        window.location.href = "/grvtest"
+      })
     })
   })
+
 
 </script>
