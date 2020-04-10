@@ -7,8 +7,17 @@ module.exports = function (app) {
 	// GET route for getting all
 	app.get(`/api/requests`, function (req, res) {
 		// findAll returns all entries for a table when used with no options `{}`
-		// res.send(`SUP WELCOME TO REQUESTS API`)
 		Request.findAll({ include: [User] }).then(response => {
+			// We have access to the todos as an argument inside of the callback function
+			res.json(response)
+		})
+	})
+
+	// TEST ROUTE || TEST ROUTE
+	app.get(`/api/reqs`, function (req, res) {
+		// findAll returns all entries for a table when used with no options `{}`
+		// res.send(`SUP WELCOME TO REQUESTS API`)
+		Request.findAll({ where: { userId: 1 } }).then(response => {
 			// We have access to the todos as an argument inside of the callback function
 			res.json(response)
 		})
@@ -19,15 +28,7 @@ module.exports = function (app) {
 		// create takes an argument of an object describing the item we want to
 		// insert into our table. In this case we just we pass in an object with a text
 		// and complete property (req.body)
-		Request.create({
-			title: req.body.title,
-			description: req.body.description,
-			requestor_id: req.body.requestorID,
-			// style: req.body.style,
-			category: req.body.category,
-			turnaround_time: req.body.turnaround_time,
-			tags: req.body.tags,
-		})
+		Request.create(req.body)
 			.then(response => {
 				// We have access to the new request as an argument inside of the callback function
 				res.json(response)
@@ -53,25 +54,11 @@ module.exports = function (app) {
 	})
 
 	// PUT route for updating requests. We can get the updated request data from req.body
-	app.put(`/api/requests`, function (req, res) {
+	app.put(`/api/requests/:id`, function (req, res) {
+		// expects Obj in req.body (ex. {artist_id: `5`})
 		// Update takes in an object describing the properties we want to update, and
-		// we use where to describe which objects we want to update
-		Request.update(
-			{
-				title: req.body.title,
-				description: req.body.description,
-				// requestor_id: req.body.requestorID,
-				// style: req.body.style,
-				category: req.body.category,
-				turnaround_time: req.body.turnaround_time,
-				tags: req.body.tags,
-			},
-			{
-				where: {
-					id: req.body.id,
-				},
-			},
-		)
+		// we use where to describe which objects we want to update (in this case the request id via url param)
+		Request.update(req.body, { where: { id: req.params.id } })
 			.then(response => {
 				res.json(response)
 			})

@@ -11,20 +11,6 @@ module.exports = (sequelize, DataTypes) => {
 			type: DataTypes.STRING,
 			allowNull: 0,
 		},
-		is_artist: {
-			type: DataTypes.BOOLEAN,
-			defaultValue: 0,
-		},
-		profileImg_url: {
-			type: DataTypes.STRING,
-		},
-		is_verified: {
-			type: DataTypes.BOOLEAN,
-			defaultValue: 0,
-		},
-		last_login: {
-			type: DataTypes.DATE,
-		},
 	})
 
 	User.prototype.isValidPassword = function (password) {
@@ -41,6 +27,17 @@ module.exports = (sequelize, DataTypes) => {
 		// When a User is deleted, also deletes any associated Request(s)
 		User.hasMany(models.Request, {
 			onDelete: "cascade",
+		})
+
+		// Associating User with Artworks
+		User.hasMany(models.Artwork, {
+			onDelete: "cascade",
+		})
+
+		// Associating User with their Userdetails
+		User.hasOne(models.Userdetail, {
+			onDelete: "CASCADE",
+			onUpdate: "CASCADE",
 		})
 	}
 
