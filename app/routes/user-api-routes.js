@@ -2,7 +2,6 @@
 // Requiring our models
 var utils = require("../utils/utils")
 const { User, Request, Artwork, Userdetail } = require(`../models`)
-const { filterUserResponse } = require(`../../src/_js/adhoc`)
 
 // Routes
 // =============================================================
@@ -51,7 +50,7 @@ module.exports = function (app) {
 			// We have access to the Users as an argument inside of the callback function
 			// console.log(response)
 			// res.json(response)
-			res.render(`grv-test`, filterUserResponse(response).response)
+			res.render(`grv-test`, utils.filterUserResponse(response).response)
 		})
 	})
 
