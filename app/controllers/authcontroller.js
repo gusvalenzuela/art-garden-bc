@@ -17,7 +17,6 @@ exports.profile = function (req, res) {
 		include: [db.Userdetail, db.Artwork, db.Request],
 		raw: false,
 	}).then(response => {
-		// console.log(utils.filterUserResponse(response).response)
 		res.render(`profile`, utils.filterUserResponse(response).response)
 	})
 }

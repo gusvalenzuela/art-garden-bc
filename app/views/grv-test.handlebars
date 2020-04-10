@@ -1,9 +1,9 @@
 <div style="padding: 1.2em;">
-<h2>Your password is: {{password}}</h2>
-<h2>Your firstName is: {{firstName}}</h2>
-<h2>Your lastName is: {{lastName}}</h2>
-<h2>Your full name is: {{fullName}}</h2>
-<h2>Your email is: {{email}}</h2><br><br>
+  <h2>Your password is: {{password}}</h2>
+  <h2>Your firstName is: {{firstName}}</h2>
+  <h2>Your lastName is: {{lastName}}</h2>
+  <h2>Your full name is: {{fullName}}</h2>
+  <h2>Your email is: {{email}}</h2><br><br>
 </div>
 
 <div style="background: rgb(191, 255, 179); padding: 1.2em;">
@@ -27,6 +27,7 @@
 <div id="req-div" style="background: rgb(10, 204, 178); padding: 1.2em;"></div>
 
 <script>
+  $(`#req-form`).hide()
 
   $(`#req-form`).on(`submit`, e => {
     e.preventDefault()
@@ -59,7 +60,11 @@
         .append($(`<p>`).text(`Turnaround Time: ` + request.turnaround_time + ` hr(s)`))
         .append($(`<p>`).text(`Starting Price: ` + request.starting_price + ` zeed(s)`))
         .append($(`<p>`).text(`Taken by Artist: User ID #` + request.artist_id))
-        .append($(`<button class="btn request-btn" data-request-id="${request.id}">`).text(`Take Request`))
+        .append($(`<p>`).text(`Current Bid: ` + request.current_bid + ` Zeeds`))
+        .append($(`<input id="submit-bid-${request.id}" style="width: 25%;" type="number" data-request-id="${request.id}">`))
+        .append($(`<button class="btn bid-btn" data-request-id="${request.id}">`).text(`Bid`))
+        .append($(`<input id="turnaroundTime-${request.id}" style="width: 25%;" type="number" data-request-id="${request.id}">`))
+        .append($(`<button class="btn turnaroundTime-btn" data-request-id="${request.id}">`).text(`Update Turnaround time`))
         .append($(`<hr>`))
 
       item.appendTo(`#requests-list`)
@@ -67,15 +72,35 @@
     })
 
     // change artist id when clicking take request
-    $(`.request-btn`).on(`click`, event => {
+    $(`.bid-btn`).on(`click`, event => {
       event.preventDefault()
       let requestID = $(event.target).data(`request-id`)
+      let bid = $(`#submit-bid-${requestID}`).val()
+
+      console.log(bid)
 
       // find id of request and user id of taker
       $.ajax({
         url: `/api/requests/` + requestID,
         method: `PUT`,
-        data: { artist_id: 5 }
+        data: { current_bid: bid }
+      }).then(() => {
+        window.location.href = "/grvtest"
+      })
+    })
+
+    $(`.turnaroundTime-btn`).on(`click`, event => {
+      event.preventDefault()
+      let requestID = $(event.target).data(`request-id`)
+      let newTime = $(`#poop-${requestID}`).val()
+
+      // console.log(bid)
+
+      // find id of request and user id of taker
+      $.ajax({
+        url: `/api/requests/` + requestID,
+        method: `PUT`,
+        data: { turnaround_time: newTime }
       }).then(() => {
         window.location.href = "/grvtest"
       })

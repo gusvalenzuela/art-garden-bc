@@ -21,25 +21,12 @@ module.exports = function (app) {
 	app.get(`/api/user/current`, utils.isLoggedIn, function (req, res) {
 		console.log(req.user.id)
 		// findAll returns all entries for a table when used with no options `{}`
-		User.findAll({
+		User.findOne({
 			where: {
 				id: req.user.id,
 			},
 		}).then(response => {
 			res.json(response)
-		})
-	})
-
-	app.get(`/userprofile`, utils.isLoggedIn, function (req, res) {
-		console.log(req.user.id)
-		// findAll returns all entries for a table when used with no options `{}`
-		User.findAll({
-			where: {
-				id: req.user.id,
-			},
-			include: [Userdetail, Artwork, Request],
-		}).then(response => {
-			res.render(`profile`, response)
 		})
 	})
 

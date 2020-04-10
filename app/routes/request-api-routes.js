@@ -55,6 +55,11 @@ module.exports = function (app) {
 
 	// PUT route for updating requests. We can get the updated request data from req.body
 	app.put(`/api/requests/:id`, function (req, res) {
+		// increments our bid_count with each bid if current_bid is updating
+		if (req.body.current_bid) {
+			Request.increment({ bid_count: 1 }, { where: { id: req.params.id } })
+		}
+
 		// expects Obj in req.body (ex. {artist_id: `5`})
 		// Update takes in an object describing the properties we want to update, and
 		// we use where to describe which objects we want to update (in this case the request id via url param)
