@@ -1,11 +1,7 @@
 /* eslint-disable no-unused-vars */
 // Requiring our models
-<<<<<<< HEAD
-const { Request, User /* Artwork, Userdetail */ } = require(`../../app/models`)
-=======
 const { Request, User } = require(`../../app/models`)
 const utils = require("../utils/utils")
->>>>>>> 8b82ca3d0ddc67a95d8398bdc332ae81ed1f8e98
 
 // Routes
 // =============================================================
@@ -32,14 +28,7 @@ module.exports = function (app) {
 		})
 	})
 	// POST route for saving a new request
-<<<<<<< HEAD
-	app.post(`/api/requests`, (req, res) => {
-		// create takes an argument of an object describing the item we want to
-		// insert into our table. In this case we just we pass in an object with a text
-		// and complete property (req.body)
-=======
 	app.post(`/api/requests`, function (req, res) {
->>>>>>> 8b82ca3d0ddc67a95d8398bdc332ae81ed1f8e98
 		Request.create(req.body)
 			.then(response => {
 				res.json(response)
