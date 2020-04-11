@@ -36,8 +36,8 @@ module.exports = (sequelize, DataTypes) => {
 
 		// Associating User with their Userdetails
 		User.hasOne(models.Userdetail, {
-			onDelete: "CASCADE",
-			onUpdate: "CASCADE",
+			onDelete: "RESTRICT",
+			onUpdate: "RESTRICT",
 		})
 	}
 

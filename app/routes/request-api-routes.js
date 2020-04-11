@@ -1,5 +1,5 @@
 // Requiring our models
-const { Request, User } = require(`../../app/models`)
+const { Request, User /* Artwork, Userdetail */ } = require(`../../app/models`)
 
 // Routes
 // =============================================================
@@ -24,7 +24,7 @@ module.exports = function (app) {
 	})
 
 	// POST route for saving a new request
-	app.post(`/api/requests`, function (req, res) {
+	app.post(`/api/requests`, (req, res) => {
 		// create takes an argument of an object describing the item we want to
 		// insert into our table. In this case we just we pass in an object with a text
 		// and complete property (req.body)

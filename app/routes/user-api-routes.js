@@ -42,11 +42,14 @@ module.exports = function (app) {
 	// GET route for getting one User
 	app.get(`/api/users/:id`, function (req, res) {
 		// could be used for rendering
-		User.findOne({
-			where: {
-				id: req.params.id,
+		User.findOne(
+			{ include: [Userdetail] },
+			{
+				where: {
+					id: req.params.id,
+				},
 			},
-		}).then(response => {
+		).then(response => {
 			// We have access to the Users as an argument inside of the callback function
 			// console.log(response)
 			// res.json(response)
@@ -82,6 +85,24 @@ module.exports = function (app) {
 				},
 			},
 		)
+			.then(response => {
+				res.json(response)
+			})
+			.catch(function (err) {
+				// Whenever a validation or flag fails, an error is thrown
+				// We can `catch` the error to prevent it from being `thrown`, which could crash our node app
+				res.json(err)
+			})
+	})
+
+	app.put(`/api/userdetails/:id`, function (req, res) {
+		// Update takes in an object describing the properties we want to update, and
+		// we use where to describe which objects we want to update
+		Userdetail.update(req.body, {
+			where: {
+				id: req.params.id,
+			},
+		})
 			.then(response => {
 				res.json(response)
 			})

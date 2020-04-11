@@ -20,6 +20,12 @@
     <input name="turnaround_time" type="number" min="1" value="24" id="turnaround_time" />
     <input class="btn" type="submit" value="Submit" />
   </form>
+
+  <form id="change-profile-img-form" name="progiaSKDjk">
+    <label for="profileImg">Change Image to:</label>
+    <input class="text" name="profileImg" type="text" id="profileImg" />
+    <input class="btn" type="submit" value="Submit" />
+  </form>
 </div>
 
 <hr>
@@ -50,6 +56,23 @@
 
   })
 
+  $(`#change-profile-img-form`).on(`submit`, e => {
+    e.preventDefault()
+
+    console.log($(`#profileImg`).val())
+
+    let newImgLink = $(`#profileImg`).val().trim()
+
+    $.ajax({
+      url: `/api/userdetails/` + 2,
+      method: `PUT`,
+      data: { profileImg: newImgLink }
+    }).then(() => {
+      window.location.href = "/grvtest"
+    })
+
+  })
+
   // get all request info and create list-items for each
   $.get(`/api/requests`, data => {
     // console.log(data)
@@ -63,8 +86,8 @@
         .append($(`<p>`).text(`Current Bid: ` + request.current_bid + ` Zeeds`))
         .append($(`<input id="submit-bid-${request.id}" style="width: 25%;" type="number" data-request-id="${request.id}">`))
         .append($(`<button class="btn bid-btn" data-request-id="${request.id}">`).text(`Bid`))
-        .append($(`<input id="turnaroundTime-${request.id}" style="width: 25%;" type="number" data-request-id="${request.id}">`))
-        .append($(`<button class="btn turnaroundTime-btn" data-request-id="${request.id}">`).text(`Update Turnaround time`))
+        .append($(`<input id="poop-${request.id}" style="width: 25%;" type="number" data-request-id="${request.id}">`))
+        .append($(`<button class="btn poop-btn" data-request-id="${request.id}">`).text(`Update Turnaround time`))
         .append($(`<hr>`))
 
       item.appendTo(`#requests-list`)
@@ -89,12 +112,12 @@
       })
     })
 
-    $(`.turnaroundTime-btn`).on(`click`, event => {
+    $(`.poop-btn`).on(`click`, event => {
       event.preventDefault()
       let requestID = $(event.target).data(`request-id`)
       let newTime = $(`#poop-${requestID}`).val()
 
-      // console.log(bid)
+      console.log(bid)
 
       // find id of request and user id of taker
       $.ajax({

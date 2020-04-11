@@ -25,8 +25,7 @@ module.exports = (sequelize, DataTypes) => {
 
 		Userdetail.belongsTo(models.User, {
 			foreignKey: {
-				type: DataTypes.UUID,
-				allowNull: false,
+				type: DataTypes.INTEGER,
 			},
 		})
 	}
