@@ -1,5 +1,11 @@
+/* eslint-disable no-unused-vars */
 // Requiring our models
+<<<<<<< HEAD
+const { Request, User /* Artwork, Userdetail */ } = require(`../../app/models`)
+=======
 const { Request, User } = require(`../../app/models`)
+const utils = require("../utils/utils")
+>>>>>>> 8b82ca3d0ddc67a95d8398bdc332ae81ed1f8e98
 
 // Routes
 // =============================================================
@@ -7,30 +13,35 @@ module.exports = function (app) {
 	// GET route for getting all
 	app.get(`/api/requests`, function (req, res) {
 		// findAll returns all entries for a table when used with no options `{}`
-		Request.findAll({ include: [User] }).then(response => {
-			// We have access to the todos as an argument inside of the callback function
-			res.json(response)
-		})
-	})
-
-	// TEST ROUTE || TEST ROUTE
-	app.get(`/api/reqs`, function (req, res) {
-		// findAll returns all entries for a table when used with no options `{}`
 		// res.send(`SUP WELCOME TO REQUESTS API`)
-		Request.findAll({ where: { userId: 1 } }).then(response => {
+		Request.findAll({
+			include: [User],
+		}).then(response => {
 			// We have access to the todos as an argument inside of the callback function
 			res.json(response)
 		})
 	})
 
+	app.get(`/api/requests/currentuser`, utils.isLoggedIn, function (req, res) {
+		Request.findAll({
+			where: {
+				userId: req.userId,
+			},
+		}).then(data => {
+			res.json(data)
+		})
+	})
 	// POST route for saving a new request
-	app.post(`/api/requests`, function (req, res) {
+<<<<<<< HEAD
+	app.post(`/api/requests`, (req, res) => {
 		// create takes an argument of an object describing the item we want to
 		// insert into our table. In this case we just we pass in an object with a text
 		// and complete property (req.body)
+=======
+	app.post(`/api/requests`, function (req, res) {
+>>>>>>> 8b82ca3d0ddc67a95d8398bdc332ae81ed1f8e98
 		Request.create(req.body)
 			.then(response => {
-				// We have access to the new request as an argument inside of the callback function
 				res.json(response)
 			})
 			.catch(err => {
@@ -55,10 +66,19 @@ module.exports = function (app) {
 
 	// PUT route for updating requests. We can get the updated request data from req.body
 	app.put(`/api/requests/:id`, function (req, res) {
+		// increments our bid_count with each bid if current_bid is updating
+		if (req.body.current_bid) {
+			Request.increment({ bid_count: 1 }, { where: { id: req.params.id } })
+		}
+
 		// expects Obj in req.body (ex. {artist_id: `5`})
 		// Update takes in an object describing the properties we want to update, and
 		// we use where to describe which objects we want to update (in this case the request id via url param)
-		Request.update(req.body, { where: { id: req.params.id } })
+		Request.update(req.body, {
+			where: {
+				id: req.params.id,
+			},
+		})
 			.then(response => {
 				res.json(response)
 			})

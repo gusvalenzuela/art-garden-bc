@@ -1,36 +1,40 @@
 /* eslint-disable no-undef */
-$(document).ready(function () {
-	var newCommissionRequestForm = $("#new-commission-request-form")
 
-	var titleInput = $("#title")
-	var descriptionInput = $("#description")
-	var categoryInput = $("#category")
+var button = $("#submit-button")
 
-	//Event listener for the commission request form
-	newCommissionRequestForm.on("submit", userInfo)
-	//Function that gets the user's info and passes that to the new object to post
-	function userInfo(event) {
-		event.preventDefault()
-		$.get("/api/users", data => {
-			console.log(data)
-			createNewCommissionObject(data)
-		})
-	}
+var titleInput = $("#title")
+var descriptionInput = $("#description")
+var categoryInput = $("#category")
+var turnAroundTime = $("#turn-time")
+var startingPrice = $("#starting-price")
 
-	//Function that creates the request object to be passed to the api
-	function createNewCommissionObject(userInfo) {
-		var newRequest = {
-			title: titleInput.val().trim(),
-			description: descriptionInput.val().trim(),
-			category: categoryInput.val().trim(),
-			requestor_id: userInfo[0].id,
-		}
-		postCommissionRequest(newRequest)
+//Event listener for the commission request form
+// newCommissionRequestForm.on("click", userInfo)
+button.on("click", userInfo)
+//Function that gets the user's info and passes that to the new object to post
+function userInfo() {
+	$.get("/api/user/current", data => {
+		console.log(data)
+		createNewCommissionObject(data)
+	})
+}
+
+//Function that creates the request object to be passed to the api
+function createNewCommissionObject(userInfo) {
+	var newRequest = {
+		title: titleInput.val().trim(),
+		description: descriptionInput.val().trim(),
+		category: categoryInput.val().trim(),
+		turnaround_time: turnAroundTime.val().trim(),
+		starting_price: startingPrice.val().trim(),
+		UserId: userInfo.id,
 	}
-	//function that passes the new object to the api using a post route
-	function postCommissionRequest(request) {
-		$.post("/api/requests", request, () => {
-			window.location.href = "/profile"
-		})
-	}
-})
+	postCommissionRequest(newRequest)
+	console.log(newRequest)
+}
+//function that passes the new object to the api using a post route
+function postCommissionRequest(request) {
+	$.post("/api/requests", request, () => {
+		console.log(request)
+	})
+}

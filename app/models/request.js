@@ -54,6 +54,7 @@ module.exports = (sequelize, DataTypes) => {
 		inprogress: DataTypes.BOOLEAN,
 		purchase_price: DataTypes.DECIMAL,
 		bid_count: DataTypes.INTEGER,
+		// previous_bid: DataTypes.INTEGER,
 		lowest_bid: DataTypes.INTEGER,
 		current_bid: DataTypes.INTEGER,
 		starting_price: {
@@ -61,7 +62,6 @@ module.exports = (sequelize, DataTypes) => {
 			allowNull: 0,
 			defaultValue: 7,
 		},
-		artwork_id: DataTypes.INTEGER,
 		last_updated: {
 			type: DataTypes.DATE,
 		},
@@ -72,6 +72,12 @@ module.exports = (sequelize, DataTypes) => {
 		Request.belongsTo(models.User, {
 			foreignKey: {
 				allowNull: false,
+			},
+		})
+
+		Request.belongsTo(models.Artwork, {
+			foreignKey: {
+				type: DataTypes.INTEGER,
 			},
 		})
 	}

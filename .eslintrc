@@ -9,5 +9,6 @@
 		"browser": true,
 		"jest": true,
 		"node": true
-	}
+	},
+	"ignorePatterns": ["init.js", "materialize.js", "materialize.min.js", "LICENSE"]
 }

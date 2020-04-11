@@ -2,7 +2,6 @@
 // Requiring our models
 var utils = require("../utils/utils")
 const { User, Request, Artwork, Userdetail } = require(`../models`)
-const { filterUserResponse } = require(`../../src/_js/adhoc`)
 
 // Routes
 // =============================================================
@@ -20,26 +19,14 @@ module.exports = function (app) {
 
 	app.get(`/api/user/current`, utils.isLoggedIn, function (req, res) {
 		console.log(req.user.id)
+<<<<<<< HEAD
 		// findAll returns all entries for a table when used with no options `{}`
-		User.findAll({
+		User.findOne({
 			where: {
 				id: req.user.id,
 			},
 		}).then(response => {
 			res.json(response)
-		})
-	})
-
-	app.get(`/userprofile`, utils.isLoggedIn, function (req, res) {
-		console.log(req.user.id)
-		// findAll returns all entries for a table when used with no options `{}`
-		User.findAll({
-			where: {
-				id: req.user.id,
-			},
-			include: [Userdetail, Artwork, Request],
-		}).then(response => {
-			res.render(`profile`, response)
 		})
 	})
 
@@ -49,22 +36,47 @@ module.exports = function (app) {
 			include: User,
 		}).then(response => {
 			// We have access to the Users as an argument inside of the callback function
+=======
+		User.findOne(
+			{
+				include: [Userdetail, Artwork, Request],
+			},
+			{
+				where: {
+					id: req.user.id,
+				},
+			},
+		).then(response => {
+>>>>>>> 8b82ca3d0ddc67a95d8398bdc332ae81ed1f8e98
 			res.json(response)
 		})
 	})
 
+	// app.get(`/api/user/details`, function (req, res) {
+	// 	// findAll returns all entries for a table when used with no options `{}`
+	// 	Userdetail.findAll({
+	// 		include: User,
+	// 	}).then(response => {
+	// 		// We have access to the Users as an argument inside of the callback function
+	// 		res.json(response)
+	// 	})
+	// })
+
 	// GET route for getting one User
 	app.get(`/api/users/:id`, function (req, res) {
 		// could be used for rendering
-		User.findOne({
-			where: {
-				id: req.params.id,
+		User.findOne(
+			{ include: [Userdetail] },
+			{
+				where: {
+					id: req.params.id,
+				},
 			},
-		}).then(response => {
+		).then(response => {
 			// We have access to the Users as an argument inside of the callback function
 			// console.log(response)
 			// res.json(response)
-			res.render(`grv-test`, filterUserResponse(response).response)
+			res.render(`grv-test`, utils.filterUserResponse(response).response)
 		})
 	})
 
@@ -96,6 +108,24 @@ module.exports = function (app) {
 				},
 			},
 		)
+			.then(response => {
+				res.json(response)
+			})
+			.catch(function (err) {
+				// Whenever a validation or flag fails, an error is thrown
+				// We can `catch` the error to prevent it from being `thrown`, which could crash our node app
+				res.json(err)
+			})
+	})
+
+	app.put(`/api/userdetails/:id`, function (req, res) {
+		// Update takes in an object describing the properties we want to update, and
+		// we use where to describe which objects we want to update
+		Userdetail.update(req.body, {
+			where: {
+				id: req.params.id,
+			},
+		})
 			.then(response => {
 				res.json(response)
 			})

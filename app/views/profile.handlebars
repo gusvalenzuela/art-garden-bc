@@ -1,8 +1,13 @@
+<<<<<<< HEAD
 <section class="section">
   <div class="container is center">
     <h1 class="title">
-      Welcome to artGarden
+      Welcome to artGarden {{firstName}} {{lastName}}!
     </h1>
+    <figure class="image is-128x128">
+      {{!-- test   --}}
+      <img src="/userdata/profile/{{Userdetail.dataValues.profileImg}}" alt="Image">
+    </figure>
     <p class="subtitle">
       <strong>search gigs YOUR PASSWORD IS {{password}}</strong>!
   
@@ -24,7 +29,7 @@
     <ul>
       {{#each Requests}}
       {{#if complete}}
-       <li>{{dataValues}}</li>
+      <li>{{dataValues}}</li>
       {{!-- {{> request/request-block}} --}}
       {{/if}}
       {{/each}}
@@ -32,12 +37,17 @@
 
 
     <!-- insert box and media object here -->
+
     <div class="box">
       <article class="media">
         <div class="media-left">
           <figure class="image is-64x64">
             {{!-- test   --}}
+<<<<<<< HEAD
             <img src="/userdata/profile/{{Userdetail.dataValues.profileImg}}" alt="Image">
+=======
+            <img src="/userdata/profile/male-blue-1.png" alt="Image">
+>>>>>>> f41bd67890f40175345be4e227a32bc687e0ceb3
           </figure>
         </div>
         <div class="media-content">
@@ -76,7 +86,7 @@
         <div class="media-left">
           <figure class="image is-64x64">
             {{!-- add image of user (requestor) source  --}}
-            <img src="https://bulma.io/images/placeholders/128x128.png" alt="Image">
+            <img src="../../src/userdata/profile/image.png" alt="Image">
           </figure>
         </div>
         <div class="media-content">
@@ -139,8 +149,6 @@
 	</footer>
 
 
-
-
 {{!-- <h1>Welcome {{firstName}}!</h1>
 <div class="row">
   <div class="col s12">
@@ -163,3 +171,14 @@
     </table>
   </div>
 </div> --}}
+=======
+<div>
+    <img src="blah" alt="blah">
+</div>
+<br>
+<div>
+    <p>{{firstname}}</p>
+</div>
+<div class="user-request-container"></div>
+<script src="/_js/profile.js"></script>
+>>>>>>> 8b82ca3d0ddc67a95d8398bdc332ae81ed1f8e98

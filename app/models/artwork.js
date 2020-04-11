@@ -4,7 +4,6 @@ module.exports = (sequelize, DataTypes) => {
 	const Artwork = sequelize.define("Artwork", {
 		title: DataTypes.STRING,
 		description: DataTypes.STRING,
-		artist_id: DataTypes.INTEGER,
 		style: DataTypes.STRING,
 		category: DataTypes.STRING,
 		tags: DataTypes.STRING,
@@ -21,6 +20,12 @@ module.exports = (sequelize, DataTypes) => {
 			foreignKey: {
 				allowNull: false,
 			},
+		})
+
+		// Associating Artwork with its Request
+		Artwork.hasOne(models.Request, {
+			onDelete: "RESTRICT",
+			onUpdate: "RESTRICT",
 		})
 	}
 
