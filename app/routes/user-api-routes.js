@@ -19,6 +19,7 @@ module.exports = function (app) {
 
 	app.get(`/api/user/current`, utils.isLoggedIn, function (req, res) {
 		console.log(req.user.id)
+<<<<<<< HEAD
 		// findAll returns all entries for a table when used with no options `{}`
 		User.findOne({
 			where: {
@@ -35,9 +36,31 @@ module.exports = function (app) {
 			include: User,
 		}).then(response => {
 			// We have access to the Users as an argument inside of the callback function
+=======
+		User.findOne(
+			{
+				include: [Userdetail, Artwork, Request],
+			},
+			{
+				where: {
+					id: req.user.id,
+				},
+			},
+		).then(response => {
+>>>>>>> 8b82ca3d0ddc67a95d8398bdc332ae81ed1f8e98
 			res.json(response)
 		})
 	})
+
+	// app.get(`/api/user/details`, function (req, res) {
+	// 	// findAll returns all entries for a table when used with no options `{}`
+	// 	Userdetail.findAll({
+	// 		include: User,
+	// 	}).then(response => {
+	// 		// We have access to the Users as an argument inside of the callback function
+	// 		res.json(response)
+	// 	})
+	// })
 
 	// GET route for getting one User
 	app.get(`/api/users/:id`, function (req, res) {

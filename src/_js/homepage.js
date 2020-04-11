@@ -2,7 +2,6 @@
 $(document).ready(function () {
 	var requestContainer = $(".request-container")
 	var requests
-	// var user
 
 	getCommissionRequests()
 
@@ -32,22 +31,28 @@ $(document).ready(function () {
 		var newRequestCard = $("<div>")
 		newRequestCard.addClass("request-card")
 
-		var newRequestCardTitle = "<div>"
+		var newRequestCardName = $("<div>")
+		newRequestCardName.addClass("request-card-name")
+
+		var newRequestName = $("<p>").addClass("request-name").text(request.name)
+		newRequestName.appendTo(newRequestCardName)
+
+		var newRequestCardTitle = $("<div>")
 		newRequestCardTitle.addClass("request-card-title")
 
-		var newRequestTitle = "<p>".addClass("request-title").text(request.title)
+		var newRequestTitle = $("<p>").addClass("request-title").text(request.title)
 		newRequestTitle.appendTo(newRequestCardTitle)
 
-		var newRequestCardBody = "<div>"
-		newRequestBody.addClass("request-card-body")
+		var newRequestCardBody = $("<div>")
+		newRequestCardBody.addClass("request-card-body")
 
-		var newRequestBody = "<p>"
+		var newRequestBody = $("<p>")
 			.addClass("request-body")
 			.text(request.description)
 		newRequestBody.appendTo(newRequestCardBody)
 
 		var newRequestCardPostDate = $("<div>")
-		newRequestPostDate.addClass("request-card-postdate")
+		newRequestCardPostDate.addClass("request-card-postdate")
 
 		var newRequestPostDate = $("<p>")
 			.addClass("request-postdate")
@@ -56,6 +61,7 @@ $(document).ready(function () {
 
 		newRequestCard.append(
 			newRequestCardTitle,
+			newRequestCardName,
 			newRequestCardBody,
 			newRequestCardPostDate,
 		)
@@ -63,5 +69,8 @@ $(document).ready(function () {
 		newRequestCard.appendTo(requestContainer)
 	}
 
-	//We want this function to track the current user's data
+	// function getFilteredArtists(){
+	// 	artistContainer.empty()
+	// 	$.get("/api/artwork/")
+	// }
 })
