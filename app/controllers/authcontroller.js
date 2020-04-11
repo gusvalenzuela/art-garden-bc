@@ -26,8 +26,15 @@ exports.profile = function (req, res) {
 		},
 		raw: false,
 	}).then(response => {
-		res.render(`profile-mark`, utils.filterUserResponse(response).response)
+		console.log(utils.filterUserResponse(response).response)
+		// console.log(response.dataValues.Requests[0].dataValues)
+		res.render(`profile`, utils.filterUserResponse(response).response)
 	})
+}
+
+exports.request = function (req, res) {
+	console.log(req.user)
+	res.render("request", req.user)
 }
 
 exports.grvTest = function (req, res) {

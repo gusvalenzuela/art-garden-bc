@@ -19,24 +19,6 @@ module.exports = function (app) {
 
 	app.get(`/api/user/current`, utils.isLoggedIn, function (req, res) {
 		console.log(req.user.id)
-<<<<<<< HEAD
-		// findAll returns all entries for a table when used with no options `{}`
-		User.findOne({
-			where: {
-				id: req.user.id,
-			},
-		}).then(response => {
-			res.json(response)
-		})
-	})
-
-	app.get(`/api/user/details`, function (req, res) {
-		// findAll returns all entries for a table when used with no options `{}`
-		Userdetail.findAll({
-			include: User,
-		}).then(response => {
-			// We have access to the Users as an argument inside of the callback function
-=======
 		User.findOne(
 			{
 				include: [Userdetail, Artwork, Request],
@@ -47,7 +29,6 @@ module.exports = function (app) {
 				},
 			},
 		).then(response => {
->>>>>>> 8b82ca3d0ddc67a95d8398bdc332ae81ed1f8e98
 			res.json(response)
 		})
 	})
