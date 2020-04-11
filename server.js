@@ -47,9 +47,9 @@ app.get("/", (req, res) => {
 	res.render("index")
 })
 
-app.get("/testprofile", (req, res) => {
+app.get("/request", (req, res) => {
 	// console.log(`test`)
-	res.render("profile")
+	res.render("request")
 })
 
 require(`./app/routes/artwork-api-routes`)(app)
