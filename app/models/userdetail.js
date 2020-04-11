@@ -15,6 +15,10 @@ module.exports = (sequelize, DataTypes) => {
 			type: DataTypes.BOOLEAN,
 			defaultValue: 0,
 		},
+		banned: {
+			type: DataTypes.BOOLEAN,
+			defaultValue: 0,
+		},
 		last_login: {
 			type: DataTypes.DATE,
 		},

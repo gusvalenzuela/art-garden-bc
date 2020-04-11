@@ -54,6 +54,7 @@ module.exports = (sequelize, DataTypes) => {
 		inprogress: DataTypes.BOOLEAN,
 		purchase_price: DataTypes.DECIMAL,
 		bid_count: DataTypes.INTEGER,
+		// previous_bid: DataTypes.INTEGER,
 		lowest_bid: DataTypes.INTEGER,
 		current_bid: DataTypes.INTEGER,
 		starting_price: {
