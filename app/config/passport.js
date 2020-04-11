@@ -29,9 +29,6 @@ module.exports = function (passport, user) {
 							firstName: req.body.firstname,
 
 							lastName: req.body.lastname,
-
-							is_artist: 0,
-							is_verified: 0,
 						}
 
 						User.create(data).then(function (newUser) {
