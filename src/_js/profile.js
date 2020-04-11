@@ -1,10 +1,10 @@
 /* eslint-disable no-undef */
 $(document).ready(function () {
-	// var profileImage
-
 	var userRequestContainer = $(".user-request-container")
 	var userRequests
 	var userName
+
+	$(document).on("click", ".delete-button", deleteRequest)
 
 	getAllUserRequests()
 
@@ -61,13 +61,31 @@ $(document).ready(function () {
 			.text(formattedDate)
 		newRequestPostDate.appendTo(newRequestCardPostDate)
 
+		var deleteRequestButton = $("<button>")
+			.addClass("delete-button")
+			.text("Delete contract")
+			.data("contract-id", request.id)
+
 		newRequestCard.append(
 			newRequestCardTitle,
 			newRequestCardName,
 			newRequestCardBody,
 			newRequestCardPostDate,
+			deleteRequestButton,
 		)
 
 		newRequestCard.appendTo(userRequestContainer)
+	}
+
+	function deleteRequest() {
+		var requestId = $(this).data("contract-id")
+		var requestUrl = "/api/requests/" + requestId
+		console.log(URL)
+		$.ajax({
+			url: requestUrl,
+			method: "DELETE",
+		}).then(() => {
+			getAllUserRequests()
+		})
 	}
 })
