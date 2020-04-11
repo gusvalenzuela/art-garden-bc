@@ -13,6 +13,8 @@ module.exports = function (app, passport) {
 	app.get("/homepage", authController.homepage)
 	// app.get("/requestform", utils.isLoggedIn, authController.profile)
 
+	app.get("/request", utils.isLoggedIn, authController.request)
+
 	app.post(
 		"/signup",
 		passport.authenticate("local-signup", {

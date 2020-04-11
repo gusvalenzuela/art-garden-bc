@@ -70,5 +70,8 @@ $(document).ready(function () {
 		newRequestCard.appendTo(requestContainer)
 	}
 
-	//We want this function to track the current user's data
+	// function getFilteredArtists(){
+	// 	artistContainer.empty()
+	// 	$.get("/api/artwork/")
+	// }
 })

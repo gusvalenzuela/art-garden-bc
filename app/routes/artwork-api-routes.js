@@ -13,6 +13,16 @@ module.exports = function (app) {
 		})
 	})
 
+	app.get("/api/artworks/:category", function (req, res) {
+		Artwork.findAll({
+			where: {
+				category: req.params.category,
+			},
+		}).then(data => {
+			res.json(data)
+		})
+	})
+
 	// POST route for saving a new todo
 	app.post(`/api/artworks`, function (req, res) {
 		// create takes an argument of an object describing the item we want to

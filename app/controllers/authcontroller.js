@@ -20,10 +20,10 @@ exports.signin = function (req, res) {
 
 exports.profile = function (req, res) {
 	db.User.findOne({
+		include: [db.Userdetail, db.Artwork, db.Request],
 		where: {
 			id: req.user.id,
 		},
-		include: [db.Userdetail, db.Artwork, db.Request],
 		raw: false,
 	}).then(response => {
 		console.log(utils.filterUserResponse(response).response)
@@ -45,6 +45,10 @@ exports.profile = function (req, res) {
 // 	})
 
 // }
+exports.request = function (req, res) {
+	console.log(req.user)
+	res.render("request", req.user)
+}
 
 exports.grvTest = function (req, res) {
 	console.log(req.user)

@@ -1,17 +1,18 @@
 /* eslint-disable no-undef */
 
-var newCommissionRequestForm = $("#new-commission-request-form")
+var button = $("#submit-button")
 
 var titleInput = $("#title")
 var descriptionInput = $("#description")
 var categoryInput = $("#category")
-// var tagsInput = $("#tags-input")
+var turnAroundTime = $("#turn-time")
+var startingPrice = $("#starting-price")
 
 //Event listener for the commission request form
-newCommissionRequestForm.on("submit", userInfo)
+// newCommissionRequestForm.on("click", userInfo)
+button.on("click", userInfo)
 //Function that gets the user's info and passes that to the new object to post
-function userInfo(event) {
-	event.preventDefault()
+function userInfo() {
 	$.get("/api/user/current", data => {
 		console.log(data)
 		createNewCommissionObject(data)
@@ -24,10 +25,12 @@ function createNewCommissionObject(userInfo) {
 		title: titleInput.val().trim(),
 		description: descriptionInput.val().trim(),
 		category: categoryInput.val().trim(),
-		UserId: userInfo[0].id,
-		// tags: tagsInput.val().trim()
+		turnaround_time: turnAroundTime.val().trim(),
+		starting_price: startingPrice.val().trim(),
+		UserId: userInfo.id,
 	}
 	postCommissionRequest(newRequest)
+	console.log(newRequest)
 }
 //function that passes the new object to the api using a post route
 function postCommissionRequest(request) {
