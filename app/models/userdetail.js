@@ -15,18 +15,23 @@ module.exports = (sequelize, DataTypes) => {
 			type: DataTypes.BOOLEAN,
 			defaultValue: 0,
 		},
-		banned: {
-			type: DataTypes.BOOLEAN,
-			defaultValue: 0,
-		},
+		// bio_statement: {
+		// 	type: DataTypes.STRING,
+		// 	validate: {
+		// 		len: [1, 128]
+		// 	}
+		// },
+		// banned: {
+		// 	type: DataTypes.BOOLEAN,
+		// 	defaultValue: 0,
+		// },
 		last_login: {
 			type: DataTypes.DATE,
 		},
 	})
 
 	Userdetail.associate = models => {
-		// Associating Userdetails with Requests
-
+		// Associating Userdetails with User
 		Userdetail.belongsTo(models.User, {
 			foreignKey: {
 				type: DataTypes.INTEGER,

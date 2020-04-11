@@ -18,7 +18,7 @@ exports.profile = function (req, res) {
 		raw: false,
 	}).then(response => {
 		console.log(utils.filterUserResponse(response).response)
-		res.render(`profile`, utils.filterUserResponse(response).response)
+		res.render(`profile-mark`, utils.filterUserResponse(response).response)
 	})
 }
 

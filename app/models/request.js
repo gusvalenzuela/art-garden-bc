@@ -62,7 +62,6 @@ module.exports = (sequelize, DataTypes) => {
 			allowNull: 0,
 			defaultValue: 7,
 		},
-		artwork_id: DataTypes.INTEGER,
 		last_updated: {
 			type: DataTypes.DATE,
 		},
@@ -73,6 +72,12 @@ module.exports = (sequelize, DataTypes) => {
 		Request.belongsTo(models.User, {
 			foreignKey: {
 				allowNull: false,
+			},
+		})
+
+		Request.belongsTo(models.Artwork, {
+			foreignKey: {
+				type: DataTypes.INTEGER,
 			},
 		})
 	}
