@@ -32,19 +32,6 @@ exports.profile = function (req, res) {
 	})
 }
 
-// exports.requestform = function (req, res) {
-
-// 	db.User.findOne({
-// 		where: {
-// 			id: req.user.id,
-// 		},
-// 		include: [db.Userdetail, db.Artwork, db.Request],
-// 		raw: false
-// 	}).then(response => {
-// 		res.render(`profile`, response.dataValues)
-// 	})
-
-// }
 exports.request = function (req, res) {
 	console.log(req.user)
 	res.render("request", req.user)
