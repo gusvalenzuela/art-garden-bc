@@ -2,7 +2,6 @@
 $(document).ready(function () {
 	var requestContainer = $(".request-container")
 	var requests
-	// var user
 
 	getCommissionRequests()
 
