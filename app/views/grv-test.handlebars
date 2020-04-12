@@ -7,7 +7,7 @@
 </div>
 
 <div style="background: rgb(191, 255, 179); padding: 1.2em;">
-  <form id="req-form" name="request">
+  <form id="req-form" name="request" data-user-id="{{id}}"
     <label for="title">Title</label>
     <input class="text" name="title" type="text" id="title" />
     <label for="description">Description</label>
@@ -38,7 +38,7 @@
   $(`#req-form`).on(`submit`, e => {
     e.preventDefault()
 
-    console.log($(`#description`).val())
+    
 
     let newRequest = {
       title: $(`#title`).val(),
@@ -46,8 +46,10 @@
       category: $(`#category`).val(),
       tags: $(`#tags`).val(),
       turnaround_time: 2,
-      UserId: "2"
+      UserId: $(`#req-form`).data(`user-id`)
     }
+
+    console.log(`the new request is: `,newRequest)
 
     $.post(`/api/requests`, newRequest, () => {
       window.location.href = "/grvtest"

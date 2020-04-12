@@ -18,17 +18,15 @@ module.exports = function (app) {
 	})
 
 	app.get(`/api/user/current`, utils.isLoggedIn, function (req, res) {
-		console.log(typeof req.user.id)
-		User.findAll(
-			{ order: [`id`], include: [Userdetail, Artwork, Request] },
-			{
-				where: {
-					id: `"` + req.user.id + `"`,
-				},
+		console.log(req.user.id)
+		User.findAll({
+			where: {
+				id: req.user.id,
 			},
-		).then(response => {
-			console.log(response)
-			res.json(response)
+			include: [Userdetail, Artwork, Request],
+		}).then(response => {
+			console.log(response[0])
+			res.json(utils.filterUserResponse(response[0]).response)
 		})
 	})
 

@@ -14,15 +14,18 @@ $(document).ready(function () {
 			console.log(`current users data`, data)
 			userRequests = data.Requests
 			userName = data.firstName + " " + data.lastName
+			console.log(userRequests)
 			initializeCardCreation()
 		})
-		console.log(userRequests)
 	}
 
 	function initializeCardCreation() {
 		userRequestContainer.empty()
-		for (var i = 0; i < userRequests.length; i++) {
-			createRequestCards(userRequests[i])
+
+		if (userRequests) {
+			for (var i = 0; i < userRequests.length; i++) {
+				createRequestCards(userRequests[i])
+			}
 		}
 	}
 
