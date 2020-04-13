@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 // Requiring our models
 const { Request, User } = require(`../../app/models`)
-const utils = require("../utils/utils")
+// const utils = require("../utils/utils")
 
 // Routes
 // =============================================================
@@ -17,16 +17,20 @@ module.exports = function (app) {
 			res.json(response)
 		})
 	})
-
-	app.get(`/api/requests/currentuser`, utils.isLoggedIn, function (req, res) {
+	app.get(`/api/requests/:id`, function (req, res) {
+		// findAll returns all entries for a table when used with no options `{}`
+		// res.send(`SUP WELCOME TO REQUESTS API`)
 		Request.findAll({
 			where: {
-				userId: req.userId,
+				userId: req.params.id,
 			},
-		}).then(data => {
-			res.json(data)
+			include: [User],
+		}).then(response => {
+			// We have access to the todos as an argument inside of the callback function
+			res.json(response)
 		})
 	})
+
 	// POST route for saving a new request
 	app.post(`/api/requests`, function (req, res) {
 		Request.create(req.body)

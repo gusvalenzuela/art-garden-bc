@@ -61,8 +61,6 @@
   $(`#change-profile-img-form`).on(`submit`, e => {
     e.preventDefault()
 
-    console.log($(`#profileImg`).val())
-
     let newImgLink = $(`#profileImg`).val().trim()
 
     $.ajax({

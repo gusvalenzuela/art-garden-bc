@@ -101,7 +101,7 @@ module.exports = function (app) {
 		// we use where to describe which objects we want to update
 		Userdetail.update(req.body, {
 			where: {
-				id: req.params.id,
+				UserId: req.params.id,
 			},
 		})
 			.then(response => {
