@@ -44,8 +44,27 @@
 #request-collapsible{
   width: 42%;
   height: auto;
+  padding-bottom: 0;
+}
+#open-more{
+  padding-left: .125em;
+}
+#reset-request-form{
+  margin-left: 2em;
+}
+#reset-request-form:hover{
+  text-decoration: underline;
+  color: #42B395;
 }
 
+/* for tablets and mobile  */
+@media screen and (max-width: 992px){
+  #request-collapsible{
+    width: 69%;
+  }
+}
+
+/* for mobile devices  */
 @media screen and (max-width: 576px){
   #request-collapsible{
     width: 100%;

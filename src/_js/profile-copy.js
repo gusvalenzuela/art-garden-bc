@@ -3,6 +3,12 @@ $(document).ready(function () {
 	const userRequestContainer = $(".user-request-container")
 	let userRequests
 	let userName
+	const titleInput = $("#title")
+	const descriptionInput = $("#description")
+	const categoryInput = $("#category")
+	const turnAroundTime = $("#turnaround_time")
+	const startingPrice = $("#starting-price")
+	const tags = $(`#tags`)
 
 	$(document).on("click", ".delete-button", deleteRequest)
 
@@ -100,13 +106,6 @@ $(document).ready(function () {
 	$(`#req-form`).on(`submit`, e => {
 		e.preventDefault()
 
-		var titleInput = $("#title")
-		var descriptionInput = $("#description")
-		var categoryInput = $("#category")
-		var turnAroundTime = $("#turnaround_time")
-		var startingPrice = $("#starting-price")
-		var tags = $(`#tags`)
-
 		//creates the request object to be passed to the api
 		var newRequest = {
 			title: titleInput.val().trim(),
@@ -122,5 +121,20 @@ $(document).ready(function () {
 		$.post(`/api/requests`, newRequest, () => {
 			window.location.href = "/profile"
 		})
+	})
+
+	const resetRequestForm = () => {
+		titleInput.val(``)
+		descriptionInput.val(``)
+		categoryInput[0].options.selectedIndex = 0
+		turnAroundTime.val(`24`)
+		startingPrice.val(`7`)
+		tags.val(``)
+	}
+
+	$(`#reset-request-form`).on(`click`, e => {
+		e.preventDefault()
+
+		resetRequestForm()
 	})
 })

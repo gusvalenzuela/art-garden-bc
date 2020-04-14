@@ -45,10 +45,10 @@
       <form id="req-form" name="request" data-user-id="{{id}}" style="padding:1em; text-align:left; margin:0;">
         <h5>Create a new contract:</h5>
         <label for="title">Title</label>
-        <input class="text" name="title" type="text" id="title" />
+        <input class="text" name="title" type="text" id="title" required />
         <label for="description">Description</label>
-        <textarea name="description" id="description" cols="100"></textarea>
-        <label for="turnaround_time" style="display: block;">Turn Around Time in Hours </label>
+        <textarea name="description" id="description" style="height: 7em;" required></textarea>
+        <label for="turnaround_time" style="display: block;">Turn Around Time in Hours (Max 168 or 7 days) </label>
         <input name="turnaround_time" type="number" min="1" max="168" value="24" id="turnaround_time" /><br>
         <label for="starting_price" style="display: block;">Starting Price</label>
         <input type="number" min="7" value="7" name="starting_price" id="starting-price"> <br>
@@ -60,7 +60,7 @@
           <option value="lineart">Line art</option>
           <option value="photography">Photography</option>
           <option value="videography">Videography</option>
-        </select><br><br>
+        </select>
         {{!-- more  --}}
         <p class="btn-flat" id="open-more">more...</p>
         <div class="request-form-content" style="display: none;">
@@ -75,9 +75,8 @@
         </div>
         <div class="center-align">
           <input class="btn" type="submit" value="Submit" />
-
+          <span class="btn-flat" id="reset-request-form">clear form </span>
         </div>
-
       </form>
     </div>
     {{!-- <div class="request-form-content center-align" style="display: none;">
