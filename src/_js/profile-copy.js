@@ -86,7 +86,17 @@ $(document).ready(function () {
 		})
 	}
 
-	// $(`#open-request-button`).
+	$(`#open-request-button`).on(`click`, event => {
+		// event.preventDefault()
+		console.log(event.target)
+		// this.classList.toggle(`active`)
+		// let content = this.nextElementSibling
+		// if (content.style.display === `block`) {
+		// 	content.style.display = `none`
+		// } else {
+		// 	content.style.display = `block`
+		// }
+	})
 
 	$(`#req-form`).on(`submit`, e => {
 		e.preventDefault()
