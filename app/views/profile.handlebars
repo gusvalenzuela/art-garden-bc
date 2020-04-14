@@ -1,5 +1,5 @@
 <!-- Profile avatar/bio section -->
-<div class="container .center-align">
+<div class="container center-align">
   <div class="row">
     <div class="col s12 center-align z-depth-2 teal accent-4">
       {{!-- <i class="material-icons" style="font-size: 200px; align-items: center;">account_circle</i> --}}
@@ -83,22 +83,38 @@
   </div>
 
   <div class="row">
-    <form id="req-form" name="request" data-user-id="{{id}}">
-      <label for="title">Title</label>
-      <input class="text" name="title" type="text" id="title" />
-      <label for="description">Description</label>
-      <input name="description" type="text" id="description" />
-      <label for="category">Category</label>
-      <input name="category" type="text" id="category" />
-      <label for="tags">Tags</label>
-      <input name="tags" type="text" id="tags" />
-      <label for="turnaround_time">Turnaround Time (in whole hours)</label>
-      <input name="turnaround_time" type="number" min="1" max="168" value="24" id="turnaround_time" />
-      <input class="btn" type="submit" value="Submit" />
-    </form>
+    <button type="button" class="collapsible" id="open-request-button">Open Request Form</button>
+    <div class="request-form-content" 
+    {{!-- style="display: none;" --}}
+    >
+      <form id="req-form" name="request" data-user-id="{{id}}">
+        <label for="title">Title</label>
+        <input class="text" name="title" type="text" id="title" />
+        <label for="description">Description</label>
+        <input name="description" type="text" id="description" />
+        <label for="tags">Tags</label>
+        <input name="tags" type="text" id="tags" />
+        <label for="turnaround_time">Turn Around Time in Hours</label>
+        <input name="turnaround_time" type="number" min="1" max="168" value="24" id="turnaround_time" />
+        <label for="starting_price">Starting Price</label>
+        <input type="text" id="starting-price">
+        <label for="category">Choose a medium of art:</label>
+        <select name="category" id="category" style="display: block;">
+          <option value="digital" selected >Digital</option>
+          <option value="painting">Painting</option>
+          <option value="sketch">Sketch</option>
+          <option value="lineart">Line art</option>
+          <option value="photography" >Photography</option>
+          <option value="videography">Videography</option>
+        </select>
+        <input class="btn" type="submit" value="Submit" />
+
+      </form>
+    </div>
 
   </div>
 </div>
 
 {{!-- <div class="user-request-container"></div> --}}
 <script src="/_js/profile-copy.js"></script>
+{{!-- <script src="/_js/request.js"></script> --}}

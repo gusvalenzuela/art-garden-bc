@@ -11,10 +11,8 @@ $(document).ready(function () {
 	function getAllUserRequests() {
 		userRequestContainer.empty()
 		$.get("/api/user/current", data => {
-			console.log(`current users data`, data)
 			userRequests = data.Requests
 			userName = data.firstName + " " + data.lastName
-			console.log(userRequests)
 			initializeCardCreation()
 		})
 	}
@@ -30,8 +28,9 @@ $(document).ready(function () {
 	}
 
 	function createRequestCards(request) {
-		var formattedDate = new Date(request.createdAt)
-		formattedDate = moment(formattedDate).format("MMMM Do YYYY, h:mm:ss a")
+		let formattedDate = moment(request.createdAt).format(
+			"MMMM Do YYYY, h:mm:ss a",
+		)
 
 		const requestContainer = $(
 			`<div class="halign-wrapper" style="width:100%;height:100%;position:static;padding: 0px;">`,
@@ -87,19 +86,29 @@ $(document).ready(function () {
 		})
 	}
 
+	// $(`#open-request-button`).
+
 	$(`#req-form`).on(`submit`, e => {
 		e.preventDefault()
 
-		let newRequest = {
-			title: $(`#title`).val(),
-			description: $(`#description`).val(),
-			category: $(`#category`).val(),
-			tags: $(`#tags`).val(),
-			turnaround_time: 2,
-			UserId: $(`#req-form`).data(`user-id`),
-		}
+		var titleInput = $("#title")
+		var descriptionInput = $("#description")
+		var categoryInput = $("#category")
+		var turnAroundTime = $("#turnaround_time")
+		var startingPrice = $("#starting-price")
+		var tags = $(`#tags`)
 
-		console.log(`the new request is: `, newRequest)
+		//creates the request object to be passed to the api
+		var newRequest = {
+			title: titleInput.val().trim(),
+			description: descriptionInput.val().trim(),
+			category: categoryInput.val().trim(),
+			turnaround_time: turnAroundTime.val().trim(),
+			starting_price: startingPrice.val().trim(),
+			UserId: $(`#req-form`).data(`user-id`),
+			tags: tags.val().trim(),
+		}
+		// console.log(`the new request is: `, newRequest)
 
 		$.post(`/api/requests`, newRequest, () => {
 			window.location.href = "/profile"
