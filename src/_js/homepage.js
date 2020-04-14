@@ -25,7 +25,6 @@ $(document).ready(function () {
 	}
 
 	function createRequestCards(request) {
-		RequestContainerDeux.empty()
 		let formattedDate = moment(request.createdAt).format(
 			"MMMM Do YYYY, h:mm:ss a",
 		)
