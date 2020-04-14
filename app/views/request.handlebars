@@ -1,4 +1,4 @@
-<div>
+<div class="container">
     <label for="title">Title</label>
     <input type="text" name="title" id="title">
     <label for="description">Description</label>
@@ -8,43 +8,19 @@
     <label for="starting-price">Starting Price for Contract</label>
     <input type="text" id="starting-price">
     <label for="category">Choose a medium of art:</label>
-    <select name="category" id="category">
-        <option value="digital">Digital</option>
+
+    <select name="category" id="category" style="display: block;">
+        <option value="">Please Choose an Option</option>
+        <option value="digital" selected>Digital</option>
         <option value="painting">Painting</option>
         <option value="sketch">Sketch</option>
         <option value="lineart">Line art</option>
         <option value="photography">Photography</option>
         <option value="videography">Videography</option>
     </select>
+    <br>
+    <br>
     <button id="submit-button">Submit New Art</button>
 </div>
 <script src="/_js/request.js"></script>
-<div class="container">
-    <h2>Request a Gig</h2>
-    <div class="row">
-        <form class="col s12 white-text">
-            <div class="row">
-                <div class="input-field col s12">
-                    <input placeholder="enter your email here" id="email" type="email" class="validate">
-                    <label for="email">Email</label>
-                </div>
-            </div>
-            <div class="row">
-                <div class="input-field col s6">
-                    <input placeholder="enter your first name here" id="first_name" type="text" class="validate">
-                    <label for="first_name">First Name</label>
-                </div>
-                <div class="input-field col s6">
-                    <input placeholder="enter your last name here" id="last_name" type="text" class="validate">
-                    <label for="last_name">Last Name</label>
-                </div>
-            </div>
-            <div class="row">
-                <div class="input-field col s12">
-                    <input id="password" type="password" class="validate">
-                    <label for="password">Password</label>
-                </div>
-            </div>
-    </div>
-    </form>
-</div>
+
