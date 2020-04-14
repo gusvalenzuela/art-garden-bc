@@ -7,8 +7,7 @@
 </div>
 
 <div style="background: rgb(191, 255, 179); padding: 1.2em;">
-  <form id="req-form" name="request">
-    <label for="title">Title</label>
+  <form id="req-form" name="request" data-user-id="{{id}}" <label for="title">Title</label>
     <input class="text" name="title" type="text" id="title" />
     <label for="description">Description</label>
     <input name="description" type="text" id="description" />
@@ -32,13 +31,47 @@
 
 <div id="req-div" style="background: rgb(10, 204, 178); padding: 1.2em;"></div>
 
+<h1 class="title">
+  Welcome to artGarden {{firstName}} {{lastName}}!
+</h1>
+<figure class="image is-128x128">
+  {{!-- test   --}}
+  <img src="/userdata/profile/{{Userdetail.dataValues.profileImg}}" alt="Image">
+</figure>
+<p class="subtitle">
+  <strong>search gigs YOUR PASSWORD IS {{password}}</strong>!
+
+</p>
+
+<h2>Requests not completed!</h2>
+
+<ul>
+  {{#each Requests}}
+  {{#unless complete}}
+  <li>{{dataValues.description}}</li>
+  {{!-- {{> request/request-block}} --}}
+  {{/unless}}
+  {{/each}}
+</ul>
+
+<h2>Requests completed!</h2>
+
+<ul>
+  {{#each Requests}}
+  {{#if complete}}
+  <li>{{dataValues}}</li>
+  {{!-- {{> request/request-block}} --}}
+  {{/if}}
+  {{/each}}
+</ul>
+
 <script>
-  $(`#req-form`).hide()
+  // $(`#req-form`).hide()
 
   $(`#req-form`).on(`submit`, e => {
     e.preventDefault()
 
-    console.log($(`#description`).val())
+
 
     let newRequest = {
       title: $(`#title`).val(),
@@ -46,8 +79,10 @@
       category: $(`#category`).val(),
       tags: $(`#tags`).val(),
       turnaround_time: 2,
-      UserId: "2"
+      UserId: $(`#req-form`).data(`user-id`)
     }
+
+    console.log(`the new request is: `, newRequest)
 
     $.post(`/api/requests`, newRequest, () => {
       window.location.href = "/grvtest"
@@ -58,8 +93,6 @@
 
   $(`#change-profile-img-form`).on(`submit`, e => {
     e.preventDefault()
-
-    console.log($(`#profileImg`).val())
 
     let newImgLink = $(`#profileImg`).val().trim()
 

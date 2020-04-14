@@ -6,6 +6,9 @@
  * Made By MaterializeCSS.com
  */
 
+ .body, .html {
+   background: #BDF8A3;
+ }
 .icon-block {
   padding: 0 15px;
 }
@@ -36,4 +39,19 @@
     text-align: center !important;
     height: max-content !important;
     padding: 10px !important;
+}
+
+#request-collapsible{
+  width: 42%;
+  height: auto;
+}
+
+@media screen and (max-width: 576px){
+  #request-collapsible{
+    width: 100%;
+  }
+  #logo{
+    height: 56px!important;
+    width: 56px!important;
+  }
 }

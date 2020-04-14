@@ -19,17 +19,14 @@ module.exports = function (app) {
 
 	app.get(`/api/user/current`, utils.isLoggedIn, function (req, res) {
 		console.log(req.user.id)
-		User.findOne(
-			{
-				include: [Userdetail, Artwork, Request],
+		User.findAll({
+			where: {
+				id: req.user.id,
 			},
-			{
-				where: {
-					id: req.user.id,
-				},
-			},
-		).then(response => {
-			res.json(response)
+			include: [Userdetail, Artwork, Request],
+		}).then(response => {
+			console.log(response[0])
+			res.json(utils.filterUserResponse(response[0]).response)
 		})
 	})
 
@@ -104,7 +101,7 @@ module.exports = function (app) {
 		// we use where to describe which objects we want to update
 		Userdetail.update(req.body, {
 			where: {
-				id: req.params.id,
+				UserId: req.params.id,
 			},
 		})
 			.then(response => {
