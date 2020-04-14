@@ -21,6 +21,7 @@ module.exports = (sequelize, DataTypes) => {
 			validate: {
 				len: [1, 55],
 			},
+			defaultValue: `Sacramento, CA`,
 		},
 		bio_statement: {
 			type: DataTypes.STRING,

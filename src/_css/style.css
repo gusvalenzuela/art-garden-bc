@@ -6,6 +6,9 @@
  * Made By MaterializeCSS.com
  */
 
+ .body, .html {
+   background: #BDF8A3;
+ }
 .icon-block {
   padding: 0 15px;
 }

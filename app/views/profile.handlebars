@@ -6,7 +6,7 @@
       <img src="/userdata/profile/{{Userdetail.dataValues.profileImg}}" alt="" style="margin: 1.3em;">
       <p class="flow-text">
         <h5 class="center-align white-text"><strong>{{firstName}} {{lastName}}</strong></h5>
-        <i class="white-text">Sacramento, CA</i>
+        <i class="white-text">{{Userdetail.dataValues.location}}</i>
         <p class="white-text">
           {{Userdetail.dataValues.bio_statement}}
           {{!-- I'm a digital illustrator from Sacramento, CA. I've been in the biz for over 8 years, and
@@ -17,54 +17,9 @@
   </div>
   <!-- section divider and header - requested gigs -->
   <!-- Gigs go hereeeeeeeeeeeee -->
-  <!-- gig 1 -->
+  <!-- gig 1 placeholder that is emptied if JS loads correctly -->
   <div class="row user-request-container">
 
-    <div class="halign-wrapper" style="width:100%;height:100%;position:static;padding: 0px;">
-      <div class="valign" style="width:100%;">
-        <div class="container">
-          <div class="row white-text">
-            <div class="col col s12 light-green">
-              <h5>Gig</h5>
-              <p>This is description for gig</p>
-              <a class="waves-effect waves-light btn-small">Button</a>
-              <br>
-              <br>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="halign-wrapper" style="width:100%;height:100%;position:static;padding: 0px;">
-      <div class="valign" style="width:100%;">
-        <div class="container">
-          <div class="row white-text">
-            <div class="col col s12 light-green">
-              <h5>Gig</h5>
-              <p>This is description for gig</p>
-              <a class="waves-effect waves-light btn-small">Button</a>
-              <br>
-              <br>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="halign-wrapper" style="width:100%;height:100%;position:static;padding: 0px;">
-      <div class="valign" style="width:100%;">
-        <div class="container">
-          <div class="row white-text">
-            <div class="col col s12 light-green">
-              <h5>Gig</h5>
-              <p>This is description for gig</p>
-              <a class="waves-effect waves-light btn-small">Button</a>
-              <br>
-              <br>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
     <div class="halign-wrapper" style="width:100%;height:100%;position:static;padding: 0px;">
       <div class="valign" style="width:100%;">
         <div class="container">
@@ -83,34 +38,66 @@
   </div>
 
   <div class="row">
-    <button type="button" class="collapsible" id="open-request-button">Open Request Form</button>
-    <div class="request-form-content" 
-    {{!-- style="display: none;" --}}
-    >
-      <form id="req-form" name="request" data-user-id="{{id}}">
+    <button type="button" class="waves-effect waves-light btn green sidenav-trigger" id="open-request-button"
+      data-target="request-collapsible">Open Request Form</button>
+
+    <div class="sidenav" id="request-collapsible" style="width: 66%; height: auto;">
+      <form id="req-form" name="request" data-user-id="{{id}}" style="padding:1em; text-align:left; margin:0;">
+        <h5>Create a new contract:</h5>
         <label for="title">Title</label>
         <input class="text" name="title" type="text" id="title" />
         <label for="description">Description</label>
-        <input name="description" type="text" id="description" />
-        <label for="tags">Tags</label>
+        <textarea name="description" id="description" cols="100"></textarea>
+        <label for="tags">Tags (use comma for more tags)</label>
         <input name="tags" type="text" id="tags" />
-        <label for="turnaround_time">Turn Around Time in Hours</label>
-        <input name="turnaround_time" type="number" min="1" max="168" value="24" id="turnaround_time" />
-        <label for="starting_price">Starting Price</label>
-        <input type="text" id="starting-price">
+        <label for="turnaround_time" style="display: block;">Turn Around Time in Hours </label>
+        <input name="turnaround_time" type="number" min="1" max="168" value="24" id="turnaround_time"
+          style="width: auto;" /><br>
+        <label for="starting_price" style="display: block;">Starting Price</label>
+        <input type="number" min="7" value="7" name="starting_price" id="starting-price" style="width: auto;"> <br>
         <label for="category">Choose a medium of art:</label>
-        <select name="category" id="category" style="display: block;">
-          <option value="digital" selected >Digital</option>
+        <select name="category" id="category" style="display: inline-block; width: auto;">
+          <option value="digital" selected>Digital</option>
           <option value="painting">Painting</option>
           <option value="sketch">Sketch</option>
           <option value="lineart">Line art</option>
-          <option value="photography" >Photography</option>
+          <option value="photography">Photography</option>
+          <option value="videography">Videography</option>
+        </select><br><br>
+        <div class="center-align">
+          <input class="btn" type="submit" value="Submit" />
+
+        </div>
+
+      </form>
+    </div>
+    {{!-- <div class="request-form-content center-align" style="display: none;">
+      <form id="req-form" name="request" data-user-id="{{id}}"
+        style="background: rgb(244, 255, 242); padding:1.5em; text-align:left; width: 50%;">
+        <label for="title">Title</label>
+        <input class="text" name="title" type="text" id="title" />
+        <label for="description">Description</label>
+        <textarea name="description" id="description" cols="100"></textarea>
+        <label for="tags">Tags (separate different tags with a comma)</label>
+        <input name="tags" type="text" id="tags" />
+        <label for="turnaround_time">Turn Around Time in Hours </label>
+        <input name="turnaround_time" type="number" min="1" max="168" value="24" id="turnaround_time"
+          style="width: auto;" /><br>
+        <label for="starting_price">Starting Price</label>
+        <input type="number" min="7" value="7" name="starting_price" id="starting-price" style="width: auto;"> <br>
+        <label for="category">Choose a medium of art:</label>
+        <select name="category" id="category" style="display: inline-block; width: auto;">
+          <option value="digital" selected>Digital</option>
+          <option value="painting">Painting</option>
+          <option value="sketch">Sketch</option>
+          <option value="lineart">Line art</option>
+          <option value="photography">Photography</option>
           <option value="videography">Videography</option>
         </select>
         <input class="btn" type="submit" value="Submit" />
 
       </form>
-    </div>
+    </div> --}}
 
   </div>
 </div>
