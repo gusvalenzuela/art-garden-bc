@@ -86,16 +86,16 @@ $(document).ready(function () {
 		})
 	}
 
-	// $(`#open-request-button`).on(`click`, event => {
-	// 	// event.preventDefault()
-	// 	// console.log(event.target.nextElementSibling)
-	// 	let content = event.target.nextElementSibling
-	// 	if (content.style.display === `block`) {
-	// 		content.style.display = `none`
-	// 	} else {
-	// 		content.style.display = `block`
-	// 	}
-	// })
+	$(`#open-more`).on(`click`, event => {
+		event.preventDefault()
+		// console.log(event.target.nextElementSibling)
+		let content = event.target.nextElementSibling
+		if (content.style.display === `block`) {
+			content.style.display = `none`
+		} else {
+			content.style.display = `block`
+		}
+	})
 
 	$(`#req-form`).on(`submit`, e => {
 		e.preventDefault()

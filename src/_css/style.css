@@ -40,3 +40,14 @@
     height: max-content !important;
     padding: 10px !important;
 }
+
+#request-collapsible{
+  width: 42%;
+  height: auto;
+}
+
+@media screen and (max-width: 576px){
+  #request-collapsible{
+    width: 100%;
+  }
+}
