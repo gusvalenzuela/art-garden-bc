@@ -58,7 +58,7 @@ require(`./app/routes/user-api-routes`)(app)
 
 authRoute(app, passport)
 
-require("./app/config/passport.js")(passport, db.User)
+require("./app/config/passport.js")(passport, db)
 
 db.sequelize.sync().then(
 	app.listen(PORT, function () {

@@ -86,4 +86,23 @@ $(document).ready(function () {
 			getAllUserRequests()
 		})
 	}
+
+	$(`#req-form`).on(`submit`, e => {
+		e.preventDefault()
+
+		let newRequest = {
+			title: $(`#title`).val(),
+			description: $(`#description`).val(),
+			category: $(`#category`).val(),
+			tags: $(`#tags`).val(),
+			turnaround_time: 2,
+			UserId: $(`#req-form`).data(`user-id`),
+		}
+
+		console.log(`the new request is: `, newRequest)
+
+		$.post(`/api/requests`, newRequest, () => {
+			window.location.href = "/profile"
+		})
+	})
 })
