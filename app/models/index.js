@@ -9,15 +9,28 @@ const config = require(__dirname + "/../config/config.json")[env]
 const db = {}
 
 let sequelize
-if (config.use_env_variable) {
-	sequelize = new Sequelize(process.env[config.use_env_variable], config)
+
+if (process.env.HEROKU_POSTGRESQL_BRONZE_URL) {
+	// the application is executed on Heroku ... use the postgres database
+	sequelize = new Sequelize(process.env.HEROKU_POSTGRESQL_BRONZE_URL, {
+		dialect: "postgres",
+		protocol: "postgres",
+		//   port:     match[4],
+		//   host:     match[3],
+		logging: true, //false
+	})
 } else {
-	sequelize = new Sequelize(
-		config.database,
-		config.username,
-		config.password,
-		config,
-	)
+	// the application is executed on the local machine ... use mysql
+	if (config.use_env_variable) {
+		sequelize = new Sequelize(process.env[config.use_env_variable], config)
+	} else {
+		sequelize = new Sequelize(
+			config.database,
+			config.username,
+			config.password,
+			config,
+		)
+	}
 }
 
 fs.readdirSync(__dirname)
