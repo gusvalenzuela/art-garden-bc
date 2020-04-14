@@ -50,4 +50,8 @@
   #request-collapsible{
     width: 100%;
   }
+  #logo{
+    height: 56px!important;
+    width: 56px!important;
+  }
 }
