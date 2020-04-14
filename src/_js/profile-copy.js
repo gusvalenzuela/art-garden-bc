@@ -11,6 +11,7 @@ $(document).ready(function () {
 	const tags = $(`#tags`)
 
 	$(document).on("click", ".delete-button", deleteRequest)
+	
 
 	getAllUserRequests()
 

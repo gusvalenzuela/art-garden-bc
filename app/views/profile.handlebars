@@ -1,6 +1,6 @@
 <!-- Profile avatar/bio section -->
 <div class="container center-align">
-  <div class="row">
+  <div class="row" id="profile-header-row">
     <div class="col s12 center-align z-depth-2 teal accent-4">
       {{!-- <i class="material-icons" style="font-size: 200px; align-items: center;">account_circle</i> --}}
       <img src="/userdata/profile/{{Userdetail.dataValues.profileImg}}" alt="" style="margin: 1.3em;">
@@ -38,8 +38,9 @@
   </div>
 
   <div class="row">
-    <button type="button" class="waves-effect waves-light btn green sidenav-trigger" id="open-request-button"
-      data-target="request-collapsible">Open Request Form</button>
+    {{!-- create new contract button  --}}
+    <button type="button" class="waves-effect waves-light btn sidenav-trigger" id="open-request-button"
+      data-target="request-collapsible">New Contract <i class="fa fa-plus-square" id="open-request-button-icon" style="font-size: 20px; padding-left: .69em;"></i></button>
 
     <div class="sidenav" id="request-collapsible">
       <form id="req-form" name="request" data-user-id="{{id}}" style="padding:1em; text-align:left; margin:0;">
