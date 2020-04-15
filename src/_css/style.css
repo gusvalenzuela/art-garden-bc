@@ -17,6 +17,9 @@
  .request-card{
   padding: .6em .6em 1.6em .6em;
  }
+ .request-card p{
+  margin: .5em 0;
+ }
 
  .body, .html {
    background: #BDF8A3 ;

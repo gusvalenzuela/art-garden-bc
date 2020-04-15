@@ -23,37 +23,42 @@ $(document).ready(function () {
 	}
 
 	function createRequestCards(request) {
-		let formattedDate = moment(request.createdAt).format(`llll`)
-		let userFullname = request.firstName + ` ` + request.lastName
+		let formattedDate = moment(request.createdAt)
+			// .format("MMMM Do YYYY, h:mm:ss a")
+			// .format(`ll`)
+			.calendar()
+		let userFullname = request.User.firstName + ` ` + request.User.lastName
 
 		const requestContainer = $(
 			`<div class="halign-wrapper" style="width:100%;height:100%;position:static;">`,
 		)
-			// .append($(`<div class="valign request-card" style="width:100%;">`))
-			// .append($(`<div class="container">`))
-			// .append($(`<div class="row white-text">`))
+		// .append($(`<div class="valign request-card" style="width:100%;">`))
+		// .append($(`<div class="container">`))
+		// .append($(`<div class="row white-text">`))
 
-		const newRequestCard = $(
-			`<div class="col col s12 request-card">`,
-		)
+		const newRequestCard = $(`<div class="col col s12 request-card">`)
 
 		// var newRequestCardName = $(`<div class="valign request-card-name">`)
 
-		const newRequestTitle = $(`<h5 class="request-title" style="font-weight:800;">`).text(request.title)
-		const newRequestName = $(`<p class="request-name">`).text(userFullname)
-		const newRequestBody = $(`<p class="request-body">`).text(
+		const newRequestTitle = $(
+			`<h5 class="request-title" style="font-weight:800;">`,
+		).text(request.title)
+		const newRequestName = $(`<p class="request-name">`).text(
+			`Made by: ${userFullname}, ${formattedDate}`,
+		)
+		const newRequestBody = $(`<p class="request-body" id="${request.id}">`).text(
 			request.description,
 		)
 		const newRequestStats = $(`<p class="request-stats">`).html(
 			`<b>Turnaround time:</b> ${request.turnaround_time} hr(s) | <b>Current price of contract:</b> ${request.current_bid} Money | <b>Bid count:</b> ${request.bid_count}`,
 		)
-		const newRequestPostDate = $(`<p class="request-post-date">`).text(
-			formattedDate,
-		)
+		// const newRequestPostDate = $(`<p class="request-post-date">`).text(
+		// 	formattedDate,
+		// )
 		const bidInput = $(
 			`<input id="submit-bid-${
 				request.id
-			}" style="width: auto; text-align:center;" type="number" data-request-id="${
+			}" style="width: 7em; text-align:center; margin: 0 1em;" type="number" data-request-id="${
 				request.id
 			}" data-current-bid="${request.current_bid}" value="${
 				request.current_bid - 5
@@ -67,11 +72,11 @@ $(document).ready(function () {
 		newRequestCard.append(
 			newRequestTitle,
 			newRequestName,
-			newRequestBody,
+			// newRequestPostDate,
 			newRequestStats,
-			newRequestPostDate,
-			bidButton,
+			newRequestBody,
 			bidInput,
+			bidButton,
 		)
 
 		newRequestCard.appendTo(requestContainer)
@@ -84,13 +89,18 @@ $(document).ready(function () {
 			$(`#temp-alert`).remove()
 			let requestID = $(event.target).data(`request-id`)
 			let bid = $(`#submit-bid-${requestID}`).val()
+			let elementToAppendAlert = $(`#${requestID}`)[0]
+			console.log(elementToAppendAlert)
 
-			if ($(event.target).data(`bid-count`) !== 0 && bid > $(event.target).data(`current-bid`)) {
-				let previousElement = $(event.target)[0].previousElementSibling
-				$(previousElement).append(
-					$(
-						`<p id="temp-alert" style="color:black; font-weight:600;">`,
-					).text(`Bid cannot be higher than current bid, try again.`),
+			if (
+				$(event.target).data(`bid-count`) !== 0 &&
+				bid > $(event.target).data(`current-bid`)
+			) {
+				
+				$(elementToAppendAlert).append(
+					$(`<p id="temp-alert" style="color:#990000; font-weight:600;">`).text(
+						`Bid cannot be higher than current price of contract. Try again.`,
+					),
 				)
 				setTimeout(() => {
 					$(`#temp-alert`).remove()
@@ -99,13 +109,12 @@ $(document).ready(function () {
 				return
 			} else {
 				event.stopImmediatePropagation() // prevents the bubblez
-
+				
 				$.ajax({
 					url: `/api/requests/${requestID}`,
 					method: `PUT`,
 					error: () => {
-						let previousElement = $(event.target)[0].previousElementSibling
-						$(previousElement).append(
+						$(elementToAppendAlert).append(
 							$(
 								`<p id="temp-alert" style="color:#990000; font-weight:600;">`,
 							).text(`Sorry, only registered users are able to bid`),

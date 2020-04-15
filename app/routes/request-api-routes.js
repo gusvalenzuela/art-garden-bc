@@ -12,6 +12,7 @@ module.exports = function (app) {
 		// res.send(`SUP WELCOME TO REQUESTS API`)
 		Request.findAll({
 			include: [User],
+			order: [["createdAt","DESC"]],
 		}).then(response => {
 			// We have access to the todos as an argument inside of the callback function
 			res.json(response)
