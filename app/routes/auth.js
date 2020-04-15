@@ -17,6 +17,8 @@ module.exports = function (app, passport) {
 
 	app.get("/request", utils.isLoggedIn, authController.request)
 
+	app.put(`/api/requests/:id`, utils.isLoggedIn, authController.homepageBidding)
+
 	app.post(
 		"/signup",
 		passport.authenticate("local-signup", {

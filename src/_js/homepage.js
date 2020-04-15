@@ -46,17 +46,23 @@ $(document).ready(function () {
 		const newRequestBody = $(`<p class="request-body">`).text(
 			request.description,
 		)
-		const newRequestTATime = $(`<p class="request-time">`).html(
+		const newRequestStats = $(`<p class="request-stats">`).html(
 			`<b>Turnaround time:</b> ${request.turnaround_time} | <b>Current price of contract:</b> ${request.current_bid} | <b>Bid count:</b> ${request.bid_count}`,
 		)
 		const newRequestPostDate = $(`<p class="request-post-date">`).text(
 			formattedDate,
 		)
 		const bidInput = $(
-			`<input id="submit-bid-${request.id}" style="width: auto;" type="number" data-request-id="${request.id}">`,
+			`<input id="submit-bid-${
+				request.id
+			}" style="width: auto; text-align:center;" type="number" data-request-id="${
+				request.id
+			}" data-current-bid="${request.current_bid}" value="${
+				request.current_bid - 1
+			}">`,
 		)
 		const bidButton = $(
-			`<a class="bid-btn waves-effect waves-light btn-small" data-request-id="${request.id}">`,
+			`<a class="bid-btn waves-effect waves-light btn-small" data-request-id="${request.id}" data-current-bid="${request.current_bid}">`,
 		).text("Bid")
 		// .data("contract-id", request.id)
 
@@ -64,12 +70,10 @@ $(document).ready(function () {
 			newRequestTitle,
 			newRequestName,
 			newRequestBody,
-			newRequestTATime,
+			newRequestStats,
 			newRequestPostDate,
 			bidButton,
 			bidInput,
-			$(`<br>`),
-			$(`<br>`),
 		)
 
 		newRequestCard.appendTo(requestContainer)
@@ -77,19 +81,55 @@ $(document).ready(function () {
 
 		// change artist id when clicking take request
 		$(`.bid-btn`).on(`click`, event => {
-			event.preventDefault()
+			$(`#temp-alert`).remove()
 			let requestID = $(event.target).data(`request-id`)
 			let bid = $(`#submit-bid-${requestID}`).val()
 
-			// find id of request and user id of taker
+			if (bid > $(event.target).data(`current-bid`)) {
+				let parentElement = $(event.target)[0].parentElement
+				$(parentElement).append(
+					$(
+						`<span id="temp-alert" style="color:black; font-weight:600;">`,
+					).text(`Bid is too high`),
+				)
+				setTimeout(() => {
+					$(`#temp-alert`).remove()
+				}, 4000)
 
-			$.ajax({
-				url: `/api/requests/` + requestID,
-				method: `PUT`,
-				data: { current_bid: bid },
-			}).then(() => {
-				window.location.href = "/homepage"
-			})
+				return
+			} else {
+				event.stopImmediatePropagation() // prevents the bubblez
+
+				$.ajax({
+					url: `/api/requests/${requestID}`,
+					method: `PUT`,
+					error: () => {
+						let parentElement = $(event.target)[0].parentElement
+						$(parentElement).append(
+							$(
+								`<span id="temp-alert" style="color:black; font-weight:600;">`,
+							).text(`Sorry, only registered users are able to bid`),
+						)
+						setTimeout(() => {
+							$(`#temp-alert`).remove()
+						}, 4000)
+					},
+					data: { current_bid: bid },
+					success: () => (window.location.href = "/homepage"),
+				})
+			}
 		})
 	}
+
+	// const bidError = target => {
+	// 	let parentElement = $(target)[0].parentElement
+	// 	$(parentElement).append(
+	// 		$(`<span id="temp-alert" style="color:black; font-weight:600;">`).text(
+	// 			`Sorry, only registered users are able to bid`,
+	// 		),
+	// 	)
+	// 	setTimeout(() => {
+	// 		$(`#temp-alert`).remove()
+	// 	}, 5000)
+	// }
 })
