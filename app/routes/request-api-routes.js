@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 // Requiring our models
 const { Request, User } = require(`../../app/models`)
-// const utils = require("../utils/utils")
+const utils = require("../utils/utils")
 
 // Routes
 // =============================================================
@@ -59,26 +59,28 @@ module.exports = function (app) {
 
 	// PUT route for updating requests. We can get the updated request data from req.body
 	app.put(`/api/requests/:id`, function (req, res) {
-		// increments our bid_count with each bid if current_bid is updating
-		if (req.body.current_bid > 0) {
-			Request.increment(`bid_count`, { where: { id: req.params.id } })
-		}
+		utils.isLoggedIn(() => {
+			// increments our bid_count with each bid if current_bid is updating
+			if (req.body.current_bid > 0) {
+				Request.increment(`bid_count`, { where: { id: req.params.id } })
+			}
 
-		// expects Obj in req.body (ex. {artist_id: `5`})
-		// Update takes in an object describing the properties we want to update, and
-		// we use where to describe which objects we want to update (in this case the request id via url param)
-		Request.update(req.body, {
-			where: {
-				id: req.params.id,
-			},
+			// expects Obj in req.body (ex. {artist_id: `5`})
+			// Update takes in an object describing the properties we want to update, and
+			// we use where to describe which objects we want to update (in this case the request id via url param)
+			Request.update(req.body, {
+				where: {
+					id: req.params.id,
+				},
+			})
+				.then(response => {
+					res.json(response)
+				})
+				.catch(function (err) {
+					// Whenever a validation or flag fails, an error is thrown
+					// We can `catch` the error to prevent it from being `thrown`, which could crash our node app
+					res.json(err)
+				})
 		})
-			.then(response => {
-				res.json(response)
-			})
-			.catch(function (err) {
-				// Whenever a validation or flag fails, an error is thrown
-				// We can `catch` the error to prevent it from being `thrown`, which could crash our node app
-				res.json(err)
-			})
 	})
 }
