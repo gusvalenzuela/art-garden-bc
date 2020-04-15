@@ -36,7 +36,7 @@ $(document).ready(function () {
 			.append($(`<div class="row white-text">`))
 
 		const newRequestCard = $(
-			`<div class="col col s12 light-green request-card">`,
+			`<div class="col col s12 request-card">`,
 		)
 
 		// var newRequestCardName = $(`<div class="valign request-card-name">`)

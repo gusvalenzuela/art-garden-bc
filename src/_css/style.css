@@ -6,8 +6,18 @@
  * Made By MaterializeCSS.com
  */
 
+ .request-container {
+  text-align: center;
+  color: #044A05;
+  border: 5px #BDF8A3;
+  background-color: lightgray;
+  margin-bottom: 5px;
+{
+
+
+
  .body, .html {
-   background: #BDF8A3;
+   background: #BDF8A3 ;
    height: 100%;
  }
 .icon-block {
