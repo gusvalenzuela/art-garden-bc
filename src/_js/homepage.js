@@ -1,13 +1,13 @@
 /* eslint-disable no-undef */
 $(document).ready(function () {
-	var RequestContainerDeux = $(".request-container")
+	const mainRequestContainer = $(".request-container")
 	var requests
 
 	getCommissionRequests()
 
 	//This function creates an ajax call to the artGarden API's requests table
 	function getCommissionRequests() {
-		RequestContainerDeux.empty()
+		mainRequestContainer.empty()
 		$.get("/api/requests", data => {
 			requests = data
 			initializeCardCreation()
@@ -16,10 +16,16 @@ $(document).ready(function () {
 
 	//This function initializes the creation of cards based on the number of requests in the requests var
 	function initializeCardCreation() {
-		RequestContainerDeux.empty()
-		for (var i = 0; i < requests.length; i++) {
-			createRequestCards(requests[i])
+		mainRequestContainer.empty()
+		if (requests) {
+			for (var i = 0; i < requests.length; i++) {
+				createRequestCards(requests[i])
+			}
 		}
+
+		let arrayOfReqDividers = $(`.request-divider`)
+		// removing the last request's hr divider as we're appending one to bottom of each request card
+		arrayOfReqDividers[arrayOfReqDividers.length-1].remove()
 	}
 
 	function createRequestCards(request) {
@@ -46,9 +52,9 @@ $(document).ready(function () {
 		const newRequestName = $(`<p class="request-name">`).text(
 			`Made by: ${userFullname}, ${formattedDate}`,
 		)
-		const newRequestBody = $(`<p class="request-body" id="${request.id}">`).text(
-			request.description,
-		)
+		const newRequestBody = $(
+			`<p class="request-body" id="${request.id}">`,
+		).text(request.description)
 		const newRequestStats = $(`<p class="request-stats">`).html(
 			`<b>Turnaround time:</b> ${request.turnaround_time} hr(s) | <b>Current price of contract:</b> ${request.current_bid} Money | <b>Bid count:</b> ${request.bid_count}`,
 		)
@@ -80,8 +86,8 @@ $(document).ready(function () {
 		)
 
 		newRequestCard.appendTo(requestContainer)
-		$(`<hr style="width: 93.339%">`).appendTo(requestContainer)
-		requestContainer.appendTo(RequestContainerDeux)
+		$(`<hr style="width: 93.339%" class="request-divider">`).appendTo(requestContainer)
+		requestContainer.appendTo(mainRequestContainer)
 
 		// change artist id when clicking take request
 		$(`.bid-btn`).on(`click`, event => {
@@ -96,7 +102,6 @@ $(document).ready(function () {
 				$(event.target).data(`bid-count`) !== 0 &&
 				bid > $(event.target).data(`current-bid`)
 			) {
-				
 				$(elementToAppendAlert).append(
 					$(`<p id="temp-alert" style="color:#990000; font-weight:600;">`).text(
 						`Bid cannot be higher than current price of contract. Try again.`,
@@ -109,7 +114,7 @@ $(document).ready(function () {
 				return
 			} else {
 				event.stopImmediatePropagation() // prevents the bubblez
-				
+
 				$.ajax({
 					url: `/api/requests/${requestID}`,
 					method: `PUT`,

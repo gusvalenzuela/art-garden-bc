@@ -1,6 +1,6 @@
 /* eslint-disable no-undef */
 $(document).ready(function () {
-	const userRequestContainer = $(".user-request-container")
+	const mainRequestContainer = $(".request-container")
 	let userRequests
 	let userName
 	const titleInput = $("#title")
@@ -15,7 +15,7 @@ $(document).ready(function () {
 	getAllUserRequests()
 
 	function getAllUserRequests() {
-		userRequestContainer.empty()
+		mainRequestContainer.empty()
 		$.get("/api/user/current", data => {
 			userRequests = data.Requests
 			userName = data.firstName + " " + data.lastName
@@ -24,48 +24,46 @@ $(document).ready(function () {
 	}
 
 	function initializeCardCreation() {
-		userRequestContainer.empty()
+		mainRequestContainer.empty()
 
 		if (userRequests) {
 			for (var i = 0; i < userRequests.length; i++) {
 				createRequestCards(userRequests[i])
 			}
 		}
+		
+		let arrayOfReqDividers = $(`.request-divider`)
+		// removing the last request's hr divider as we're appending one to bottom of each request card
+		arrayOfReqDividers[arrayOfReqDividers.length-1].remove()
+
 	}
 
 	function createRequestCards(request) {
-		let formattedDate = moment(request.createdAt).format(
-			"MMMM Do YYYY, h:mm:ss a",
-		)
-
+		let formattedDate = moment(request.createdAt)
+			// .format("MMMM Do YYYY, h:mm:ss a")
+			// .format(`ll`)
+			.calendar()
 		const requestContainer = $(
-			`<div class="halign-wrapper" style="width:100%;height:100%;position:static;padding: 0px;">`,
+			`<div class="halign-wrapper" style="width:100%;height:100%;position:static;">`,
 		)
-			.append($(`<div class="valign request-card" style="width:100%;">`))
-			.append($(`<div class="container">`))
-			.append($(`<div class="row white-text">`))
+		// .append($(`<div class="valign request-card" style="width:100%;">`))
+		// .append($(`<div class="container">`))
+		// .append($(`<div class="row white-text">`))
 
-		const newRequestCard = $(
-			`<div class="col col s12 light-green request-card">`,
-		)
+		const newRequestCard = $(`<div class="col col s12 request-card">`)
 
 		// var newRequestCardName = $(`<div class="valign request-card-name">`)
-
-		const newRequestTitle = $(`<h5 class="request-title">`).html(
-			`<b>${request.title}</b>`,
-		)
+		const newRequestTitle = $(
+			`<h5 class="request-title" style="font-weight:800;">`,
+		).text(request.title)
 		const newRequestName = $(`<p class="request-name">`).text(
-			`Made by: ${userName}`,
+			`${formattedDate}`,
 		)
-		const newRequestTATime = $(`<p class="request-time">`).html(
-			`<b>Turnaround time:</b> ${request.turnaround_time} | <b>Current price of contract:</b> ${request.current_bid} | <b>Bid count:</b> ${request.bid_count}`,
-		)
-		// const newRequestPrice = $(`<p class="request-price">`).text(`Current price of contract: ${request.starting_price}`)
-		const newRequestBody = $(`<p class="request-body">`).text(
-			request.description,
-		)
-		const newRequestPostDate = $(`<p class="request-post-date">`).text(
-			formattedDate,
+		const newRequestBody = $(
+			`<p class="request-body" id="${request.id}">`,
+		).text(request.description)
+		const newRequestStats = $(`<p class="request-stats">`).html(
+			`<b>Turnaround time:</b> ${request.turnaround_time} hr(s) | <b>Current price of contract:</b> ${request.current_bid} Money | <b>Bid count:</b> ${request.bid_count}`,
 		)
 
 		const deleteRequestButton = $(
@@ -77,19 +75,18 @@ $(document).ready(function () {
 		newRequestCard.append(
 			newRequestTitle,
 			newRequestName,
+			// newRequestPostDate,
+			newRequestStats,
 			newRequestBody,
-			newRequestTATime,
 			// newRequestPrice,
-			newRequestPostDate,
 			deleteRequestButton,
-			$(`<br>`),
-			$(`<br>`),
 		)
 
-		newRequestCard.appendTo(requestContainer)
-		requestContainer.appendTo(userRequestContainer)
+		requestContainer.append(newRequestCard)
+		$(`<hr style="width: 93.339%" class="request-divider">`).appendTo(requestContainer)
+		requestContainer.appendTo(mainRequestContainer)
 	}
-
+	
 	function deleteRequest() {
 		var requestId = $(this).data("contract-id")
 		var requestUrl = "/api/requests/" + requestId

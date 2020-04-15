@@ -12,6 +12,7 @@
   border: 5px #BDF8A3;
   background-color: lightgray;
   margin-bottom: 5px;
+ 
  }
 
  .request-card{
@@ -21,8 +22,8 @@
   margin: .5em 0;
  }
 
- .body, .html {
-   background: #BDF8A3 ;
+ body, html {
+   background: whitesmoke ;
    height: 100%;
  }
 .icon-block {
@@ -60,11 +61,13 @@
   color:  #BDF8A3 !important  ;
 }
 .main-container{
-  margin-bottom: 12em;
+  margin-bottom: .89em;
+}
+.push{
+  height: 4.5em;
 }
 .footer{
-  position: fixed !important;
-  bottom: 0 !important;
+  position: relative !important;
   width: 100% !important;
   background-color: #42B395 ;
   color: white;
@@ -85,7 +88,7 @@
   font-size: x-large;
 }
 .page-footer {
-    /* position: fixed !important; */
+    position: relative !important;
     bottom: 0 !important;
     width: 100% !important;
     background-color: #42B395 ;
@@ -101,9 +104,6 @@
   padding: 0 .6em;
   height: auto;
   border-radius: 0;
-}
-#open-request-button:hover{
-  left: 0;
 }
 #request-collapsible{
   width: 42%;

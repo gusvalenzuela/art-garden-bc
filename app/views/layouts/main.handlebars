@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" style="height: 100%;">
+<html lang="en">
 
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -18,7 +18,7 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
 </head>
 
-<body style="height: 100%;">
+<body>
 
 	{{!-- navbar goes hereeeeeeeeeeeeee --}}
 	<nav class="green darken-4">
@@ -52,7 +52,7 @@
 
 	{{!-- where the handlebars layout is coming in  --}}
 	{{{ body }}}
-
+	<div class="push"></div>
 	{{!-- footer goes below here --}}
 	<footer class="footer">
 		<div class="halign-wrapper">
@@ -85,23 +85,32 @@
 	{{!-- scripts  --}}
 	<script>
 		let setContractBtnLeft = `calc(-${$(`#open-request-button`).outerWidth() + `px`} + 2.5em)`
+		const setTheFooter = () => {
+			$(`.footer`).css({
+				bottom:  -150 + `px`,
+			})
+		}
+		setTheFooter()
 
+		$(window).resize(() => {
+			setTheFooter()
+		})
 		// setting the position of the new contract button dependent on footer height, globally
 		$(`#open-request-button`).css({
-			top: $(`#profile-header-row`).outerHeight() + $(`.nav-wrapper`).outerHeight() + 2 + `px`,
-			left: setContractBtnLeft,
+			top: $(`.nav-wrapper`).outerHeight() + 24 + `px`,	// RIP Kobe
+			right: setContractBtnLeft,
 		})
 
 		$(`#open-request-button`).on(`mouseenter`, e => {
 			e.stopPropagation()
 			$(`#open-request-button`).css({
-				left: 0,
+				right: 0,
 			})
 		})
 		$(`#open-request-button`).on(`mouseleave`, e => {
 			e.stopPropagation()
 			$(`#open-request-button`).css({
-				left: setContractBtnLeft,
+				right: setContractBtnLeft,
 			})
 		})
 	</script>
