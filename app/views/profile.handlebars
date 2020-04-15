@@ -1,23 +1,23 @@
 <!-- Profile avatar/bio section -->
 <div class="container center-align main-container">
-  <div class="row" id="profile-header-row">
-    <div class="col s12 center-align">
-      {{!-- <i class="material-icons" style="font-size: 200px; align-items: center;">account_circle</i> --}}
-      <img src="/userdata/profile/{{Userdetail.dataValues.profileImg}}" alt="" style="margin: 1.3em;">
-      <p class="flow-text">
-        <h5 class="center-align black-text"><strong>{{firstName}} {{lastName}}</strong></h5>
-        <i class="black-text">{{Userdetail.dataValues.location}}</i>
-        <p class="black-text">
-          {{Userdetail.dataValues.bio_statement}}
-          {{!-- I'm a digital illustrator from Sacramento, CA. I've been in the biz for over 8 years, and
-          would be happy to work on your next art project. Send me a message to start the conversation! --}}
+  <div class="section no-pad-bot" id="homepage-banner" id="profile-banner">
+    <div class="row" id="profile-header-row">
+      <div class="col s12 center-align">
+        {{!-- <i class="material-icons" style="font-size: 200px; align-items: center;">account_circle</i> --}}
+        <img src="/userdata/profile/{{Userdetail.dataValues.profileImg}}" alt="" style="margin: 1.3em;">
+        <p class="flow-text">
+          <h5 class="center-align black-text"><strong>{{firstName}} {{lastName}}</strong></h5>
+          <i class="black-text">{{Userdetail.dataValues.location}}</i>
+          <p class="black-text">
+            {{Userdetail.dataValues.bio_statement}}
+            {{!-- I'm a digital illustrator from Sacramento, CA. I've been in the biz for over 8 years, and
+            would be happy to work on your next art project. Send me a message to start the conversation! --}}
+          </p>
         </p>
-      </p>
+      </div>
     </div>
   </div>
-  <!-- section divider and header - requested gigs -->
-  <!-- Gigs go hereeeeeeeeeeeee -->
-  <!-- gig 1 placeholder that is emptied if JS loads correctly -->
+
 
   {{!-- divide the profile with contract requests --}}
   <div class="row divider"></div>

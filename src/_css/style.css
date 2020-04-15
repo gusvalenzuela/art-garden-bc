@@ -6,6 +6,14 @@
  * Made By MaterializeCSS.com
  */
 
+  #profile-banner {
+    background-color: #BDF8A3;
+  }
+
+  #homepage-banner {
+    background-color: #BDF8A3;
+  }
+
  .request-container {
   text-align: center;
   color: #044A05;
