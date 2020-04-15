@@ -53,7 +53,11 @@ module.exports = (sequelize, DataTypes) => {
 		},
 		inprogress: DataTypes.BOOLEAN,
 		purchase_price: DataTypes.DECIMAL,
-		bid_count: DataTypes.INTEGER,
+		bid_count: {
+			type: DataTypes.INTEGER,
+			// allowNull: 0,
+			defaultValue: 0,
+		},
 		// previous_bid: DataTypes.INTEGER,
 		lowest_bid: DataTypes.INTEGER,
 		current_bid: DataTypes.INTEGER,

@@ -20,6 +20,7 @@ exports.homepage = function (req, res) {
 }
 exports.homepageBidding = function (req, res) {
 	// increments our bid_count with each bid if current_bid is updating
+	console.log(req.body.current_bid)
 	if (req.body.current_bid) {
 		db.Request.increment(`bid_count`, { where: { id: req.params.id } })
 	}
@@ -79,6 +80,6 @@ exports.logout = function (req, res) {
 		if (err) {
 			throw err
 		}
-		res.redirect("/")
+		res.redirect("/homepage")
 	})
 }
