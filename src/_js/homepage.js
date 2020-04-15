@@ -79,7 +79,7 @@ $(document).ready(function () {
 		$(`.bid-btn`).on(`click`, event => {
 			event.preventDefault()
 			let requestID = $(event.target).data(`request-id`)
-			let bid = $(`#submit-bid-${requestID}`).val()
+			// let bid = $(`#submit-bid-${requestID}`).val()
 
 			console.log($(this))
 
@@ -89,7 +89,7 @@ $(document).ready(function () {
 			// 	method: `PUT`,
 			// 	data: { current_bid: bid },
 			// }).then(() => {
-			// 	window.location.href = "/grvtest"
+			// 	window.location.href = "/homepage"
 			// })
 		})
 	}
