@@ -2,34 +2,34 @@
 
 $(document).ready(function () {
 	var newProfileImage
-
-	var aTags = $("a")
-	var submitButton = $("#submit-button")
 	var bio
 	var location
 	var userId
 
+	var submitButton = $("#submit-button")
+
+	var img1 = $("#image-one")
 	$("#image-one").data("imagePath", "female-long-hair-1.jpg")
 
+	var img2 = $("#image-two")
 	$("#image-two").data("imagePath", "female-long-hair-2.png")
 
+	var img3 = $("#image-three")
 	$("#image-three").data("imagePath", "male-beard-1.png")
 
+	var img4 = $("#image-four")
 	$("#image-four").data("imagePath", "male-blue-2.png")
 
-	aTags.on("click", handleATagPress)
+	$(".profile-image").on("click", handleATagPress)
 
 	submitButton.on("click", handleSubmitButtonPress)
 
-	// function getUserData() {
-	// 	$.get("/api/user/current", data => {
-	// 		console.log(data)
-	// 		userId = data.id
-	// 	})
-	// }
-
-	function handleATagPress(event) {
-		event.preventDefault()
+	function handleATagPress() {
+		img1.removeClass("selected")
+		img2.removeClass("selected")
+		img3.removeClass("selected")
+		img4.removeClass("selected")
+		$(this).addClass("selected")
 		var image = $(this).data("imagePath")
 		newProfileImage = image
 		console.log(newProfileImage)
@@ -87,7 +87,7 @@ $(document).ready(function () {
 			url: "/api/userdetails/" + userId,
 			data: obj,
 		}).then(() => {
-			alert("success")
+			window.location.href = "/profile"
 		})
 	}
 })
