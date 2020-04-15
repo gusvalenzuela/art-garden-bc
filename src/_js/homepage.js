@@ -46,31 +46,52 @@ $(document).ready(function () {
 		const newRequestBody = $(`<p class="request-body">`).text(
 			request.description,
 		)
+		const newRequestTATime = $(`<p class="request-time">`).html(
+			`<b>Turnaround time:</b> ${request.turnaround_time} | <b>Current price of contract:</b> ${request.current_bid} | <b>Bid count:</b> ${request.bid_count}`,
+		)
 		const newRequestPostDate = $(`<p class="request-post-date">`).text(
 			formattedDate,
 		)
 		const bidInput = $(
 			`<input id="submit-bid-${request.id}" style="width: auto;" type="number" data-request-id="${request.id}">`,
 		)
-		const deleteRequestButton = $(
-			`<a class="delete-button waves-effect waves-light btn-small">`,
-		)
-			.text("Bid")
-			.data("contract-id", request.id)
+		const bidButton = $(
+			`<a class="bid-btn waves-effect waves-light btn-small" data-request-id="${request.id}">`,
+		).text("Bid")
+		// .data("contract-id", request.id)
 
 		newRequestCard.append(
 			newRequestTitle,
 			newRequestName,
 			newRequestBody,
+			newRequestTATime,
 			newRequestPostDate,
 			bidInput,
-			deleteRequestButton,
+			bidButton,
 			$(`<br>`),
 			$(`<br>`),
 		)
 
 		newRequestCard.appendTo(requestContainer)
 		requestContainer.appendTo(RequestContainerDeux)
+
+		// change artist id when clicking take request
+		$(`.bid-btn`).on(`click`, event => {
+			event.preventDefault()
+			let requestID = $(event.target).data(`request-id`)
+			let bid = $(`#submit-bid-${requestID}`).val()
+
+			console.log($(this))
+
+			// // find id of request and user id of taker
+			// $.ajax({
+			// 	url: `/api/requests/` + requestID,
+			// 	method: `PUT`,
+			// 	data: { current_bid: bid },
+			// }).then(() => {
+			// 	window.location.href = "/grvtest"
+			// })
+		})
 	}
 
 	// //This function creates cards for the passed in requests from the requests var
