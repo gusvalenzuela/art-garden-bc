@@ -5,7 +5,7 @@
 	"main": "app.js",
 	"scripts": {
 		"build": "webpack",
-		"dev": "concurrently \"webpack --mode production --watch\" \"nodemon server.js\"",
+		"dev": "concurrently \"webpack --mode development --watch\" \"nodemon server.js\"",
 		"format": "prettier --ignore-path .gitignore --write \"**/*.+(js|json|css)\"",
 		"lint": "eslint --ignore-path .gitignore .",
 		"validate": "npm run format && npm run lint &&npm run build",
