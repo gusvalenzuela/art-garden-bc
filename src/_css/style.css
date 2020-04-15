@@ -65,7 +65,7 @@
   font-size: x-large;
 }
 .page-footer {
-    position: fixed !important;
+    /* position: fixed !important; */
     bottom: 0 !important;
     width: 100% !important;
     background-color: #42B395 ;
