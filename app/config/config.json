@@ -1,7 +1,11 @@
 {
 	"development": {
 		"username": "root",
+<<<<<<< HEAD
 		"password": "marksql#15",
+=======
+		"password": "root",
+>>>>>>> cc3eeffaee9367dd72aff1273a2519e7891d21fb
 		"database": "artgarden",
 		"host": "127.0.0.1",
 		"dialect": "mysql",

@@ -6,6 +6,8 @@ module.exports = function (app, passport) {
 
 	app.get("/ant-test", utils.isLoggedIn, authController.antTest)
 
+	app.get("/settings", utils.isLoggedIn, authController.settings)
+
 	app.get("/grvtest", utils.isLoggedIn, authController.grvTest)
 
 	app.get("/profile", utils.isLoggedIn, authController.profile)
