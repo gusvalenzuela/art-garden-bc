@@ -11,7 +11,6 @@ $(document).ready(function () {
 	const tags = $(`#tags`)
 
 	$(document).on("click", ".delete-button", deleteRequest)
-	
 
 	getAllUserRequests()
 
@@ -52,8 +51,16 @@ $(document).ready(function () {
 
 		// var newRequestCardName = $(`<div class="valign request-card-name">`)
 
-		const newRequestTitle = $(`<h5 class="request-title">`).text(request.title)
-		const newRequestName = $(`<p class="request-name">`).text(userName)
+		const newRequestTitle = $(`<h5 class="request-title">`).html(
+			`<b>${request.title}</b>`,
+		)
+		const newRequestName = $(`<p class="request-name">`).text(
+			`Made by: ${userName}`,
+		)
+		const newRequestTATime = $(`<p class="request-time">`).html(
+			`<b>Turnaround time:</b> ${request.turnaround_time} | <b>Current price of contract:</b> ${request.current_bid} | <b>Bid count:</b> ${request.bid_count}`,
+		)
+		// const newRequestPrice = $(`<p class="request-price">`).text(`Current price of contract: ${request.starting_price}`)
 		const newRequestBody = $(`<p class="request-body">`).text(
 			request.description,
 		)
@@ -71,6 +78,8 @@ $(document).ready(function () {
 			newRequestTitle,
 			newRequestName,
 			newRequestBody,
+			newRequestTATime,
+			// newRequestPrice,
 			newRequestPostDate,
 			deleteRequestButton,
 			$(`<br>`),
@@ -116,11 +125,30 @@ $(document).ready(function () {
 			starting_price: startingPrice.val().trim(),
 			UserId: $(`#req-form`).data(`user-id`),
 			tags: tags.val().trim(),
+			current_bid: startingPrice.val().trim(),
 		}
 		// console.log(`the new request is: `, newRequest)
 
 		$.post(`/api/requests`, newRequest, () => {
 			window.location.href = "/profile"
+		})
+	})
+
+	// change artist id when clicking take request
+	$(`.bid-btn`).on(`click`, event => {
+		event.preventDefault()
+		let requestID = $(event.target).data(`request-id`)
+		let bid = $(`#submit-bid-${requestID}`).val()
+
+		console.log(bid)
+
+		// find id of request and user id of taker
+		$.ajax({
+			url: `/api/requests/` + requestID,
+			method: `PUT`,
+			data: { current_bid: bid },
+		}).then(() => {
+			window.location.href = "/grvtest"
 		})
 	})
 

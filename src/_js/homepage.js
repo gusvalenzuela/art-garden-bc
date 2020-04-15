@@ -10,7 +10,6 @@ $(document).ready(function () {
 	function getCommissionRequests() {
 		RequestContainerDeux.empty()
 		$.get("/api/requests", data => {
-			console.log(data)
 			requests = data
 			initializeCardCreation()
 		})
@@ -50,7 +49,9 @@ $(document).ready(function () {
 		const newRequestPostDate = $(`<p class="request-post-date">`).text(
 			formattedDate,
 		)
-
+		const bidInput = $(
+			`<input id="submit-bid-${request.id}" style="width: auto;" type="number" data-request-id="${request.id}">`,
+		)
 		const deleteRequestButton = $(
 			`<a class="delete-button waves-effect waves-light btn-small">`,
 		)
@@ -62,6 +63,7 @@ $(document).ready(function () {
 			newRequestName,
 			newRequestBody,
 			newRequestPostDate,
+			bidInput,
 			deleteRequestButton,
 			$(`<br>`),
 			$(`<br>`),
