@@ -5,6 +5,10 @@ exports.signup = function (req, res) {
 	res.render("signup")
 }
 
+exports.settings = function (req, res) {
+	res.render("settings", req.user)
+}
+
 exports.homepage = function (req, res) {
 	db.User.findAll({
 		include: [db.Userdetail, db.Artwork, db.Request],

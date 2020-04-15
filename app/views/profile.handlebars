@@ -1,172 +1,42 @@
-<section class="section">
-  <div class="container is center">
-    <h1 class="title">
-      Welcome to artGarden {{firstName}} {{lastName}}!
-    </h1>
-    <figure class="image is-128x128">
-      {{!-- test   --}}
-      <img src="/userdata/profile/{{Userdetail.dataValues.profileImg}}" alt="Image">
-    </figure>
-    <p class="subtitle">
-      <strong>search gigs YOUR PASSWORD IS {{password}}</strong>!
-
-      <div class="user-request-container"></div>
-  
-    </p>
-
-    <h2>Requests not completed!</h2>
-
-    <ul>
-      {{#each Requests}}
-      {{#unless complete}}
-      <li>{{dataValues.description}}</li>
-      {{!-- {{> request/request-block}} --}}
-      {{/unless}}
-      {{/each}}
-    </ul>
-
-    <h2>Requests completed!</h2>
-
-    <ul>
-      {{#each Requests}}
-      {{#if complete}}
-      <li>{{dataValues}}</li>
-      {{!-- {{> request/request-block}} --}}
-      {{/if}}
-      {{/each}}
-    </ul>
-
-
-    <!-- insert box and media object here -->
-
-    <div class="box">
-      <article class="media">
-        <div class="media-left">
-          <figure class="image is-64x64">
-            {{!-- test   --}}
-            <img src="/userdata/profile/{{Userdetail.dataValues.profileImg}}" alt="Image">
-            <img src="/userdata/profile/male-blue-1.png" alt="Image">
-          </figure>
-        </div>
-        <div class="media-content">
-          <div class="content">
-            <p>
-              {{!-- insert username --}}
-              <strong>firstName is {{firstName}}</strong> <small>@{{email}}</small> <small>31m</small>
-              <br>
-              Is verified? {{is_verified}}
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur sit amet massa fringilla
-              egestas. Nullam condimentum luctus turpis.
-            </p>
-          </div>
-          <nav class="level is-mobile">
-            <div class="level-left">
-              <a class="level-item" aria-label="reply">
-                <span class="icon is-small">
-                  <i class="fas fa-reply" aria-hidden="true"></i>
-                </span>
-              </a>
-              <a class="level-item" aria-label="retweet">
-                <span class="icon is-small">
-                  <i class="fas fa-retweet" aria-hidden="true"></i>
-                </span>
-              </a>
-              <a class="level-item" aria-label="like">
-                <span class="icon is-small">
-                  <i class="fas fa-heart" aria-hidden="true"></i>
-                </span>
-              </a>
-            </div>
-          </nav>
-        </div>
-      </article>
-      <article class="media">
-        <div class="media-left">
-          <figure class="image is-64x64">
-            {{!-- add image of user (requestor) source  --}}
-            <img src="../../src/userdata/profile/image.png" alt="Image">
-          </figure>
-        </div>
-        <div class="media-content">
-          <div class="content">
-            <p>
-              <strong>John Smith</strong> <small>@johnsmith</small> <small>31m</small>
-              <br>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur sit amet massa fringilla
-              egestas. Nullam condimentum luctus turpis.
-            </p>
-          </div>
-          <nav class="level is-mobile">
-            <div class="level-left">
-              <a class="level-item" aria-label="reply">
-                <span class="icon is-small">
-                  <i class="fas fa-reply" aria-hidden="true"></i>
-                </span>
-              </a>
-              <a class="level-item" aria-label="retweet">
-                <span class="icon is-small">
-                  <i class="fas fa-retweet" aria-hidden="true"></i>
-                </span>
-              </a>
-              <a class="level-item" aria-label="like">
-                <span class="icon is-small">
-                  <i class="fas fa-heart" aria-hidden="true"></i>
-                </span>
-              </a>
-            </div>
-          </nav>
-        </div>
-      </article>
+<!-- Profile avatar/bio section -->
+<div class="container .center-align">
+  <div class="row">
+    <div class="col s12 center-align z-depth-2 teal accent-4">
+      {{!-- <i class="material-icons" style="font-size: 200px; align-items: center;">account_circle</i> --}}
+      <img src="/userdata/profile/{{Userdetail.dataValues.profileImg}}" alt="" style="margin: 1.3em;">
+      <p class="flow-text">
+        <h5 class="center-align white-text"><strong>{{firstName}} {{lastName}}</strong></h5>
+        <i class="white-text">Sacramento, CA</i>
+        <p class="white-text">
+          {{Userdetail.dataValues.bio_statement}}
+          {{!-- I'm a digital illustrator from Sacramento, CA. I've been in the biz for over 8 years, and
+          would be happy to work on your next art project. Send me a message to start the conversation! --}}
+        </p>
+      </p>
     </div>
-    <!-- insert box and media object here -->
   </div>
-</section>
+  <!-- section divider and header - requested gigs -->
+  <!-- Gigs go hereeeeeeeeeeeee -->
+  <!-- gig 1 -->
+  <div class="row user-request-container">
 
-	{{!-- footer goes below here --}}
-	<!-- Artists  goess hereeeeeeeeee -->
-	{{!-- <footer class="page-footer" style="width:100%;height:100%;position: static;">
-		<div class="halign-wrapper">
-			<div class="row">
-				<div class="col s4">
-					<h5 class="center">Cool artist you may like</h5>
-					<img class="materialboxed" width="300"
-						src="https://images.pexels.com/photos/1556691/pexels-photo-1556691.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260">
-				</div>
-				<div class="col s4">
-					<h5 class="center">Cool artist you may like</h5>
-					<img class="materialboxed" width="300"
-						src="https://images.pexels.com/photos/1556691/pexels-photo-1556691.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260">
-				</div>
-				<div class="col s4">
-					<h5 class="center">Cool artist you may like</h5>
-					<img class="materialboxed" width="300"
-						src="https://images.pexels.com/photos/1556691/pexels-photo-1556691.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260">
-				</div>
-			</div>
-		</div>
-	</footer> --}}
+  <div class="row">
+    <form id="req-form" name="request" data-user-id="{{id}}">
+      <label for="title">Title</label>
+      <input class="text" name="title" type="text" id="title" />
+      <label for="description">Description</label>
+      <input name="description" type="text" id="description" />
+      <label for="category">Category</label>
+      <input name="category" type="text" id="category" />
+      <label for="tags">Tags</label>
+      <input name="tags" type="text" id="tags" />
+      <label for="turnaround_time">Turnaround Time (in whole hours)</label>
+      <input name="turnaround_time" type="number" min="1" max="168" value="24" id="turnaround_time" />
+      <input class="btn" type="submit" value="Submit" />
+    </form>
 
-
-{{!-- <h1>Welcome {{firstName}}!</h1>
-<div class="row">
-  <div class="col s12">
-    <table>
-      <thead>
-        <tr>
-          <th>Title</th>
-          <th>Category</th>
-          <th>Created</th>
-        </tr>
-      </thead>
-
-      <tbody>
-        <tr>
-          <td>Test</td>
-          <td>test</td>
-          <td>test</td>
-        </tr>
-      </tbody>
-    </table>
   </div>
-</div> --}}
+</div>
+
+{{!-- <div class="user-request-container"></div> --}}
 <script src="/_js/profile.js"></script>

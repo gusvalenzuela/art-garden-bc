@@ -1,5 +1,5 @@
-module.exports = function (passport, user) {
-	const User = user
+module.exports = function (passport, db) {
+	const User = db.User
 	const LocalStrategy = require("passport-local").Strategy
 
 	passport.use(
@@ -37,6 +37,7 @@ module.exports = function (passport, user) {
 							}
 
 							if (newUser) {
+								db.Userdetail.create({ UserId: newUser.id })
 								return done(null, newUser)
 							}
 						})
