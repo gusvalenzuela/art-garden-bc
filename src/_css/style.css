@@ -8,6 +8,7 @@
 
  .body, .html {
    background: #BDF8A3;
+   height: 100%;
  }
 .icon-block {
   padding: 0 15px;
@@ -43,15 +44,19 @@
   background-color: #BDF8A3 !important;
   color:  #BDF8A3 !important  ;
 }
+.main-container{
+  margin-bottom: 12em;
+}
 .footer{
-  /* position: fixed !important; */
+  position: fixed !important;
   bottom: 0 !important;
   width: 100% !important;
   background-color: #42B395 ;
   color: white;
   height: max-content !important;
   padding: 10px !important;
-
+  margin: auto;
+  z-index: 99;
 }
 .footer a{
   color: white;
@@ -65,7 +70,7 @@
   font-size: x-large;
 }
 .page-footer {
-    position: fixed !important;
+    /* position: fixed !important; */
     bottom: 0 !important;
     width: 100% !important;
     background-color: #42B395 ;

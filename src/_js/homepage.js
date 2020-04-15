@@ -54,7 +54,7 @@ $(document).ready(function () {
 		const deleteRequestButton = $(
 			`<a class="delete-button waves-effect waves-light btn-small">`,
 		)
-			.text("Delete contract")
+			.text("Bid")
 			.data("contract-id", request.id)
 
 		newRequestCard.append(
