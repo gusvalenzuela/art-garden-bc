@@ -1,6 +1,6 @@
 <!-- Profile avatar/bio section -->
 <div class="container center-align">
-  <div class="row">
+  <div class="row" id="profile-header-row">
     <div class="col s12 center-align z-depth-2 teal accent-4">
       {{!-- <i class="material-icons" style="font-size: 200px; align-items: center;">account_circle</i> --}}
       <img src="/userdata/profile/{{Userdetail.dataValues.profileImg}}" alt="" style="margin: 1.3em;">
@@ -38,17 +38,18 @@
   </div>
 
   <div class="row">
-    <button type="button" class="waves-effect waves-light btn green sidenav-trigger" id="open-request-button"
-      data-target="request-collapsible">Open Request Form</button>
+    {{!-- create new contract button  --}}
+    <button type="button" class="waves-effect waves-light btn sidenav-trigger" id="open-request-button"
+      data-target="request-collapsible">New Contract <i class="fa fa-plus-square" id="open-request-button-icon" style="font-size: 20px; padding-left: .69em;"></i></button>
 
     <div class="sidenav" id="request-collapsible">
       <form id="req-form" name="request" data-user-id="{{id}}" style="padding:1em; text-align:left; margin:0;">
         <h5>Create a new contract:</h5>
         <label for="title">Title</label>
-        <input class="text" name="title" type="text" id="title" />
+        <input class="text" name="title" type="text" id="title" required />
         <label for="description">Description</label>
-        <textarea name="description" id="description" cols="100"></textarea>
-        <label for="turnaround_time" style="display: block;">Turn Around Time in Hours </label>
+        <textarea name="description" id="description" style="height: 7em;" required></textarea>
+        <label for="turnaround_time" style="display: block;">Turn Around Time in Hours (Max 168 or 7 days) </label>
         <input name="turnaround_time" type="number" min="1" max="168" value="24" id="turnaround_time" /><br>
         <label for="starting_price" style="display: block;">Starting Price</label>
         <input type="number" min="7" value="7" name="starting_price" id="starting-price"> <br>
@@ -60,7 +61,7 @@
           <option value="lineart">Line art</option>
           <option value="photography">Photography</option>
           <option value="videography">Videography</option>
-        </select><br><br>
+        </select>
         {{!-- more  --}}
         <p class="btn-flat" id="open-more">more...</p>
         <div class="request-form-content" style="display: none;">
@@ -75,9 +76,8 @@
         </div>
         <div class="center-align">
           <input class="btn" type="submit" value="Submit" />
-
+          <span class="btn-flat" id="reset-request-form">clear form </span>
         </div>
-
       </form>
     </div>
     {{!-- <div class="request-form-content center-align" style="display: none;">

@@ -15,7 +15,21 @@
 .icon-block .material-icons {
 	font-size: inherit;
 }
-
+.sidenav li a{
+  padding-left: 2.0189em;
+  padding-right: 6.0567em;
+}
+/* sidebar in main handlebars  */
+#mobile-collapsible{
+  width: auto;
+  /* height: auto; */
+}
+#sidenav-logo-div{
+  background: url(../images/artGarden-logo.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
 .materialboxed {
   display: block;
   margin-left: auto;
@@ -29,7 +43,27 @@
   background-color: #BDF8A3 !important;
   color:  #BDF8A3 !important  ;
 }
+.footer{
+  /* position: fixed !important; */
+  bottom: 0 !important;
+  width: 100% !important;
+  background-color: #42B395 ;
+  color: white;
+  height: max-content !important;
+  padding: 10px !important;
 
+}
+.footer a{
+  color: white;
+  font-size: small;
+}
+.footer a:hover{
+  text-decoration: underline;
+}
+.footer i{
+  color: white;
+  font-size: x-large;
+}
 .page-footer {
     /* position: fixed !important; */
     bottom: 0 !important;
@@ -40,12 +74,42 @@
     height: max-content !important;
     padding: 10px !important;
 }
-
+#open-request-button{
+  position: fixed;
+  /* left: -80px; */
+  /* bottom:137.2px; */
+  padding: 0 .6em;
+  height: auto;
+  border-radius: 0;
+}
+#open-request-button:hover{
+  left: 0;
+}
 #request-collapsible{
   width: 42%;
   height: auto;
+  padding-bottom: 0;
+}
+#open-more{
+  padding-left: .125em;
+}
+#reset-request-form{
+  margin-left: 2em;
+}
+#reset-request-form:hover{
+  text-decoration: underline;
+  color: #42B395;
 }
 
+/* for tablets and mobile  */
+@media screen and (max-width: 992px){
+  #request-collapsible{
+    width: 69%;
+  }
+  
+}
+
+/* for mobile devices  */
 @media screen and (max-width: 576px){
   #request-collapsible{
     width: 100%;

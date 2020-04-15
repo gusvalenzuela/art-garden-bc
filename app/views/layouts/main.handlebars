@@ -5,7 +5,10 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<title>artGarden</title>
-	<!-- CSS  -->
+	{{!-- font font-awesome --}}
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+	{{!-- css  --}}
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<link href="/_css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
 	<link href="/_css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
@@ -17,7 +20,7 @@
 
 <body>
 
-	<!-- navbar goes hereeeeeeeeeeeeee -->
+	{{!-- navbar goes hereeeeeeeeeeeeee --}}
 	<nav class="green darken-4">
 		<div class="nav-wrapper">
 			<a href="/homepage" class="brand-logo center"><img src="./images/artGarden logo.png"
@@ -29,26 +32,79 @@
 				<li><a href="/settings">Settings</a></li>
 			</ul>
 			<ul class="right hide-on-med-and-down">
-				<li><a href="/">Logout</a></li>
+				<li><a href="/logout">Logout</a></li>
 				<li><a href="/signup" class="waves-effect waves-light btn">Sign Up</a></li>
 			</ul>
 		</div>
 	</nav>
 	<ul class="sidenav" id="mobile-collapsible">
-		<li><a href="/homepage">Homepage</a></li>
-		<li><a href="/profile">Profile</a></li>
-		<li><a href="/signup">Sign Up</a></li><br><br>
-		<li><a href="/settings">Settings</a></li>
-		<li><a href="/">Logout</a></li>
+		<div class="green darken-4" style="height: 15%;" id="sidenav-logo-div">
+		</div>
+		<div>
+			<li><a href="/homepage">Homepage</a></li>
+			<li><a href="/profile">Profile</a></li>
+			<li><a href="/signup">Sign Up</a></li>
+			<li><a href="/settings">Settings</a></li>
+			<li><a href="/logout">Logout</a></li>
+		</div>
 	</ul>
-	<!-- navbar ends hereeeeeeeeeeeeee -->
+	{{!-- navbar ends hereeeeeeeeeeeeee --}}
 
 	{{!-- where the handlebars layout is coming in  --}}
 	{{{ body }}}
 
+	{{!-- footer goes below here --}}
+	{{!-- <footer class="footer">
+		<div class="halign-wrapper">
+			<div class="row">
+				<ul>
+					<div class="col s8">
 
-	<!--  Scripts-->
+						<li><a style="color:#000;">Contributors:</a></li>
+						<li><a href="https://github.com/markohanesian">Mark Ohanesian </a></li>
+						<li><a href="https://github.com/SquidDOTjpeg">Anthony Pillow </a></li>
+						<li><a href="https://github.com/gusvalenzuela">gus Valenzuela</a></li>
+					</div>
+					<div class="col s4 right-align">
+						<li>
+							<a href="https://github.com/gusvalenzuela/art-garden-bc"><i class="fa fa-github"></i></a>
+							<a href="/"><i class="fa fa-instagram"></i></a>
+							<a href="/"><i class="fa fa-twitter"></i></a>
+							<a href="/"><i class="fa fa-pinterest"></i></a>
+						</li>
+						<li><br></li>
+						<li><a style="color:#000;">Source Code:</a></li>
+						<li><a href="https://github.com/gusvalenzuela/art-garden-bc">github.com.../art-garden-bc</a>
+						</li>
+					</div>
+				</ul>
+			</div>
+		</div>
+	</footer> --}}
 
+	{{!-- scripts  --}}
+	<script>
+		let setContractBtnLeft = `calc(-${$(`#open-request-button`).outerWidth() + `px`} + 2.5em)`
+
+		// setting the position of the new contract button dependent on footer height, globally
+		$(`#open-request-button`).css({
+			top: $(`#profile-header-row`).outerHeight() + $(`.nav-wrapper`).outerHeight() + 2 + `px`,
+			left: setContractBtnLeft,
+		})
+
+		$(`#open-request-button`).on(`mouseenter`, e => {
+			e.stopPropagation()
+			$(`#open-request-button`).css({
+				left: 0,
+			})
+		})
+		$(`#open-request-button`).on(`mouseleave`, e => {
+			e.stopPropagation()
+			$(`#open-request-button`).css({
+				left: setContractBtnLeft,
+			})
+		})
+	</script>
 </body>
 
 </html>
