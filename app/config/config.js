@@ -1,7 +1,7 @@
 module.exports = {
   "development": {
     "username": "root",
-    "password": "marksql#15",
+    "password": "root",
     "database": "artgarden",
     "host": "localhost",
     "dialect": "mysql",
