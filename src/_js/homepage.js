@@ -11,7 +11,7 @@ $(document).ready(function () {
 		$.get("/api/requests", data => {
 			requests = data
 			// initializeCardCreation()
-			if (requests.length > 0){
+			if (requests.length > 0) {
 				initializeCardCreation()
 			} else {
 				var noRequests = $("<p>").text("There are no requests")
@@ -29,14 +29,8 @@ $(document).ready(function () {
 			}
 			let arrayOfReqDividers = $(`.request-divider`)
 			// removing the last request's hr divider as we're appending one to bottom of each request card
-<<<<<<< HEAD
 			arrayOfReqDividers[arrayOfReqDividers.length - 1].remove()
 		}
-=======
-			arrayOfReqDividers[arrayOfReqDividers.length-1].remove()
-		}
-
->>>>>>> 7fa8fd07d5442e042133f6e803bcd6380f3dceda
 	}
 
 	function createRequestCards(request) {

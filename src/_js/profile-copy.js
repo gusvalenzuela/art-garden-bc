@@ -2,7 +2,7 @@
 $(document).ready(function () {
 	const mainRequestContainer = $(".request-container")
 	let userRequests
-	let userName
+	// let userNames
 	const titleInput = $("#title")
 	const descriptionInput = $("#description")
 	const categoryInput = $("#category")
@@ -18,9 +18,9 @@ $(document).ready(function () {
 		mainRequestContainer.empty()
 		$.get("/api/user/current", data => {
 			userRequests = data.Requests
-			userName = data.firstName + " " + data.lastName
+			// userName = data.firstName + " " + data.lastName
 			// initializeCardCreation()
-			if (userRequests.length > 0){
+			if (userRequests.length > 0) {
 				initializeCardCreation()
 			} else {
 				var noRequests = $("<p>").text("You have no requests")
@@ -32,25 +32,14 @@ $(document).ready(function () {
 	function initializeCardCreation() {
 		mainRequestContainer.empty()
 
-<<<<<<< HEAD
-		if (userRequests.length>0) {
-=======
 		if (userRequests.length > 0) {
->>>>>>> 7fa8fd07d5442e042133f6e803bcd6380f3dceda
 			for (var i = 0; i < userRequests.length; i++) {
 				createRequestCards(userRequests[i])
 			}
 			let arrayOfReqDividers = $(`.request-divider`)
 			// removing the last request's hr divider as we're appending one to bottom of each request card
-<<<<<<< HEAD
 			arrayOfReqDividers[arrayOfReqDividers.length - 1].remove()
 		}
-=======
-			arrayOfReqDividers[arrayOfReqDividers.length-1].remove()
-		}
-		
-
->>>>>>> 7fa8fd07d5442e042133f6e803bcd6380f3dceda
 	}
 
 	function createRequestCards(request) {
