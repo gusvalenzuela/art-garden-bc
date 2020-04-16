@@ -14,7 +14,6 @@ button.on("click", userInfo)
 //Function that gets the user's info and passes that to the new object to post
 function userInfo() {
 	$.get("/api/user/current", data => {
-		console.log(data)
 		createNewCommissionObject(data)
 	})
 }
@@ -30,11 +29,4 @@ function createNewCommissionObject(userInfo) {
 		UserId: userInfo.id,
 	}
 	postCommissionRequest(newRequest)
-	console.log(newRequest)
-}
-//function that passes the new object to the api using a post route
-function postCommissionRequest(request) {
-	$.post("/api/requests", request, () => {
-		console.log(request)
-	})
 }

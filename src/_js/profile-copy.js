@@ -96,7 +96,6 @@ $(document).ready(function () {
 	function deleteRequest() {
 		var requestId = $(this).data("contract-id")
 		var requestUrl = "/api/requests/" + requestId
-		console.log(URL)
 		$.ajax({
 			url: requestUrl,
 			method: "DELETE",
@@ -107,7 +106,6 @@ $(document).ready(function () {
 
 	$(`#open-more`).on(`click`, event => {
 		event.preventDefault()
-		// console.log(event.target.nextElementSibling)
 		let content = event.target.nextElementSibling
 		if (content.style.display === `block`) {
 			content.style.display = `none`
@@ -142,8 +140,6 @@ $(document).ready(function () {
 		event.preventDefault()
 		let requestID = $(event.target).data(`request-id`)
 		let bid = $(`#submit-bid-${requestID}`).val()
-
-		console.log(bid)
 
 		// find id of request and user id of taker
 		$.ajax({

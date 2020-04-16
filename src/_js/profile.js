@@ -11,17 +11,15 @@ $(document).ready(function () {
 	function getAllUserRequests() {
 		userRequestContainer.empty()
 		$.get("/api/user/current", data => {
-			console.log(data)
 			userRequests = data.Requests
 			userName = data.firstName + " " + data.lastName
-			if (data.Requests){
+			if (data.Requests) {
 				initializeCardCreation()
 			} else {
 				var noRequests = $("<p>").text("You have no requests")
 				noRequests.appendTo(userRequestContainer)
 			}
 		})
-		console.log(userRequests)
 	}
 
 	function initializeCardCreation() {
@@ -85,7 +83,6 @@ $(document).ready(function () {
 	function deleteRequest() {
 		var requestId = $(this).data("contract-id")
 		var requestUrl = "/api/requests/" + requestId
-		console.log(URL)
 		$.ajax({
 			url: requestUrl,
 			method: "DELETE",

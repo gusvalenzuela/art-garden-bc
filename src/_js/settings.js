@@ -62,7 +62,6 @@ $(document).ready(function () {
 		} else {
 			location = data.Userdetail.location
 		}
-		console.log(location)
 	}
 
 	function bioInfo(data) {
@@ -72,14 +71,10 @@ $(document).ready(function () {
 		} else {
 			bio = bioInput
 		}
-		console.log(bio)
 	}
 
 	function handleSubmitButtonPress() {
 		$.get("/api/user/current", data => {
-			console.log(data)
-			// console.log(data.Userdetail.bio_statement)
-			// console.log(data.id)
 			userId = data.id
 			bioInfo(data)
 			locationInfo(data)
