@@ -130,6 +130,19 @@
   color: #42B395;
 }
 
+.profile-image{
+  padding-left: 3px !important;
+  padding-right: 3px !important;
+}
+
+.profile-image:hover{
+  border: 1px solid #42B395;
+}
+
+.selected{
+  border: 2px solid #42B395;
+}
+
 /* for tablets and mobile  */
 @media screen and (max-width: 992px){
   #request-collapsible{
