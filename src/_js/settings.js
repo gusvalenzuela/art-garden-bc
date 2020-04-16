@@ -8,19 +8,27 @@ $(document).ready(function () {
 
 	var submitButton = $("#submit-button")
 
-	var img1 = $("#image-one")
-	$("#image-one").data("imagePath", "female-long-hair-3.png")
+	var img1 = $("#image-1")
+	$("#image-1").data("imagePath", "female-long-hair-3.png")
 
-	var img2 = $("#image-two")
-	$("#image-two").data("imagePath", "female-long-hair-2.png")
+	var img2 = $("#image-2")
+	$("#image-2").data("imagePath", "female-long-hair-2.png")
 
-	var img3 = $("#image-three")
-	$("#image-three").data("imagePath", "male-beard-4.png")
+	var img3 = $("#image-3")
+	$("#image-3").data("imagePath", "male-beard-4.png")
 
-	var img4 = $("#image-four")
-	$("#image-four").data("imagePath", "male-blue-1.png")
-	var img5 = $("#image-five")
-	$("#image-five").data("imagePath", "female-long-hair-1.png")
+	var img4 = $("#image-4")
+	$("#image-4").data("imagePath", "male-blue-1.png")
+	var img5 = $("#image-5")
+	$("#image-5").data("imagePath", "female-2.png")
+	var img6 = $("#image-6")
+	$("#image-6").data("imagePath", "male-1.png")
+	var img7 = $("#image-7")
+	$("#image-7").data("imagePath", "male-2.png")
+	var img8 = $("#image-8")
+	$("#image-8").data("imagePath", "female-1.png")
+	// var img9 = $("#image-9")
+	// $("#image-9").data("imagePath", "female-2.png")
 
 	$(".profile-image").on("click", handleATagPress)
 
@@ -32,6 +40,10 @@ $(document).ready(function () {
 		img3.removeClass("selected")
 		img4.removeClass("selected")
 		img5.removeClass("selected")
+		img6.removeClass("selected")
+		img7.removeClass("selected")
+		img8.removeClass("selected")
+		// img9.removeClass("selected")
 		$(this).addClass("selected")
 		var image = $(this).data("imagePath")
 		newProfileImage = image
