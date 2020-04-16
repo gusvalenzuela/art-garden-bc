@@ -16,13 +16,6 @@ module.exports = (sequelize, DataTypes) => {
 				len: [3, 255],
 			},
 		},
-		// requestor_id: {
-		// 	type: DataTypes.INTEGER,
-		// 	allowNull: 0,
-		// 	validate: {
-		// 		isNumeric: true,
-		// 	},
-		// },
 		artist_id: {
 			type: DataTypes.INTEGER,
 			allowNull: 0,
