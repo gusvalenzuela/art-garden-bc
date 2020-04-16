@@ -85,16 +85,14 @@
 	{{!-- scripts  --}}
 	<script>
 		let setContractBtnLeft = `calc(-${$(`#open-request-button`).outerWidth() + `px`} + 2.5em)`
-		const setTheFooter = () => {
-			$(`.footer`).css({
-				bottom:  -150 + `px`,
-			})
-		}
-		setTheFooter()
-
-		$(window).resize(() => {
-			setTheFooter()
-		})
+		
+		$(window).scroll(function () {
+			if ($(window).scrollTop() + $(window).height() > $(document).height()-75) {
+				$(`.footer`).show()
+			} else {
+				$(`.footer`).hide()
+			}
+		});
 		// setting the position of the new contract button dependent on footer height, globally
 		$(`#open-request-button`).css({
 			top: $(`.nav-wrapper`).outerHeight() + 24 + `px`,	// RIP Kobe

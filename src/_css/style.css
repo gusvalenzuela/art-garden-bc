@@ -61,13 +61,12 @@
   color:  #BDF8A3 !important  ;
 }
 .main-container{
-  margin-bottom: .89em;
+  margin-bottom: 1em;
 }
 .push{
-  height: 4.5em;
+  height: 150px;
 }
 .footer{
-  position: relative !important;
   width: 100% !important;
   background-color: #42B395 ;
   color: white;
@@ -75,6 +74,8 @@
   padding: 10px !important;
   margin: auto;
   z-index: 99;
+  position: fixed !important;
+  bottom: 0;
 }
 .footer a{
   color: white;

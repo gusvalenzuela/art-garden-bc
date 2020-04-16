@@ -61,14 +61,21 @@ $(document).ready(function () {
 		// const newRequestPostDate = $(`<p class="request-post-date">`).text(
 		// 	formattedDate,
 		// )
+		const getInputValue = () => {
+			if(request.current_bid > 11){
+				return request.current_bid - 5
+			} else if (request.current_bid > 2){
+				return request.current_bid - 1
+			} else {
+				return 0
+			}
+		}
 		const bidInput = $(
 			`<input id="submit-bid-${
 				request.id
 			}" style="width: 7em; text-align:center; margin: 0 1em;" type="number" data-request-id="${
 				request.id
-			}" data-current-bid="${request.current_bid}" value="${
-				request.current_bid - 5
-			}">`,
+			}" data-current-bid="${request.current_bid}" value="${getInputValue()}">`,
 		)
 		const bidButton = $(
 			`<a class="bid-btn waves-effect waves-light btn-small" data-request-id="${request.id}" data-current-bid="${request.current_bid}" data-bid-count="${request.bid_count}">`,
@@ -93,10 +100,24 @@ $(document).ready(function () {
 		$(`.bid-btn`).on(`click`, event => {
 			event.stopImmediatePropagation()
 			$(`#temp-alert`).remove()
+
 			let requestID = $(event.target).data(`request-id`)
 			let bid = $(`#submit-bid-${requestID}`).val()
 			let elementToAppendAlert = $(`#${requestID}`)[0]
-			console.log(elementToAppendAlert)
+
+			if(bid < 0) {
+				$(elementToAppendAlert).append(
+					$(`<p id="temp-alert" style="color:#990000; font-weight:600;">`).text(
+						`Bid must be a positive integer. Try again.`,
+					),
+				)
+				setTimeout(() => {
+					$(`#temp-alert`).remove()
+				}, 4199)
+
+				return
+			} 
+
 
 			if (
 				$(event.target).data(`bid-count`) !== 0 &&
@@ -134,16 +155,4 @@ $(document).ready(function () {
 			}
 		})
 	}
-
-	// const bidError = target => {
-	// 	let parentElement = $(target)[0].parentElement
-	// 	$(parentElement).append(
-	// 		$(`<span id="temp-alert" style="color:black; font-weight:600;">`).text(
-	// 			`Sorry, only registered users are able to bid`,
-	// 		),
-	// 	)
-	// 	setTimeout(() => {
-	// 		$(`#temp-alert`).remove()
-	// 	}, 5000)
-	// }
 })

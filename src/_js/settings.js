@@ -15,10 +15,10 @@ $(document).ready(function () {
 	$("#image-two").data("imagePath", "female-long-hair-2.png")
 
 	var img3 = $("#image-three")
-	$("#image-three").data("imagePath", "male-beard-1.png")
+	$("#image-three").data("imagePath", "male-beard-1.jpg")
 
 	var img4 = $("#image-four")
-	$("#image-four").data("imagePath", "male-blue-2.png")
+	$("#image-four").data("imagePath", "male-blue-1.png")
 
 	$(".profile-image").on("click", handleATagPress)
 
