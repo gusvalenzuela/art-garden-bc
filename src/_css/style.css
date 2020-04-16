@@ -133,14 +133,19 @@
 .profile-image{
   padding-left: 3px !important;
   padding-right: 3px !important;
+  border: 2px solid transparent;
 }
 
 .profile-image:hover{
-  border: 1px solid #42B395;
+  border: 2px solid #42B395;
 }
 
 .selected{
-  border: 2px solid #42B395;
+  border: 2px solid #044A05;
+}
+
+.selected:hover{
+  border: 2px solid #044A05;
 }
 
 /* for tablets and mobile  */
