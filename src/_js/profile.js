@@ -14,7 +14,12 @@ $(document).ready(function () {
 			console.log(data)
 			userRequests = data.Requests
 			userName = data.firstName + " " + data.lastName
-			initializeCardCreation()
+			if (data.Requests){
+				initializeCardCreation()
+			} else {
+				var noRequests = $("<p>").text("You have no requests")
+				noRequests.appendTo(userRequestContainer)
+			}
 		})
 		console.log(userRequests)
 	}
