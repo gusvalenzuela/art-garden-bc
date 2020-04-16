@@ -10,22 +10,28 @@ $(document).ready(function () {
 		mainRequestContainer.empty()
 		$.get("/api/requests", data => {
 			requests = data
-			initializeCardCreation()
+			// initializeCardCreation()
+			if (requests.length > 0){
+				initializeCardCreation()
+			} else {
+				var noRequests = $("<p>").text("There are no requests")
+				noRequests.appendTo(mainRequestContainer)
+			}
 		})
 	}
 
 	//This function initializes the creation of cards based on the number of requests in the requests var
 	function initializeCardCreation() {
 		mainRequestContainer.empty()
-		if (requests) {
+		if (requests.length > 0) {
 			for (var i = 0; i < requests.length; i++) {
 				createRequestCards(requests[i])
 			}
+			let arrayOfReqDividers = $(`.request-divider`)
+			// removing the last request's hr divider as we're appending one to bottom of each request card
+			arrayOfReqDividers[arrayOfReqDividers.length-1].remove()
 		}
 
-		let arrayOfReqDividers = $(`.request-divider`)
-		// removing the last request's hr divider as we're appending one to bottom of each request card
-		arrayOfReqDividers[arrayOfReqDividers.length-1].remove()
 	}
 
 	function createRequestCards(request) {

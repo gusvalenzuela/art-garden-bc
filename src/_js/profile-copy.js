@@ -19,22 +19,28 @@ $(document).ready(function () {
 		$.get("/api/user/current", data => {
 			userRequests = data.Requests
 			userName = data.firstName + " " + data.lastName
-			initializeCardCreation()
+			// initializeCardCreation()
+			if (userRequests.length > 0){
+				initializeCardCreation()
+			} else {
+				var noRequests = $("<p>").text("You have no requests")
+				noRequests.appendTo(mainRequestContainer)
+			}
 		})
 	}
 
 	function initializeCardCreation() {
 		mainRequestContainer.empty()
 
-		if (userRequests) {
+		if (userRequests.length > 0) {
 			for (var i = 0; i < userRequests.length; i++) {
 				createRequestCards(userRequests[i])
 			}
+			let arrayOfReqDividers = $(`.request-divider`)
+			// removing the last request's hr divider as we're appending one to bottom of each request card
+			arrayOfReqDividers[arrayOfReqDividers.length-1].remove()
 		}
 		
-		let arrayOfReqDividers = $(`.request-divider`)
-		// removing the last request's hr divider as we're appending one to bottom of each request card
-		arrayOfReqDividers[arrayOfReqDividers.length-1].remove()
 
 	}
 
