@@ -41,6 +41,20 @@ exports.homepageBidding = function (req, res) {
 			res.json(err)
 		})
 }
+exports.homepageContracting = function (req, res) {
+	// POST route for saving a new request
+	req.body.UserId = `${req.user.id}`
+	console.log(req.body)
+	db.Request.create(req.body)
+		.then(response => {
+			res.json(response)
+		})
+		.catch(err => {
+			// Whenever a validation or flag fails, an error is thrown
+			// We can `catch` the error to prevent it from being `thrown`, which could crash our node app
+			res.json(err)
+		})
+}
 exports.signin = function (req, res) {
 	res.render("signin")
 }

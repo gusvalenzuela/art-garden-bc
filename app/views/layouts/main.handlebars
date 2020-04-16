@@ -51,43 +51,57 @@
 	{{!-- navbar ends hereeeeeeeeeeeeee --}}
 
 	{{!-- where the handlebars layout is coming in  --}}
-	{{{ body }}}
-	<div class="push"></div>
-	{{!-- footer goes below here --}}
-	<footer class="footer">
-		<div class="halign-wrapper">
-			<div class="row">
+	<main>
+		{{{ body }}}
+	</main>
+	<footer class="page-footer">
+		{{!-- <div class="container" style="margin: 0 0"> --}}
+		<div class="row" style="width: 100%; margin-bottom: 3px;">
+			<div class="col l6 m4 l6 left-align">
+				<p style="margin: 0;" class="black-text">Contributors:</p>
 				<ul>
-					<div class="col s8">
+					<li><a href="https://github.com/markohanesian">Mark Ohanesian </a></li>
+					<li><a href="https://github.com/SquidDOTjpeg">Anthony Pillow </a></li>
+					<li><a href="https://github.com/gusvalenzuela">gus Valenzuela</a></li>
+				</ul>
+			</div>
+			<div class="col l4 offset-l2 m4 l3">
 
-						<li><a style="color:#000;">Contributors:</a></li>
-						<li><a href="https://github.com/markohanesian">Mark Ohanesian </a></li>
-						<li><a href="https://github.com/SquidDOTjpeg">Anthony Pillow </a></li>
-						<li><a href="https://github.com/gusvalenzuela">gus Valenzuela</a></li>
-					</div>
-					<div class="col s4 right-align">
-						<li>
-							<a href="https://github.com/gusvalenzuela/art-garden-bc"><i class="fa fa-github"></i></a>
-							<a href="/"><i class="fa fa-instagram"></i></a>
-							<a href="/"><i class="fa fa-twitter"></i></a>
-							<a href="/"><i class="fa fa-pinterest"></i></a>
-						</li>
-						<li><br></li>
-						<li><a style="color:#000;">Source Code:</a></li>
-						<li><a href="https://github.com/gusvalenzuela/art-garden-bc">github.com.../art-garden-bc</a>
-						</li>
-					</div>
+			</div>
+			<div class="col l4 offset-l2 m4 l3 right-align" style="float: right;">
+				<ul>
+					<li>
+						<a href="https://github.com/gusvalenzuela/art-garden-bc"><i class="fa fa-github"></i></a>
+						<a href="/"><i class="fa fa-instagram"></i></a>
+						<a href="/"><i class="fa fa-twitter"></i></a>
+						<a href="/"><i class="fa fa-pinterest"></i></a>
+					</li>
+					<li><br></li>
+					<li><p style="margin: 0;" class="black-text">Source Code:</p></li>
+					<li><a href="https://github.com/gusvalenzuela/art-garden-bc">github.com.../art-garden-bc</a>
+					</li>
 				</ul>
 			</div>
 		</div>
+		<div class="col s12">
+
+			<p style="margin: .3em 0;">2020 Copyright - All Rights Reserved</p>
+		</div>
+		{{!-- </div> --}}
+		{{!-- <div class="footer-copyright">
+			<div class="container">
+				2020 Copyright - All Rights Reserved
+				<a class="grey-text text-lighten-4 right" href="#!">Terms of Service</a>
+			</div>
+		</div> --}}
 	</footer>
 
 	{{!-- scripts  --}}
 	<script>
 		let setContractBtnLeft = `calc(-${$(`#open-request-button`).outerWidth() + `px`} + 2.5em)`
-		
+
 		$(window).scroll(function () {
-			if ($(window).scrollTop() + $(window).height() > $(document).height()-75) {
+			if ($(window).scrollTop() + $(window).height() > $(document).height() - 75) {
 				$(`.footer`).show()
 			} else {
 				$(`.footer`).hide()

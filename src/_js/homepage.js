@@ -2,6 +2,12 @@
 $(document).ready(function () {
 	const mainRequestContainer = $(".request-container")
 	var requests
+	const titleInput = $("#title")
+	const descriptionInput = $("#description")
+	const categoryInput = $("#category")
+	const turnAroundTime = $("#turnaround_time")
+	const startingPrice = $("#starting-price")
+	const tags = $(`#tags`)
 
 	getCommissionRequests()
 
@@ -161,4 +167,40 @@ $(document).ready(function () {
 			}
 		})
 	}
+
+
+	$(`#req-form`).on(`submit`, e => {
+		e.preventDefault()
+
+		//creates the request object to be passed to the api
+		var newRequest = {
+			title: titleInput.val().trim(),
+			description: descriptionInput.val().trim(),
+			category: categoryInput.val().trim(),
+			turnaround_time: turnAroundTime.val().trim(),
+			starting_price: startingPrice.val().trim(),
+			UserId: $(`#req-form`).data(`user-id`),
+			tags: tags.val().trim(),
+			current_bid: startingPrice.val().trim(),
+		}
+
+		$.post(`/api/requests`, newRequest, () => {
+			window.location.href = "/profile"
+		})
+	})
+
+	const resetRequestForm = () => {
+		titleInput.val(``)
+		descriptionInput.val(``)
+		categoryInput[0].options.selectedIndex = 0
+		turnAroundTime.val(`24`)
+		startingPrice.val(`7`)
+		tags.val(``)
+	}
+
+	$(`#reset-request-form`).on(`click`, e => {
+		e.preventDefault()
+
+		resetRequestForm()
+	})
 })

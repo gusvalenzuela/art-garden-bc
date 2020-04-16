@@ -32,18 +32,18 @@ module.exports = function (app) {
 		})
 	})
 
-	// POST route for saving a new request
-	app.post(`/api/requests`, function (req, res) {
-		Request.create(req.body)
-			.then(response => {
-				res.json(response)
-			})
-			.catch(err => {
-				// Whenever a validation or flag fails, an error is thrown
-				// We can `catch` the error to prevent it from being `thrown`, which could crash our node app
-				res.json(err)
-			})
-	})
+	// // POST route for saving a new request
+	// app.post(`/api/requests`, function (req, res) {
+	// 	Request.create(req.body)
+	// 		.then(response => {
+	// 			res.json(response)
+	// 		})
+	// 		.catch(err => {
+	// 			// Whenever a validation or flag fails, an error is thrown
+	// 			// We can `catch` the error to prevent it from being `thrown`, which could crash our node app
+	// 			res.json(err)
+	// 		})
+	// })
 
 	// DELETE route for deleting requests. We can get the id of the request to be deleted from
 	// req.params.id

@@ -17,8 +17,11 @@ module.exports = function (app, passport) {
 
 	app.get("/request", utils.isLoggedIn, authController.request)
 
-	// can only post a request if a user is logged in 
+	// can only update a request (bid on homepage) if a user is logged in 
 	app.put(`/api/requests/:id`, utils.isLoggedIn, authController.homepageBidding)
+
+	// can only create a request if a user is logged in on the homepage
+	app.post(`/api/requests/`, utils.isLoggedIn, authController.homepageContracting)
 
 	app.post(
 		"/signup",
