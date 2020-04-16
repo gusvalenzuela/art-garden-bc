@@ -26,16 +26,14 @@ $(document).ready(function () {
 	function initializeCardCreation() {
 		mainRequestContainer.empty()
 
-		if (userRequests) {
+		if (userRequests.length>0) {
 			for (var i = 0; i < userRequests.length; i++) {
 				createRequestCards(userRequests[i])
 			}
+			let arrayOfReqDividers = $(`.request-divider`)
+			// removing the last request's hr divider as we're appending one to bottom of each request card
+			arrayOfReqDividers[arrayOfReqDividers.length - 1].remove()
 		}
-		
-		let arrayOfReqDividers = $(`.request-divider`)
-		// removing the last request's hr divider as we're appending one to bottom of each request card
-		arrayOfReqDividers[arrayOfReqDividers.length-1].remove()
-
 	}
 
 	function createRequestCards(request) {
@@ -83,10 +81,12 @@ $(document).ready(function () {
 		)
 
 		requestContainer.append(newRequestCard)
-		$(`<hr style="width: 93.339%" class="request-divider">`).appendTo(requestContainer)
+		$(`<hr style="width: 93.339%" class="request-divider">`).appendTo(
+			requestContainer,
+		)
 		requestContainer.appendTo(mainRequestContainer)
 	}
-	
+
 	function deleteRequest() {
 		var requestId = $(this).data("contract-id")
 		var requestUrl = "/api/requests/" + requestId

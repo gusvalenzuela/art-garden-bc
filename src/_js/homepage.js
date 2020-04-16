@@ -17,15 +17,14 @@ $(document).ready(function () {
 	//This function initializes the creation of cards based on the number of requests in the requests var
 	function initializeCardCreation() {
 		mainRequestContainer.empty()
-		if (requests) {
+		if (requests.length > 0) {
 			for (var i = 0; i < requests.length; i++) {
 				createRequestCards(requests[i])
 			}
+			let arrayOfReqDividers = $(`.request-divider`)
+			// removing the last request's hr divider as we're appending one to bottom of each request card
+			arrayOfReqDividers[arrayOfReqDividers.length - 1].remove()
 		}
-
-		let arrayOfReqDividers = $(`.request-divider`)
-		// removing the last request's hr divider as we're appending one to bottom of each request card
-		arrayOfReqDividers[arrayOfReqDividers.length-1].remove()
 	}
 
 	function createRequestCards(request) {
@@ -62,9 +61,9 @@ $(document).ready(function () {
 		// 	formattedDate,
 		// )
 		const getInputValue = () => {
-			if(request.current_bid > 11){
+			if (request.current_bid > 11) {
 				return request.current_bid - 5
-			} else if (request.current_bid > 2){
+			} else if (request.current_bid > 2) {
 				return request.current_bid - 1
 			} else {
 				return 0
@@ -93,7 +92,9 @@ $(document).ready(function () {
 		)
 
 		newRequestCard.appendTo(requestContainer)
-		$(`<hr style="width: 93.339%" class="request-divider">`).appendTo(requestContainer)
+		$(`<hr style="width: 93.339%" class="request-divider">`).appendTo(
+			requestContainer,
+		)
 		requestContainer.appendTo(mainRequestContainer)
 
 		// change artist id when clicking take request
@@ -105,7 +106,7 @@ $(document).ready(function () {
 			let bid = $(`#submit-bid-${requestID}`).val()
 			let elementToAppendAlert = $(`#${requestID}`)[0]
 
-			if(bid < 0) {
+			if (bid < 0) {
 				$(elementToAppendAlert).append(
 					$(`<p id="temp-alert" style="color:#990000; font-weight:600;">`).text(
 						`Bid must be a positive integer. Try again.`,
@@ -116,8 +117,7 @@ $(document).ready(function () {
 				}, 4199)
 
 				return
-			} 
-
+			}
 
 			if (
 				$(event.target).data(`bid-count`) !== 0 &&

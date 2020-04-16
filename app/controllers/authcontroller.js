@@ -20,7 +20,6 @@ exports.homepage = function (req, res) {
 }
 exports.homepageBidding = function (req, res) {
 	// increments our bid_count with each bid if current_bid is updating
-	console.log(req.body.current_bid)
 	if (req.body.current_bid) {
 		db.Request.increment(`bid_count`, { where: { id: req.params.id } })
 	}
@@ -54,8 +53,6 @@ exports.profile = function (req, res) {
 		},
 		raw: false,
 	}).then(response => {
-		console.log(utils.filterUserResponse(response).response)
-		// console.log(response.dataValues.Requests[0].dataValues)
 		res.render(`profile`, utils.filterUserResponse(response).response)
 	})
 }
@@ -80,6 +77,6 @@ exports.logout = function (req, res) {
 		if (err) {
 			throw err
 		}
-		res.redirect("/homepage")
+		res.redirect("/")
 	})
 }

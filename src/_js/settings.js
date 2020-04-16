@@ -32,7 +32,7 @@ $(document).ready(function () {
 		$(this).addClass("selected")
 		var image = $(this).data("imagePath")
 		newProfileImage = image
-		console.log(newProfileImage)
+		// console.log(newProfileImage)
 	}
 
 	function locationInfo(data) {
