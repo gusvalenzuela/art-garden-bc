@@ -53,7 +53,12 @@ $(document).ready(function () {
 		// .append($(`<div class="container">`))
 		// .append($(`<div class="row white-text">`))
 
-		const newRequestCard = $(`<div class="col col s12 request-card">`)
+
+		const newRequestCardRow = $(`<div class="row valign-center">`)
+		const newRequestCardRight = $(`<div class="col s12 request-card">`)
+		// const newRequestCardLeft = $(`<div class="col s12 m2 request-image" style="padding-top: 3em;">`).append(
+		// 	$(`<img src="/userdata/profile/male-1.png" style="height:89px;">`),
+		// )
 
 		// var newRequestCardName = $(`<div class="valign request-card-name">`)
 
@@ -93,7 +98,7 @@ $(document).ready(function () {
 		).text("Bid")
 		// .data("contract-id", request.id)
 
-		newRequestCard.append(
+		newRequestCardRight.append(
 			newRequestTitle,
 			newRequestName,
 			// newRequestPostDate,
@@ -103,7 +108,12 @@ $(document).ready(function () {
 			bidButton,
 		)
 
-		newRequestCard.appendTo(requestContainer)
+		newRequestCardRow.append(
+			// newRequestCardLeft, 
+			newRequestCardRight
+			)
+
+		newRequestCardRow.appendTo(requestContainer)
 		$(`<hr style="width: 93.339%" class="request-divider">`).appendTo(
 			requestContainer,
 		)
@@ -167,7 +177,6 @@ $(document).ready(function () {
 			}
 		})
 	}
-
 
 	$(`#req-form`).on(`submit`, e => {
 		e.preventDefault()

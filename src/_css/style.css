@@ -34,6 +34,7 @@
 	border: 5px #bdf8a3;
 	background-color: lightgray;
 	margin-bottom: 5px;
+	padding: 1.68em;
 }
 
 .request-card {
@@ -93,6 +94,7 @@ html {
 }
 .main-container {
 	margin-bottom: 1em;
+	
 }
 .push {
 	height: 150px;
