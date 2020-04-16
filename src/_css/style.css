@@ -146,6 +146,8 @@ main {
   padding-left: 3px !important;
   padding-right: 3px !important;
   border: 2px solid transparent;
+  height: 128px;
+  width: 128px;
 }
 
 .profile-image:hover{

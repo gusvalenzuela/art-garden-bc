@@ -9,16 +9,18 @@ $(document).ready(function () {
 	var submitButton = $("#submit-button")
 
 	var img1 = $("#image-one")
-	$("#image-one").data("imagePath", "female-long-hair-1.jpg")
+	$("#image-one").data("imagePath", "female-long-hair-3.png")
 
 	var img2 = $("#image-two")
 	$("#image-two").data("imagePath", "female-long-hair-2.png")
 
 	var img3 = $("#image-three")
-	$("#image-three").data("imagePath", "male-beard-1.jpg")
+	$("#image-three").data("imagePath", "male-beard-4.png")
 
 	var img4 = $("#image-four")
 	$("#image-four").data("imagePath", "male-blue-1.png")
+	var img5 = $("#image-five")
+	$("#image-five").data("imagePath", "female-long-hair-1.png")
 
 	$(".profile-image").on("click", handleATagPress)
 
@@ -29,6 +31,7 @@ $(document).ready(function () {
 		img2.removeClass("selected")
 		img3.removeClass("selected")
 		img4.removeClass("selected")
+		img5.removeClass("selected")
 		$(this).addClass("selected")
 		var image = $(this).data("imagePath")
 		newProfileImage = image
