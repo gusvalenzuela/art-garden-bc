@@ -13,19 +13,38 @@
 #homepage-banner {
 	background-color: #bdf8a3;
 }
-#homepage-banner-img{
-  background: url(../images/garden-bg-2.jpg);
+#homepage-banner-img {
+	background: url(../images/garden-bg-2.jpg);
 	background-position: center;
 	background-size: cover;
-  background-repeat: no-repeat;
-  /* filter: blur(1px); */
+	background-repeat: no-repeat;
+	/* filter: blur(1px); */
+}
+.banner-image-1 {
+	background: url(../images/garden-bg-4.jpg);
+	background-position: 50% 80%;
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+.banner-image-2 {
+	background: url(../images/garden-bg-2.jpg);
+	background-position: 50% 80%;
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+.banner-image-3 {
+	background: url(../images/garden-bg-5.jpg);
+	background-position: 50% 75%;
+	background-size: cover;
+	background-repeat: no-repeat;
 }
 
 .banner-text {
-  color: ghostwhite;
-	font-weight: bold;
-	z-index: 22 ;
+	color: ghostwhite;
+	font-weight: 700;
+	z-index: 22;
 	text-align: center;
+	text-shadow: 2px 2px black;
 }
 
 .request-container {
@@ -94,7 +113,6 @@ html {
 }
 .main-container {
 	margin-bottom: 1em;
-	
 }
 .push {
 	height: 150px;

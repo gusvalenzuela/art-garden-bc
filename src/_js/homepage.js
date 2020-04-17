@@ -1,5 +1,22 @@
 /* eslint-disable no-undef */
 $(document).ready(function () {
+	// banner carousel 
+	$(".carousel").carousel({
+		dist: 0,
+		padding: 0,
+		fullWidth: true,
+		indicators: false,
+		duration: 100,
+	})
+
+	autoplay()
+
+	function autoplay() {
+		$(".carousel").carousel("next")
+		setTimeout(autoplay, 4500)
+	}
+
+	// start 
 	const mainRequestContainer = $(".request-container")
 	var requests
 	const titleInput = $("#title")
@@ -52,7 +69,6 @@ $(document).ready(function () {
 		// .append($(`<div class="valign request-card" style="width:100%;">`))
 		// .append($(`<div class="container">`))
 		// .append($(`<div class="row white-text">`))
-
 
 		const newRequestCardRow = $(`<div class="row valign-center">`)
 		const newRequestCardRight = $(`<div class="col s12 request-card">`)
@@ -109,9 +125,9 @@ $(document).ready(function () {
 		)
 
 		newRequestCardRow.append(
-			// newRequestCardLeft, 
-			newRequestCardRight
-			)
+			// newRequestCardLeft,
+			newRequestCardRight,
+		)
 
 		newRequestCardRow.appendTo(requestContainer)
 		$(`<hr style="width: 93.339%" class="request-divider">`).appendTo(
@@ -187,7 +203,7 @@ $(document).ready(function () {
 			content.style.display = `block`
 		}
 	})
-	
+
 	$(`#req-form`).on(`submit`, e => {
 		e.preventDefault()
 

@@ -1,4 +1,25 @@
+<section class="black">
+
+  <div class="carousel carousel-slider" data-indicators="true">
+    <div class="carousel-fixed-item">
+      <div class="container">
+        <img src="./images/artGarden logo.png" style="width:156px;height:156px;" id="logo">
+        <h1 class="header center">artGarden</h1>
+        <h5 class="header col s12 light">Grow your art into a career</h5>
+      </div>
+    </div>
+    <div class="carousel-item banner-image-1" href="#one!">
+    </div>
+    <div class="carousel-item banner-image-2" href="#two!">
+    </div>
+    <div class="carousel-item banner-image-3" href="#three!">
+    </div>
+</section>
+
+
+
 <div style="background: rgb(191, 255, 179); padding: 1.2em;">
+
 
   <form id="change-profile-img-form" name="progiaSKDjk">
     <label for="profileImg">Change Image to:</label>
@@ -30,6 +51,28 @@
 </ul>
 
 <script>
+
+  // CAROUSEL
+  $(document).ready(function () {
+    $('.carousel').carousel(
+      {
+        dist: 0,
+        padding: 0,
+        fullWidth: true,
+        indicators: false,
+        duration: 100,
+      }
+    );
+
+    autoplay()
+
+    function autoplay() {
+      $('.carousel').carousel('next');
+      setTimeout(autoplay, 4500);
+    }
+  });
+
+
   // $(`#req-form`).hide()
 
   $(`#req-form`).on(`submit`, e => {
