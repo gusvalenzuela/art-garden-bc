@@ -6,13 +6,29 @@
  * Made By MaterializeCSS.com
  */
 
- :root {
+:root {
 	--main-color: #044a05;
 	--secondary-color: #bdf8a3;
 	/* --accent-color: #; */
-	--bg-linear: linear-gradient(rgba(255, 255, 255, 0), rgba(0, 0, 0, 0) );
+	--bg-linear: linear-gradient(rgba(255, 255, 255, 0), rgba(0, 0, 0, 0));
 	--bg-blur: blur(3px);
-  }
+}
+
+body {
+	display: flex;
+	min-height: 100vh;
+	flex-direction: column;
+}
+
+main {
+	flex: 1 0 auto;
+}
+
+body,
+html {
+	background: whitesmoke;
+	/* height: 100%; */
+}
 
 #profile-banner {
 	background-color: #bdf8a3;
@@ -65,16 +81,16 @@
 	font-weight: 700;
 	z-index: 22;
 	text-align: center;
-	text-shadow: .1em .1em black;
+	text-shadow: 0.1em 0.1em black;
 }
 
 .request-container {
-	text-align: center;
+	text-align: left;
 	color: #044a05;
 	border: 5px #bdf8a3;
 	background-color: lightgray;
 	margin-bottom: 5px;
-	padding: 1.68em;
+	padding: 1em;
 }
 
 .request-card {
@@ -83,21 +99,12 @@
 .request-card p {
 	margin: 0.5em 0;
 }
-body {
-	display: flex;
-	min-height: 100vh;
-	flex-direction: column;
+.request-name{
+	font-weight: 300;
+	padding-bottom: .33em;
+	border-bottom: 1px black solid;
 }
 
-main {
-	flex: 1 0 auto;
-}
-
-body,
-html {
-	background: whitesmoke;
-	/* height: 100%; */
-}
 .icon-block {
 	padding: 0 15px;
 }
@@ -126,29 +133,21 @@ html {
 	width: 40%;
 	padding: 5px;
 }
-
-.gig {
-	padding: 20px;
-	background-color: #bdf8a3 !important;
-	color: #bdf8a3 !important  ;
-}
 .main-container {
 	margin-bottom: 1em;
 }
-.push {
-	height: 150px;
+
+.page-footer {
+	position: relative !important;
+	bottom: 0 !important;
+	width: 100% !important;
+	background-color: #42b395;
+	color: white;
+	text-align: center !important;
+	height: max-content !important;
+	padding: 10px !important;
 }
-.footer {
-	/* width: 100% !important;
-  background-color: #42B395 ;
-  color: white;
-  height: max-content !important;
-  padding: 10px !important;
-  margin: auto;
-  position: fixed !important;
-  bottom: 0; */
-	z-index: 99;
-}
+
 .page-footer a {
 	color: white;
 	font-size: small;
@@ -163,16 +162,7 @@ html {
 .page-footer ul {
 	margin: 0.25em 0;
 }
-.page-footer {
-	position: relative !important;
-	bottom: 0 !important;
-	width: 100% !important;
-	background-color: #42b395;
-	color: white;
-	text-align: center !important;
-	height: max-content !important;
-	padding: 10px !important;
-}
+
 #open-request-button {
 	position: fixed;
 	/* left: -80px; */
