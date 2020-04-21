@@ -6,6 +6,14 @@
  * Made By MaterializeCSS.com
  */
 
+ :root {
+	--main-color: #044a05;
+	--secondary-color: #bdf8a3;
+	/* --accent-color: #; */
+	--bg-linear: linear-gradient(rgba(255, 255, 255, 0), rgba(0, 0, 0, 0) );
+	--bg-blur: blur(3px);
+  }
+
 #profile-banner {
 	background-color: #bdf8a3;
 }
@@ -14,27 +22,40 @@
 	background-color: #bdf8a3;
 }
 #homepage-banner-img {
-	background: url(../images/garden-bg-2.jpg);
+	background: url(../images/art-bg-2.jpg);
 	background-position: center;
 	background-size: cover;
 	background-repeat: no-repeat;
 	/* filter: blur(1px); */
 }
+
 .banner-image-1 {
-	background: url(../images/garden-bg-4.jpg);
-	background-position: 50% 80%;
+	background: url(../images/art-bg-1.jpg);
+	background-position: 100% 100%;
 	background-size: cover;
 	background-repeat: no-repeat;
 }
 .banner-image-2 {
-	background: url(../images/garden-bg-2.jpg);
-	background-position: 50% 80%;
+	background: url(../images/art-bg-3.jpg);
+	background-position: 65% 80%;
 	background-size: cover;
 	background-repeat: no-repeat;
 }
 .banner-image-3 {
-	background: url(../images/garden-bg-5.jpg);
-	background-position: 50% 75%;
+	background: url(../images/art-bg-5.jpg);
+	background-position: 50% 60%;
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+.banner-image-4 {
+	background: url(../images/art-bg-2.jpg);
+	background-position: 50% 60%;
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+.banner-image-5 {
+	background: url(../images/art-bg-4.jpg);
+	background-position: 40% 60%;
 	background-size: cover;
 	background-repeat: no-repeat;
 }
@@ -44,7 +65,7 @@
 	font-weight: 700;
 	z-index: 22;
 	text-align: center;
-	text-shadow: 2px 2px black;
+	text-shadow: .1em .1em black;
 }
 
 .request-container {
