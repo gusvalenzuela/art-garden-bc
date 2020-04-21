@@ -1,6 +1,6 @@
 /* eslint-disable no-undef */
 $(document).ready(function () {
-	// banner carousel 
+	// banner carousel
 	$(".carousel").carousel({
 		dist: 0,
 		padding: 0,
@@ -15,8 +15,10 @@ $(document).ready(function () {
 		$(".carousel").carousel("next")
 		setTimeout(autoplay, 15000)
 	}
-
-	// start 
+	
+	console.log(`logged in or nah? `,)
+	// start..
+	const activeSession = $(`#main-container`).data(`received-session`)
 	const mainRequestContainer = $(".request-container")
 	var requests
 	const titleInput = $("#title")
@@ -25,6 +27,11 @@ $(document).ready(function () {
 	const turnAroundTime = $("#turnaround_time")
 	const startingPrice = $("#starting-price")
 	const tags = $(`#tags`)
+
+	if(activeSession){
+		$(`#nav-signup-btn`).hide()
+		$(`#nav-logout-btn`).show()
+	} 
 
 	getCommissionRequests()
 
@@ -59,18 +66,15 @@ $(document).ready(function () {
 	function createRequestCards(request) {
 		let formattedDate = moment(request.createdAt)
 			// .format("MMMM Do YYYY, h:mm:ss a")
-			// .format(`ll`)
-			.calendar()
+			.format(`lll`)
+		// .calendar()
 		let userFullname = request.User.firstName + ` ` + request.User.lastName
 
 		const requestContainer = $(
-			`<div class="halign-wrapper" style="width:100%;height:100%;position:static;">`,
+			`<div class="halign-wrapper" style="width:100%;height:100%;position:static;margin-bottom:1.5em;">`,
 		)
-		// .append($(`<div class="valign request-card" style="width:100%;">`))
-		// .append($(`<div class="container">`))
-		// .append($(`<div class="row white-text">`))
-
 		const newRequestCardRow = $(`<div class="row valign-center">`)
+		// >>
 		const newRequestCardRight = $(`<div class="col s12 request-card">`)
 		// const newRequestCardLeft = $(`<div class="col s12 m2 request-image" style="padding-top: 3em;">`).append(
 		// 	$(`<img src="/userdata/profile/male-1.png" style="height:89px;">`),
@@ -81,47 +85,71 @@ $(document).ready(function () {
 		const newRequestTitle = $(
 			`<h5 class="request-title" style="font-weight:800;">`,
 		).text(request.title)
-		const newRequestName = $(`<p class="request-name">`).text(
-			`Made by: ${userFullname}, ${formattedDate}`,
+
+		const newRequestNameDateRow = $(`<div class="request-namedate row">`)
+		const newRequestName = $(`<p class="request-name col left">`).text(
+			`Offer by: ${userFullname}`,
 		)
+		const newRequestDate = $(`<p class="request-date col left">`).text(
+			`Created on: ${formattedDate}`,
+		)
+
+		// appending two columns to nameDate row
+		newRequestNameDateRow.append(newRequestName, newRequestDate)
+		
 		const newRequestBody = $(
-			`<p class="request-body" id="${request.id}">`,
+			`<p id="${request.id}">`,
 		).text(request.description)
-		const newRequestStats = $(`<p class="request-stats">`).html(
-			`<b>Turnaround time:</b> ${request.turnaround_time} hr(s) | <b>Current price of contract:</b> ${request.current_bid} Money | <b>Bid count:</b> ${request.bid_count}`,
+		const newRequestBodyRow = $(`<div class="request-body row">`).append(
+			newRequestBody,
 		)
-		// const newRequestPostDate = $(`<p class="request-post-date">`).text(
-		// 	formattedDate,
+
+		const newRequestStatsRow = $(`<div class="request-stats row">`)
+		const requestTime = $(`<p class="request-stats-time col left">`).html(
+			`<b>Turnaround time:</b> ${request.turnaround_time} hr(s)`,
+		)
+		const requestPrice = $(`<p class="request-stats-price col left">`).html(
+			`<b>Current price of contract:</b> ${request.current_bid} Money`,
+		)
+		const requestProposedCount = $(
+			`<p class="request-stats-proposedcount col left">`,
+		).html(`<b>Proposed count:</b> ${request.bid_count}`)
+
+		// appending our columns to Stats row
+		newRequestStatsRow.append(requestTime, requestPrice, requestProposedCount)
+
+		// const getInputValue = () => {
+		// 	if (request.current_bid > 11) {
+		// 		return request.current_bid - 5
+		// 	} else if (request.current_bid > 2) {
+		// 		return request.current_bid - 1
+		// 	} else {
+		// 		return 0
+		// 	}
+		// }
+		// const bidInput = $(
+		// 	`<input id="submit-bid-${
+		// 		request.id
+		// 	}" style="width: 7em; text-align:center; margin: 0 1em;" type="number" data-request-id="${
+		// 		request.id
+		// 	}" data-current-bid="${request.current_bid}" value="${getInputValue()}">`,
 		// )
-		const getInputValue = () => {
-			if (request.current_bid > 11) {
-				return request.current_bid - 5
-			} else if (request.current_bid > 2) {
-				return request.current_bid - 1
-			} else {
-				return 0
-			}
-		}
-		const bidInput = $(
-			`<input id="submit-bid-${
-				request.id
-			}" style="width: 7em; text-align:center; margin: 0 1em;" type="number" data-request-id="${
-				request.id
-			}" data-current-bid="${request.current_bid}" value="${getInputValue()}">`,
+		const proposalButton = $(
+			`<a class="proposal-btn waves-effect waves-light btn-small" data-request-id="${request.id}" data-current-bid="${request.current_bid}" data-bid-count="${request.bid_count}">`,
+		).text("Make proposal")
+
+		const buttonRow = $(`<div class="request-buttons row">`).append(
+			proposalButton,
 		)
-		const bidButton = $(
-			`<a class="bid-btn waves-effect waves-light btn-small" data-request-id="${request.id}" data-current-bid="${request.current_bid}" data-bid-count="${request.bid_count}">`,
-		).text("Bid")
 		// .data("contract-id", request.id)
 
 		newRequestCardRight.append(
 			newRequestTitle,
-			newRequestName,
-			// newRequestPostDate,
-			newRequestStats,
-			newRequestBody,
-			bidInput,
-			bidButton,
+			newRequestNameDateRow,
+			newRequestBodyRow,
+			newRequestStatsRow,
+			// bidInput,
+			buttonRow,
 		)
 
 		newRequestCardRow.append(
@@ -136,7 +164,7 @@ $(document).ready(function () {
 		requestContainer.appendTo(mainRequestContainer)
 
 		// change artist id when clicking take request
-		$(`.bid-btn`).on(`click`, event => {
+		$(`.proposal-btn`).on(`click`, event => {
 			event.stopImmediatePropagation()
 			$(`#temp-alert`).remove()
 
@@ -181,7 +209,7 @@ $(document).ready(function () {
 						$(elementToAppendAlert).append(
 							$(
 								`<p id="temp-alert" style="color:#990000; font-weight:600;">`,
-							).text(`Sorry, only registered users are able to bid`),
+							).text(`Feature coming soon!`),
 						)
 						setTimeout(() => {
 							$(`#temp-alert`).remove()
@@ -238,4 +266,6 @@ $(document).ready(function () {
 
 		resetRequestForm()
 	})
+
+	$(`#logo`).on(`click`, () => (window.location.href = `/homepage`))
 })

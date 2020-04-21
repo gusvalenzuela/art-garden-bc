@@ -10,12 +10,27 @@ exports.settings = function (req, res) {
 }
 
 exports.homepage = function (req, res) {
+	//checking to see if there's a logged in user detected in the html request
+	if(req.session.passport){
+		var activeUser = req.session.passport.user
+		var loggedIn = true
+	} else {
+		var activeUser = `none`
+		var loggedIn = false
+	}
+
 	db.User.findAll({
 		include: [db.Userdetail, db.Artwork, db.Request],
 		raw: false,
 	}).then(response => {
-		// console.log(utils.filterUserResponse(response).response)
-		res.render(`homepage`, utils.filterUserResponse(response).response)
+		const filteredResponse = utils.filterUserResponse(response).response
+		res.render(`homepage`, {
+			activeUser: activeUser,
+			data: filteredResponse,
+			user: filteredResponse,
+			requests: filteredResponse,
+			loggedIn: loggedIn,
+		})
 	})
 }
 exports.homepageBidding = function (req, res) {

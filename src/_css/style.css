@@ -22,6 +22,7 @@ body {
 
 main {
 	flex: 1 0 auto;
+	padding: 0;
 }
 
 body,
@@ -29,6 +30,7 @@ html {
 	background: whitesmoke;
 	/* height: 100%; */
 }
+
 
 #profile-banner {
 	background-color: #bdf8a3;
@@ -90,21 +92,30 @@ html {
 	border: 5px #bdf8a3;
 	background-color: lightgray;
 	margin-bottom: 5px;
-	padding: 1em;
+	padding: 1.5em;
 }
 
 .request-card {
-	padding: 0.6em 0.6em 1.6em 0.6em;
+	padding: 0 !important;
 }
 .request-card p {
-	margin: 0.5em 0;
+	margin: 0.5em 0 0;
+	padding-left: 0 !important;
 }
-.request-name{
+.request-card .row {
+	margin: 0 0 .5em;
+}
+.request-title{
+	margin: auto;
+}
+.request-name, .request-date{
 	font-weight: 300;
 	padding-bottom: .33em;
-	border-bottom: 1px black solid;
+	/* border-bottom: 1px black solid; */
 }
-
+.request-buttons{
+	padding-top: 1em;
+}
 .icon-block {
 	padding: 0 15px;
 }
@@ -207,6 +218,12 @@ html {
 	border: 2px solid #044a05;
 }
 
+/* for tablets and mobile  */
+@media screen and (min-width: 601px) {
+	#sidenav-trigger {
+		display: none !important;
+	}
+}
 /* for tablets and mobile  */
 @media screen and (max-width: 992px) {
 	#request-collapsible {
