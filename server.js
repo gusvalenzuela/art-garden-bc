@@ -44,6 +44,10 @@ app.set("views", __dirname + "/app/views")
 
 app.get("/", (req, res) => {
 	// console.log(`test`)
+	res.render("homepage")
+})
+app.get("/signin", (req, res) => {
+	// console.log(`test`)
 	res.render("index")
 })
 

@@ -30,6 +30,7 @@ $(document).ready(function () {
 
 	if(activeSession){
 		$(`#nav-signup-btn`).hide()
+		$(`#nav-login-btn`).hide()
 		$(`#nav-logout-btn`).show()
 	} 
 
@@ -111,12 +112,12 @@ $(document).ready(function () {
 		const requestPrice = $(`<p class="request-stats-price col left">`).html(
 			`<b>Current price of contract:</b> ${request.current_bid} Money`,
 		)
-		const requestProposedCount = $(
-			`<p class="request-stats-proposedcount col left">`,
-		).html(`<b>Proposed count:</b> ${request.bid_count}`)
+		const requestProposalCount = $(
+			`<p class="request-stats-proposal-count col left">`,
+		).html(`<b>Proposal count:</b> ${request.bid_count}`)
 
 		// appending our columns to Stats row
-		newRequestStatsRow.append(requestTime, requestPrice, requestProposedCount)
+		newRequestStatsRow.append(requestTime, requestPrice, requestProposalCount)
 
 		// const getInputValue = () => {
 		// 	if (request.current_bid > 11) {
@@ -267,5 +268,5 @@ $(document).ready(function () {
 		resetRequestForm()
 	})
 
-	$(`#logo`).on(`click`, () => (window.location.href = `/homepage`))
+	$(`#logo`).on(`click`, () => (window.location.href = `/`))
 })
