@@ -15,8 +15,7 @@ $(document).ready(function () {
 		$(".carousel").carousel("next")
 		setTimeout(autoplay, 15000)
 	}
-	
-	console.log(`logged in or nah? `,)
+
 	// start..
 	const activeSession = $(`#main-container`).data(`received-session`)
 	const mainRequestContainer = $(".request-container")
@@ -28,11 +27,11 @@ $(document).ready(function () {
 	const startingPrice = $("#starting-price")
 	const tags = $(`#tags`)
 
-	if(activeSession){
+	if (activeSession) {
 		$(`#nav-signup-btn`).hide()
 		$(`#nav-login-btn`).hide()
 		$(`#nav-logout-btn`).show()
-	} 
+	}
 
 	getCommissionRequests()
 
@@ -97,10 +96,8 @@ $(document).ready(function () {
 
 		// appending two columns to nameDate row
 		newRequestNameDateRow.append(newRequestName, newRequestDate)
-		
-		const newRequestBody = $(
-			`<p id="${request.id}">`,
-		).text(request.description)
+
+		const newRequestBody = $(`<p id="${request.id}">`).text(request.description)
 		const newRequestBodyRow = $(`<div class="request-body row">`).append(
 			newRequestBody,
 		)

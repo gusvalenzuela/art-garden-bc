@@ -26,7 +26,8 @@
 	<nav class="green darken-4" style="z-index: 99;">
 		<div class="nav-wrapper">
 			<a href="/homepage" class="brand-logo center"></a>
-			<a href="#" data-target="mobile-collapsible" class="sidenav-trigger" id="sidenav-trigger"><i class="material-icons">menu</i></a>
+			<a href="#" data-target="mobile-collapsible" class="sidenav-trigger" id="sidenav-trigger"><i
+					class="material-icons">menu</i></a>
 			<ul id="nav-mobile" class="left hide-on-small-only">
 				<li><a href="/homepage">Homepage</a></li>
 				<li><a href="/profile">Profile</a></li>
@@ -34,8 +35,28 @@
 			</ul>
 			<ul class="right hide-on-small-only">
 				{{!-- <li><a href="/logout">Logout</a></li> --}}
-				<li><a href="/logout" class="waves-effect waves-light btn" id="nav-logout-btn" style="display: none;">Logout</a></li>
-				<li><a href="/signin" class="waves-effect waves-light btn" id="nav-login-btn" >Login</a></li>
+				<li><a href="/logout" class="waves-effect waves-light btn" id="nav-logout-btn"
+						style="display: none;">Logout</a></li>
+				<li>
+					<!-- Modal Trigger -->
+					<a href="#login-modal" class="waves-effect waves-light btn modal-trigger"
+						id="nav-login-btn">Login</a>
+
+					<!-- Modal Structure -->
+					<div id="login-modal" class="modal">
+						<div class="modal-content">
+							<h4>Login:</h4>
+							<form id="signin" name="signin" method="post" action="/signin">
+								<label for="email" class="left-align">Email Address</label>
+								<input class="text" name="email" type="text" />
+								<label for="password" class="left-align">Password</label>
+								<input name="password" type="password" />
+								<input class="btn-flat right" type="submit" value="Sign In" />
+							</form>
+						</div>
+						
+					</div>
+				</li>
 				<li><a href="/signup" class="waves-effect waves-light btn" id="nav-signup-btn">Sign Up</a></li>
 			</ul>
 		</div>
@@ -107,12 +128,26 @@
 
 		$(window).scroll(function () {
 			if ($(window).scrollTop() + $(window).height() > $(document).height() - 75) {
-				$(`.footer`).show()
+				// do something once user reaches end of scroll (ex. show/hide)
+
 			} else {
-				$(`.footer`).hide()
+				// else do something else (ex. show/hide)
 			}
 		});
-		// setting the position of the new contract button dependent on footer height, globally
+
+		$(`#nav-login-btn`).on(`click`, event => {
+			event.stopPropagation()
+			const loginModal = event.target.nextElementSibling
+
+			if (loginModal.style.display === `block`) {
+				loginModal.style.display = `none`
+			} else {
+				loginModal.style.display = `block`
+			}
+
+		})
+
+		// setting the position of the new contract button in relation to navbar height
 		$(`#open-request-button`).css({
 			top: $(`.nav-wrapper`).outerHeight() + 24 + `px`,	// RIP Kobe
 			right: setContractBtnLeft,
