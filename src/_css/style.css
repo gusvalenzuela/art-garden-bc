@@ -1,4 +1,5 @@
 /* Custom Stylesheet */
+
 /**
  * Use this file to override Materialize files so you can update
  * the core Materialize files in the future
@@ -25,20 +26,40 @@ main {
 	padding: 0;
 }
 
-body,
-html {
+body, html {
 	background: whitesmoke;
 	/* height: 100%; */
 }
 
-
-#profile-banner {
-	background-color: #bdf8a3;
+#nav-signup-btn {
+	background: whitesmoke;
+	color: #26A69A;
 }
 
-#homepage-banner {
-	background-color: #bdf8a3;
+#right-side-nav li>a {
+	margin: 0 .5em;
 }
+.modal-footer{
+	height: unset !important;
+	text-align: center !important;
+}
+
+.modal-footer a, .modal-footer span{
+	display: contents !important;
+	font-size: 12px;
+	margin: 0;
+	width: max-content;
+	color: blue;
+}
+
+.header-container {
+	margin-bottom: 1.5em;
+}
+
+.login-bottom-text {
+	color: blue;
+}
+
 #homepage-banner-img {
 	background: url(../images/art-bg-2.jpg);
 	background-position: center;
@@ -53,24 +74,28 @@ html {
 	background-size: cover;
 	background-repeat: no-repeat;
 }
+
 .banner-image-2 {
 	background: url(../images/art-bg-3.jpg);
 	background-position: 65% 80%;
 	background-size: cover;
 	background-repeat: no-repeat;
 }
+
 .banner-image-3 {
 	background: url(../images/art-bg-5.jpg);
 	background-position: 50% 60%;
 	background-size: cover;
 	background-repeat: no-repeat;
 }
+
 .banner-image-4 {
 	background: url(../images/art-bg-2.jpg);
 	background-position: 50% 60%;
 	background-size: cover;
 	background-repeat: no-repeat;
 }
+
 .banner-image-5 {
 	background: url(../images/art-bg-4.jpg);
 	background-position: 40% 60%;
@@ -95,48 +120,66 @@ html {
 	padding: 1.5em;
 }
 
+#login-modal {
+	width: 300px;
+	padding: 1em;
+	line-height: 24px !important;
+}
+
 .request-card {
 	padding: 0 !important;
 }
+
 .request-card p {
 	margin: 0.5em 0 0;
 	padding-left: 0 !important;
 }
+
 .request-card .row {
 	margin: 0 0 .5em;
 }
-.request-title{
+
+.request-title {
 	margin: auto;
 }
-.request-name, .request-date{
+
+.request-name, .request-date {
 	font-weight: 300;
 	padding-bottom: .33em;
 	/* border-bottom: 1px black solid; */
 }
-.request-buttons{
+
+.request-buttons {
 	padding-top: 1em;
 }
+
 .icon-block {
 	padding: 0 15px;
 }
+
 .icon-block .material-icons {
 	font-size: inherit;
 }
+
 .sidenav li a {
 	padding-left: 2.0189em;
 	padding-right: 6.0567em;
 }
+
 /* sidebar in main handlebars  */
+
 #mobile-collapsible {
 	width: auto;
 	/* height: auto; */
 }
+
 #sidenav-logo-div {
 	background: url(../images/artGarden-logo.png);
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: contain;
 }
+
 .materialboxed {
 	display: block;
 	margin-left: auto;
@@ -144,6 +187,7 @@ html {
 	width: 40%;
 	padding: 5px;
 }
+
 .main-container {
 	margin-bottom: 1em;
 }
@@ -163,13 +207,16 @@ html {
 	color: white;
 	font-size: small;
 }
+
 .page-footer a:hover {
 	text-decoration: underline;
 }
+
 .page-footer i {
 	color: white;
 	font-size: x-large;
 }
+
 .page-footer ul {
 	margin: 0.25em 0;
 }
@@ -182,17 +229,21 @@ html {
 	height: auto;
 	border-radius: 0;
 }
+
 #request-collapsible {
 	width: 42%;
 	height: auto;
 	padding-bottom: 0;
 }
+
 #open-more {
 	padding-left: 0.125em;
 }
+
 #reset-request-form {
 	margin-left: 2em;
 }
+
 #reset-request-form:hover {
 	text-decoration: underline;
 	color: #42b395;
@@ -219,12 +270,15 @@ html {
 }
 
 /* for tablets and mobile  */
+
 @media screen and (min-width: 601px) {
 	#sidenav-trigger {
 		display: none !important;
 	}
 }
+
 /* for tablets and mobile  */
+
 @media screen and (max-width: 992px) {
 	#request-collapsible {
 		width: 69%;
@@ -232,6 +286,7 @@ html {
 }
 
 /* for mobile devices  */
+
 @media screen and (max-width: 576px) {
 	#request-collapsible {
 		width: 100%;

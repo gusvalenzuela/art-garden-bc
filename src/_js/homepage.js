@@ -28,9 +28,17 @@ $(document).ready(function () {
 	const tags = $(`#tags`)
 
 	if (activeSession) {
+		// hide when signed in
 		$(`#nav-signup-btn`).hide()
 		$(`#nav-login-btn`).hide()
+		$(`#sidenav-login-link`).hide()
+		$(`#sidenav-signup-link`).hide()
+
+		// show when signed in
 		$(`#nav-logout-btn`).show()
+		$(`#sidenav-logout-link`).show()
+		$(`#sidenav-profile-link`).show()
+		$(`#sidenav-settings-link`).show()
 	}
 
 	getCommissionRequests()
