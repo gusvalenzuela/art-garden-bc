@@ -26,25 +26,27 @@ main {
 	padding: 0;
 }
 
-body, html {
+body,
+html {
 	background: whitesmoke;
 	/* height: 100%; */
 }
 
 #nav-signup-btn {
 	background: whitesmoke;
-	color: #26A69A;
+	color: #26a69a;
 }
 
-#right-side-nav li>a {
-	margin: 0 .5em;
+#right-side-nav li > a {
+	margin: 0 0.5em;
 }
-.modal-footer{
+.modal-footer {
 	height: unset !important;
 	text-align: center !important;
 }
 
-.modal-footer a, .modal-footer span{
+.modal-footer a,
+.modal-footer span {
 	display: contents !important;
 	font-size: 12px;
 	margin: 0;
@@ -128,16 +130,17 @@ body, html {
 }
 
 .request-card .row {
-	margin: 0 0 .5em;
+	margin: 0 0 0.5em;
 }
 
 .request-title {
 	margin: auto;
 }
 
-.request-name, .request-date {
+.request-name,
+.request-date {
 	font-weight: 300;
-	padding-bottom: .33em;
+	padding-bottom: 0.33em;
 	/* border-bottom: 1px black solid; */
 }
 
