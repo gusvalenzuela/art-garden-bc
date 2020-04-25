@@ -61,41 +61,6 @@ html {
 	color: blue;
 }
 
-.banner-image-1 {
-	background: url(../images/art-bg-1.jpg);
-	background-position: 100% 100%;
-	background-size: cover;
-	background-repeat: no-repeat;
-}
-
-.banner-image-2 {
-	background: url(../images/art-bg-3.jpg);
-	background-position: 65% 80%;
-	background-size: cover;
-	background-repeat: no-repeat;
-}
-
-.banner-image-3 {
-	background: url(../images/art-bg-5.jpg);
-	background-position: 50% 60%;
-	background-size: cover;
-	background-repeat: no-repeat;
-}
-
-.banner-image-4 {
-	background: url(../images/art-bg-2.jpg);
-	background-position: 50% 60%;
-	background-size: cover;
-	background-repeat: no-repeat;
-}
-
-.banner-image-5 {
-	background: url(../images/art-bg-4.jpg);
-	background-position: 40% 60%;
-	background-size: cover;
-	background-repeat: no-repeat;
-}
-
 .banner-text {
 	color: ghostwhite;
 	font-weight: 700;
