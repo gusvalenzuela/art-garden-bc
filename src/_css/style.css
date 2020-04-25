@@ -60,14 +60,6 @@ body, html {
 	color: blue;
 }
 
-#homepage-banner-img {
-	background: url(../images/art-bg-2.jpg);
-	background-position: center;
-	background-size: cover;
-	background-repeat: no-repeat;
-	/* filter: blur(1px); */
-}
-
 .banner-image-1 {
 	background: url(../images/art-bg-1.jpg);
 	background-position: 100% 100%;
