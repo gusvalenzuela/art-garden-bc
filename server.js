@@ -3,6 +3,7 @@ const passport = require("passport")
 const session = require("express-session")
 const db = require("./app/models")
 const authRoute = require("./app/routes/auth.js")
+const compression = require("compression")
 
 const app = express()
 
@@ -18,6 +19,7 @@ app.use(
 	}),
 )
 app.use(express.json())
+// app.use(compression())
 
 app.use(
 	session({
