@@ -14,7 +14,6 @@
 	--bg-linear: linear-gradient(rgba(255, 255, 255, 0), rgba(0, 0, 0, 0));
 	--bg-blur: blur(3px);
 }
-
 body {
 	display: flex;
 	min-height: 100vh;
