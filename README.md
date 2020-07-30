@@ -13,15 +13,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-You will need MongoDB installed if you want to run this application locally. For help installing MongoDB, visit
-````
-https://docs.mongodb.com/manual/installation/
-````
-
-Once installed, make sure the MongoDB daemon is running with the following command line command:
-````
-$ mongod
-````
+You will need MySQL installed if you want to run this application locally. For help installing MySQL, visit: [https://dev.mysql.com/doc/](https://dev.mysql.com/doc/)
 
 ### Installing
 
@@ -57,15 +49,9 @@ $ npm run dev
 * [Node.js](https://nodejs.org/en/) - JavaScript runtime
 * [Handlebars.js](https://handlebarsjs.com/) - HTML Rendering
 * [NPM](https://www.npmjs.com/) - Dependency management
-* [Materialize](https://materializecss.com/) - CSS framework
+* [Bootstrap-v4](https://getbootstrap.com/) - CSS framework
 * [Passport](http://www.passportjs.org/) - Authentication platform
 
-## Authors / Team
-- Mark Ohanesian: @markohanesian
-- Anthony Pillow: @SquidDOTjpeg
-- Gus Valenzuela: @gusvalenzuela
-
-See the full list of [contributors](https://github.com/gusvalenzuela/art-garden-bc/graphs/contributors) who participated in this project along with individual commit history. 
 
 ## Planned updates
 
