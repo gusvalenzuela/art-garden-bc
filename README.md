@@ -52,6 +52,12 @@ $ npm run dev
 * [Bootstrap-v4](https://getbootstrap.com/) - CSS framework
 * [Passport](http://www.passportjs.org/) - Authentication platform
 
+## Authors / Team
+- Mark Ohanesian: @markohanesian
+- Anthony Pillow: @SquidDOTjpeg
+- Gus Valenzuela: @gusvalenzuela
+
+See the full list of [contributors](https://github.com/gusvalenzuela/art-garden-bc/graphs/contributors) who participated in this project along with individual commit history. 
 
 ## Planned updates
 
