@@ -52,7 +52,7 @@
 		"bcrypt-nodejs": "0.0.3",
 		"compression": "^1.7.4",
 		"express": "^4.17.1",
-		"express-handlebars": "^4.0.2",
+		"express-handlebars": "^5.3.1",
 		"express-session": "^1.17.0",
 		"jquery": "^3.4.1",
 		"mysql2": "^2.1.0",
